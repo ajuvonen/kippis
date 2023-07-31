@@ -27,4 +27,3 @@ const searchString = ref('');
     <button>I'm Feeling Lucky</button>
   </div>
 </template>
-@/utils/constants

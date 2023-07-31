@@ -27,4 +27,4 @@ onMounted(() => {
   </div>
 </template>
 <style scoped>
-</style>@/utils/constants
+</style>

@@ -30,4 +30,3 @@ watch(props, (value) => {
     <search-field />
   </main>
 </template>
-@/utils/constants
