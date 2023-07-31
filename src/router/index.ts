@@ -9,6 +9,15 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
+    {
+      path: '/search',
+      name: 'search',
+      props: (route) => ({
+        searchString: route.query.searchString,
+        tag: route.query.tag,
+      }),
+      component: () => import('@/views/SearchView.vue'),
+    }
   ],
 });
 
