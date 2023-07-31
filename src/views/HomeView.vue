@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import SearchField from '@/components/SearchField.vue';
-import {mainPhotos, type MainPhoto} from '@/utils';
+import {MAIN_PHOTOS} from '@/utils/constants';
+import type {MainPhoto} from '@/utils/types';
 
 const mainPhoto = ref<MainPhoto>();
 onMounted(() => {
   const randomIndex = Math.floor(Math.random() * 3);
-  mainPhoto.value = mainPhotos[randomIndex];
+  mainPhoto.value = MAIN_PHOTOS[randomIndex];
 });
 
 </script>
@@ -26,4 +27,4 @@ onMounted(() => {
   </div>
 </template>
 <style scoped>
-</style>
+</style>@/utils/constants

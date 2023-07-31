@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import {useRouter} from 'vue-router';
-import {alcohols} from '@/utils';
+import {ALCOHOLS} from '@/utils/constants';
 
 const router = useRouter();
 
@@ -23,7 +23,8 @@ const searchString = ref('');
     </button>
   </div>
   <div class="flex flex-wrap justify-center">
-    <button v-for="{tag} in alcohols" :key="tag" @click="router.push({name: 'search', query: {tag}})">{{ tag }}</button>
+    <button v-for="{tag} in ALCOHOLS" :key="tag" @click="router.push({name: 'search', query: {tag}})">{{ tag }}</button>
     <button>I'm Feeling Lucky</button>
   </div>
 </template>
+@/utils/constants
