@@ -25,10 +25,10 @@ onMounted(() => {
       v-model="searchString"
       type="text"
       maxlength="20"
-      class="rounded-tr-none rounded-br-none pb-1"
+      class="relative rounded-tr-none rounded-br-none pb-1"
     />
     <button
-      class="rounded-tl-none rounded-bl-none"
+      class="relative rounded-tl-none rounded-bl-none"
       @click="router.push({name: 'search', query: {searchString}})"
     >
       {{ t('searchField.search') }}
@@ -48,5 +48,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 li + li {
   @apply ml-1;
+}
+
+input:focus {
+  z-index: 1;
 }
 </style>

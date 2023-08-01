@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {SearchResultDrink} from '@/utils/types';
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
 
 defineProps<{
   items: SearchResultDrink[];
