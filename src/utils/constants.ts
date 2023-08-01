@@ -3,7 +3,7 @@ import type {MainPhoto} from './types';
 export const ALCOHOLS = [
   {
     tag: 'whiskey',
-    searchKeys: [
+    ingredients: [
       'whiskey',
       'blended whiskey',
       'irish whiskey',
@@ -12,13 +12,13 @@ export const ALCOHOLS = [
       'johnnie walker',
     ],
   },
-  {tag: 'vodka', searchKeys: ['vodka', 'peach vodka', 'lemon vodka']},
-  {tag: 'gin', searchKeys: ['gin', 'sloe gin']},
-  {tag: 'rum', searchKeys: ['rum', 'light rum', 'dark rum', 'spiced rum', 'añejo rum']},
+  {tag: 'vodka', ingredients: ['vodka', 'peach vodka', 'lemon vodka']},
+  {tag: 'gin', ingredients: ['gin', 'sloe gin']},
+  {tag: 'rum', ingredients: ['rum', 'light rum', 'dark rum', 'spiced rum', 'añejo rum']},
   {tag: 'virgin'},
 ];
 
-export const BASE_API_ADDRESS = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php';
+export const BASE_API_ADDRESS = 'https://www.thecocktaildb.com/api/json/v1/1';
 
 export const MAIN_PHOTOS = [
   {

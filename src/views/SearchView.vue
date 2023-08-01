@@ -12,14 +12,16 @@ const props = defineProps<{
 
 const searchString = ref('');
 const cocktailStore = useCocktailStore();
-const {search, searchWithTag} = cocktailStore;
+const {search, searchNonAlcoholic, searchWithTag} = cocktailStore;
 const {searchResults} = storeToRefs(cocktailStore);
 
-watch(props, (value) => {
-  if (value.tag && ALCOHOLS.filter(({tag}) => tag === value.tag)) {
-    searchWithTag(value.tag);
-  } else if (value.searchString) {
-    searchString.value = value.searchString.trim().slice(0, 20);
+watch(props, (newProps) => {
+  if (newProps.tag === 'virgin') {
+    searchNonAlcoholic();
+  } else if (newProps.tag && ALCOHOLS.filter(({tag}) => tag === newProps.tag)) {
+    searchWithTag(newProps.tag);
+  } else if (newProps.searchString) {
+    searchString.value = newProps.searchString.trim().slice(0, 20);
     search(searchString.value);
   }
 }, {immediate: true});
