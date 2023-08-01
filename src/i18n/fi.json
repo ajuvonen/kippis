@@ -1,0 +1,19 @@
+{
+  "homeView": {
+    "title": "Astu maistuvien cocktailien maailmaan!",
+    "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun."
+  },
+  "searchField": {
+    "label": "Etsi reseptejä",
+    "random": "Kokeilen onneani",
+    "search": "Etsi",
+    "tagListTitle": "Reseptikategoriat"
+  },
+  "tags": {
+    "gin": "Gin",
+    "rum": "Rommi",
+    "virgin": "Alkoholittomat",
+    "vodka": "Vodka",
+    "whiskey": "Viski"
+  }
+}
