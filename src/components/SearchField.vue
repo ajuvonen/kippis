@@ -27,16 +27,16 @@ const searchString = ref('');
       {{ t('searchField.search') }}
     </button>
   </div>
-  <div class="flex flex-wrap justify-center">
-    <ul :aria-label="t('searchField.tagListTitle')">
-      <li class="inline" v-for="{tag} in ALCOHOLS" :key="tag">
-        <button @click="router.push({name: 'search', query: {tag}})">
-          {{ t(`tags.${tag}`) }}
-        </button>
-      </li>
-    </ul>
-    <button clasS="ml-1">{{ t('searchField.random') }}</button>
-  </div>
+  <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
+    <li class="inline" v-for="{tag} in ALCOHOLS" :key="tag">
+      <button @click="router.push({name: 'search', query: {tag}})">
+        {{ t(`tags.${tag}`) }}
+      </button>
+    </li>
+    <li>
+      <button>{{ t('searchField.random') }}</button>
+    </li>
+  </ul>
 </template>
 <style scoped>
 li + li {
