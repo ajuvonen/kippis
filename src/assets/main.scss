@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply text-3xl mb-4;
+    @apply text-3xl my-4;
   }
 
   p {
@@ -12,11 +12,11 @@
   }
 
   button {
-    @apply mb-1 text-sm uppercase tracking-wide transition-colors ease-in bg-white;
-  }
+    @apply mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
 
-  button:hover {
-    @apply bg-slate-800 text-white cursor-pointer;
+    &:hover {
+      @apply bg-slate-800 text-white cursor-pointer border-slate-800;
+    }
   }
 
   button, input {
