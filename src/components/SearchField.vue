@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-import {useRouter} from 'vue-router';
+import {onMounted, ref} from 'vue';
+import {useRoute, useRouter} from 'vue-router';
 import {ALCOHOLS} from '@/utils/constants';
 import {useI18n} from 'vue-i18n';
 
 const router = useRouter();
+const route = useRoute();
 const {t} = useI18n();
 
 const searchString = ref('');
+
+onMounted(() => {
+  if (route.query.searchString) {
+    searchString.value = route.query.searchString.toString().trim().slice(0, 20);
+  }
+});
 </script>
 
 <template>
-  <label for="search-box" class="text-3xl mb-4">{{ t('searchField.label') }}</label>
+  <label for="search-box" class="text-3xl mt-4 mb-4">{{ t('searchField.label') }}</label>
   <div class="flex justify-center divide-x mb-4">
     <input
       id="search-box"
@@ -38,7 +45,7 @@ const searchString = ref('');
     </li>
   </ul>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 li + li {
   @apply ml-1;
 }

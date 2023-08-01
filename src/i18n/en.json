@@ -9,6 +9,9 @@
     "search": "Search",
     "tagListTitle": "Recipe Categories"
   },
+  "searchResults": {
+    "title": "{0} Results"
+  },
   "tags": {
     "gin": "Gin",
     "rum": "Rum",

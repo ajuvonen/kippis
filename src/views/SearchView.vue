@@ -2,6 +2,7 @@
 import {ref, watch} from 'vue';
 import {storeToRefs} from 'pinia';
 import SearchField from '@/components/SearchField.vue';
+import SearchResults from '@/components/SearchResults.vue';
 import {useCocktailStore} from '@/stores/cocktail';
 import {ALCOHOLS} from '@/utils/constants';
 
@@ -29,6 +30,7 @@ watch(props, (newProps) => {
 </script>
 <template>
   <main>
-    <search-field />
+    <SearchField />
+    <SearchResults :items="searchResults" />
   </main>
 </template>

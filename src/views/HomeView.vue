@@ -27,7 +27,7 @@ onMounted(() => {
       </div>
     </aside>
     <main class="h-1/2 sm:h-full sm:w-1/2">
-      <search-field />
+      <SearchField />
     </main>
   </div>
 </template>

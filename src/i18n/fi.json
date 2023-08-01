@@ -9,6 +9,9 @@
     "search": "Etsi",
     "tagListTitle": "Reseptikategoriat"
   },
+  "searchResults": {
+    "title": "{0} tulosta"
+  },
   "tags": {
     "gin": "Gin",
     "rum": "Rommi",
