@@ -3,6 +3,11 @@
     "title": "Astu maistuvien cocktailien maailmaan!",
     "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun."
   },
+  "menu": {
+    "home": "Etusivu",
+    "search": "Haku",
+    "selection": "Valinnat"
+  },
   "searchField": {
     "label": "Etsi reseptejä",
     "random": "Kokeilen onneani",

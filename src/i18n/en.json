@@ -3,6 +3,11 @@
     "title": "Enter a World of Delicious Cocktails!",
     "ingress": "Use this service to find inspirational cocktails, plan your own cocktail party, and create a shopping list for a memorable evening. Use the search box or category tags to get started."
   },
+  "menu": {
+    "home": "Home",
+    "search": "Search",
+    "selection": "Selection"
+  },
   "searchField": {
     "label": "Search for Recipes",
     "random": "I'm Feeling Lucky",

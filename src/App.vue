@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import {useI18n} from 'vue-i18n';
 import {RouterView, RouterLink} from 'vue-router';
+
+const {t} = useI18n();
 </script>
 
 <template>
@@ -7,9 +10,9 @@ import {RouterView, RouterLink} from 'vue-router';
     class="fixed h-14 bottom-0 sm:top-0 w-full bg-white flex flex-nowrap justify-center items-stretch shadow-xs"
     role="navigation"
   >
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="search">Search</RouterLink>
-    <RouterLink to="selection">Selection</RouterLink>
+    <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
+    <RouterLink to="search">{{ t('menu.search') }}</RouterLink>
+    <RouterLink to="selection">{{ t('menu.selection') }}</RouterLink>
   </ul>
   <RouterView class="sm:mt-10" />
 </template>
@@ -23,7 +26,7 @@ a {
   }
 
   &.router-link-exact-active:not(:hover) {
-    @apply bg-slate-200;
+    @apply bg-slate-100;
   }
 }
 </style>
