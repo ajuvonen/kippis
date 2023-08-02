@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {prop, sortBy} from 'ramda';
+import {prop, sortBy, compose, uniqBy} from 'ramda';
 import {BASE_API_ADDRESS} from '@/utils/constants';
 import {transformDrinks} from '@/utils/helpers';
 
@@ -11,8 +11,10 @@ export const getByIngredients = async (ingredients: string[]) => {
         .then(({data: {drinks}}) => transformDrinks(drinks)),
     ),
   );
-  return sortBy(
-    prop('name'),
+  return compose(
+    sortBy(prop('name')),
+    uniqBy(prop('id')),
+  )(
     drinks.reduce((previous, current) => {
       return [...previous, ...current];
     }, []),
