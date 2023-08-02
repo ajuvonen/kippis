@@ -24,7 +24,7 @@ onMounted(() => {
     <input
       id="search-box"
       v-model="searchString"
-      type="text"
+      type="search"
       maxlength="20"
       class="relative rounded-tr-none rounded-br-none pb-1"
     />
@@ -37,7 +37,7 @@ onMounted(() => {
   </div>
   <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
     <li class="inline" v-for="{tag} in ALCOHOLS" :key="tag">
-      <LinkButton :to="`search/?tag=${tag}`">
+      <LinkButton :to="`/search?tag=${tag}`">
         {{ t(`tags.${tag}`) }}
       </LinkButton>
     </li>
