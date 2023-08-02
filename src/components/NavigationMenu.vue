@@ -6,7 +6,7 @@ const {t} = useI18n();
 </script>
 <template>
   <ul
-    class="fixed h-14 bottom-0 sm:top-0 w-full bg-white flex flex-nowrap justify-center items-stretch shadow-xs"
+    class="fixed h-14 bottom-0 sm:top-0 w-full z-10 bg-white flex flex-nowrap justify-center items-stretch shadow-sm"
     role="navigation"
   >
     <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
@@ -16,7 +16,7 @@ const {t} = useI18n();
 </template>
 <style lang="scss" scoped>
 a {
-  @apply flex flex-col justify-center w-1/3 sm:w-[100px] text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
+  @apply flex flex-col justify-center w-1/3 sm:w-28 text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
 
   &:hover {
     @apply bg-slate-800 text-white;

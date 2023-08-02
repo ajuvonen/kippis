@@ -17,6 +17,10 @@
     &:hover {
       @apply bg-slate-800 text-white cursor-pointer border-slate-800;
     }
+
+    + button, + a.link-button {
+      @apply ml-1;
+    }
   }
 
   button, a.link-button, input {
