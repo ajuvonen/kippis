@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
-import {ALCOHOLS} from '@/utils/constants';
 import {useI18n} from 'vue-i18n';
+import {ALCOHOLS} from '@/utils/constants';
+import LinkButton from '@/components/LinkButton.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -36,9 +37,9 @@ onMounted(() => {
   </div>
   <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
     <li class="inline" v-for="{tag} in ALCOHOLS" :key="tag">
-      <button @click="router.push({name: 'search', query: {tag}})">
+      <LinkButton :to="`search/?tag=${tag}`">
         {{ t(`tags.${tag}`) }}
-      </button>
+      </LinkButton>
     </li>
     <li>
       <button>{{ t('searchField.random') }}</button>

@@ -11,7 +11,7 @@
     @apply mb-2;
   }
 
-  button {
+  button, a.link-button {
     @apply mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
 
     &:hover {
@@ -19,7 +19,7 @@
     }
   }
 
-  button, input {
+  button, a.link-button, input {
     @apply px-4 rounded-3xl border-2 border-slate-100 h-10;
   }
 
