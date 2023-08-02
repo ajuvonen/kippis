@@ -14,7 +14,7 @@ const {t} = useI18n();
     <RouterLink to="search">{{ t('menu.search') }}</RouterLink>
     <RouterLink to="selection">{{ t('menu.selection') }}</RouterLink>
   </ul>
-  <RouterView class="sm:mt-10" />
+  <RouterView />
 </template>
 
 <style lang="scss" scoped>
