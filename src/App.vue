@@ -1,32 +1,9 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
-import {RouterView, RouterLink} from 'vue-router';
-
-const {t} = useI18n();
+import {RouterView} from 'vue-router';
+import NavigationMenu from '@/components/NavigationMenu.vue';
 </script>
 
 <template>
-  <ul
-    class="fixed h-14 bottom-0 sm:top-0 w-full bg-white flex flex-nowrap justify-center items-stretch shadow-xs"
-    role="navigation"
-  >
-    <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
-    <RouterLink to="search">{{ t('menu.search') }}</RouterLink>
-    <RouterLink to="selection">{{ t('menu.selection') }}</RouterLink>
-  </ul>
+  <NavigationMenu />
   <RouterView />
 </template>
-
-<style lang="scss" scoped>
-a {
-  @apply flex flex-col justify-center w-1/3 sm:w-[100px] text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
-
-  &:hover {
-    @apply bg-slate-800 text-white;
-  }
-
-  &.router-link-exact-active:not(:hover) {
-    @apply bg-slate-100;
-  }
-}
-</style>
