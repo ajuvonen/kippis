@@ -1,15 +1,26 @@
 <script setup lang="ts">
+import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
 import {RouterLink} from 'vue-router';
+import {useCocktailStore} from '@/stores/cocktail';
 
 const {t} = useI18n();
+const {selection} = storeToRefs(useCocktailStore());
 </script>
 <template>
   <nav class="sticky top-0 flex-shrink-0 h-14 w-full z-50 bg-white shadow-sm">
     <ul class="h-full flex flex-nowrap justify-center items-stretch">
       <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
       <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
-      <RouterLink to="/selection">{{ t('menu.selection') }}</RouterLink>
+      <RouterLink class="relative" to="/selection">
+        {{ t('menu.selection') }}
+        <div
+          v-if="selection.length"
+          class="absolute top-0 right-0 w-4 h-4 text-white text-center bg-red-600 text-xs rounded-full"
+        >
+          {{ selection.length }}
+        </div>
+      </RouterLink>
     </ul>
   </nav>
 </template>

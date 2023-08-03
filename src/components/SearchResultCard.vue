@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type {SearchResultDrink} from '@/utils/types';
+import {useCocktailStore} from '@/stores/cocktail';
 
 defineProps<{
   item: SearchResultDrink;
 }>();
+
+const {addToSelection} = useCocktailStore();
 </script>
 <template>
   <div class="search-result__wrapper">
@@ -16,7 +19,7 @@ defineProps<{
         {{ item.name }}
       </div>
     </div>
-    <button class="search-result__add-button">Add</button>
+    <button class="search-result__add-button" @click="addToSelection(item.id)">Add</button>
   </div>
 </template>
 <style lang="scss" scoped>

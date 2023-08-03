@@ -6,15 +6,19 @@ import {defineStore} from 'pinia';
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
     searchResults: [] as SearchResultDrink[],
-    selection: [],
+    selection: [] as number[],
   }),
   getters: {
-    isDrinkSelected: (state) => () => {
+    isDrinkSelected: (state) => (targetId: number) => {
       return false;
     },
   },
   actions: {
-    addToSelection() {},
+    addToSelection(targetId: number) {
+      if (!this.isDrinkSelected(targetId)) {
+        this.selection.push(targetId);
+      }
+    },
     removeFromSelection(targetId: number) {},
     async search(searchString: string) {
       this.searchResults = await getBySearchString(searchString);
