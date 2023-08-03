@@ -15,7 +15,7 @@
     "tagListTitle": "Recipe Categories"
   },
   "searchResults": {
-    "title": "{0} Results"
+    "title": "Results ({0})"
   },
   "tags": {
     "gin": "Gin",

@@ -14,7 +14,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="flex flex-col sm:flex-row h-screen">
+  <div class="flex flex-col sm:flex-row h-full">
     <aside
       :style="{'background-image': `url('/${mainPhoto?.file}')`}"
       class="h-1/2 sm:h-full sm:w-1/2 bg-slate-800 text-slate-100 text-center bg-cover bg-center"
@@ -26,7 +26,7 @@ onMounted(() => {
         <p>{{ t('homeView.ingress') }}</p>
       </div>
     </aside>
-    <main class="h-1/2 sm:h-full sm:w-1/2">
+    <main class="flex flex-col justify-center h-1/2 sm:h-full sm:w-1/2">
       <SearchField />
     </main>
   </div>
