@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <label for="search-box" class="text-3xl mt-4 mb-4">{{ t('searchField.label') }}</label>
+  <label for="search-box" class="block text-center text-3xl mt-4 mb-4">{{ t('searchField.label') }}</label>
   <div class="flex justify-center divide-x mb-4">
     <input
       id="search-box"

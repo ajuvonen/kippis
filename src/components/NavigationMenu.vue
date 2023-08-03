@@ -5,14 +5,13 @@ import {RouterLink} from 'vue-router';
 const {t} = useI18n();
 </script>
 <template>
-  <ul
-    class="fixed h-14 bottom-0 sm:top-0 w-full z-10 bg-white flex flex-nowrap justify-center items-stretch shadow-sm"
-    role="navigation"
-  >
-    <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
-    <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
-    <RouterLink to="/selection">{{ t('menu.selection') }}</RouterLink>
-  </ul>
+  <nav class="sticky top-0 flex-shrink-0 h-14 w-full z-50 bg-white shadow-sm">
+    <ul class="h-full flex flex-nowrap justify-center items-stretch">
+      <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
+      <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
+      <RouterLink to="/selection">{{ t('menu.selection') }}</RouterLink>
+    </ul>
+  </nav>
 </template>
 <style lang="scss" scoped>
 a {
