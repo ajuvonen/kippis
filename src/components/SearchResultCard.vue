@@ -27,7 +27,7 @@ const {selection} = storeToRefs(cocktailStore);
       <IconComponent icon="plus" />
     </button>
     <button v-else class="search-result__action-button bg-red-300 border-red-400" @click="removeFromSelection(item.id)">
-      <IconComponent icon="trash-can" />
+      <IconComponent icon="trashCan" />
     </button>
   </div>
 </template>
