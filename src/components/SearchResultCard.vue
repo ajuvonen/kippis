@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import {storeToRefs} from 'pinia';
 import type {SearchResultDrink} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
+import IconComponent from '@/components/IconComponent.vue';
 
 defineProps<{
   item: SearchResultDrink;
 }>();
 
-const {addToSelection} = useCocktailStore();
+const cocktailStore = useCocktailStore();
+const {addToSelection, removeFromSelection} = cocktailStore;
+const {selection} = storeToRefs(cocktailStore);
 </script>
 <template>
   <div class="search-result__wrapper">
@@ -19,7 +23,12 @@ const {addToSelection} = useCocktailStore();
         {{ item.name }}
       </div>
     </div>
-    <button class="search-result__add-button" @click="addToSelection(item.id)">Add</button>
+    <button v-if="!selection.has(item.id)" class="search-result__action-button" @click="addToSelection(item.id)">
+      <IconComponent icon="plus" />
+    </button>
+    <button v-else class="search-result__action-button bg-red-300 border-red-400" @click="removeFromSelection(item.id)">
+      <IconComponent icon="trash-can" />
+    </button>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -45,7 +54,7 @@ const {addToSelection} = useCocktailStore();
   @apply absolute w-full h-full top-0 pointer-events-none bg-gradient-to-b from-slate-800 to-transparent to-40% text-white uppercase text-xs p-2;
 }
 
-.search-result__add-button {
-  @apply absolute -bottom-4 right-2;
+.search-result__action-button {
+  @apply absolute -bottom-4 right-2 p-0 rounded-full w-10 text-lg;
 }
 </style>
