@@ -18,15 +18,19 @@
   p {
     @apply mb-2;
   }
-
+  
   button, a.link-button {
-    @apply mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
-
+    @apply flex justify-center items-center mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
+    
     &:hover {
       @apply bg-slate-800 text-white cursor-pointer border-slate-800;
     }
-
+    
     + button, + a.link-button {
+      @apply ml-1;
+    }
+
+    * + * {
       @apply ml-1;
     }
   }

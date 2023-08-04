@@ -4,6 +4,7 @@ import {useRoute, useRouter} from 'vue-router';
 import {useI18n} from 'vue-i18n';
 import {ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
+import IconComponent from '@/components/IconComponent.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -32,7 +33,8 @@ onMounted(() => {
       class="relative rounded-tl-none rounded-bl-none"
       @click="router.push({name: 'search', query: {searchString}})"
     >
-      {{ t('searchField.search') }}
+      <IconComponent icon="magnify" />
+      <span>{{ t('searchField.search') }}</span>
     </button>
   </div>
   <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
@@ -42,7 +44,10 @@ onMounted(() => {
       </LinkButton>
     </li>
     <li>
-      <button>{{ t('searchField.random') }}</button>
+      <button>
+        <IconComponent icon="clover" />
+        <span>{{ t('searchField.random') }}</span>
+      </button>
     </li>
   </ul>
 </template>
