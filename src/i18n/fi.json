@@ -15,7 +15,9 @@
     "tagListTitle": "Reseptikategoriat"
   },
   "searchResults": {
-    "title": "Tulokset ({0})"
+    "title": "Tulokset ({0})",
+    "addDrink": "Lisää \"{0}\" valintoihin",
+    "removeDrink": "Poista \"{0}\" valinnoista"
   },
   "tags": {
     "gin": "Gin",

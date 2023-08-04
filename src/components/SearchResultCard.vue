@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
+import {useI18n} from 'vue-i18n';
 import type {SearchResultDrink} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import IconComponent from '@/components/IconComponent.vue';
@@ -7,6 +8,8 @@ import IconComponent from '@/components/IconComponent.vue';
 defineProps<{
   item: SearchResultDrink;
 }>();
+
+const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {addToSelection, removeFromSelection} = cocktailStore;
@@ -23,10 +26,20 @@ const {selection} = storeToRefs(cocktailStore);
         {{ item.name }}
       </div>
     </div>
-    <button v-if="!selection.has(item.id)" class="search-result__action-button" @click="addToSelection(item.id)">
+    <button
+      v-if="!selection.has(item.id)"
+      :aria-label="t('searchResults.addDrink', [item.name])"
+      class="search-result__action-button"
+      @click="addToSelection(item.id)"
+    >
       <IconComponent icon="plus" />
     </button>
-    <button v-else class="search-result__action-button bg-red-300 border-red-400" @click="removeFromSelection(item.id)">
+    <button
+      v-else
+      :aria-label="t('searchResults.removeDrink', [item.name])"
+      class="search-result__action-button bg-red-300 border-red-400"
+      @click="removeFromSelection(item.id)"
+    >
       <IconComponent icon="trashCan" />
     </button>
   </div>
