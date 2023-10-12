@@ -5,5 +5,5 @@ import NavigationMenu from '@/components/NavigationMenu.vue';
 
 <template>
   <NavigationMenu />
-  <RouterView class="flex-grow overflow-y-auto"/>
+  <RouterView />
 </template>

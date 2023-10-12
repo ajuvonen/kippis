@@ -43,7 +43,7 @@ export const getBySearchString = async (searchString: string) => {
 
 export const getDetails = (id: number) =>
   axios
-    .get(`${BASE_API_ADDRESS}//lookup.php?i=${id}`)
+    .get(`${BASE_API_ADDRESS}/lookup.php?i=${id}`)
     .then(
       ({data: {drinks}}: {data: {drinks: FullDetailsAPIDrink[]}}) =>
         transformFullDetails(drinks)[0],

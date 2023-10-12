@@ -37,7 +37,7 @@ const {selection} = storeToRefs(cocktailStore);
     <button
       v-else
       :aria-label="t('searchResults.removeDrink', [item.name])"
-      class="search-result__action-button bg-red-300 border-red-400"
+      class="search-result__action-button bg-red-300 border-slate-800"
       @click="removeFromSelection(item.id)"
     >
       <IconComponent icon="trashCan" />

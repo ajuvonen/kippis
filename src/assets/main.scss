@@ -8,7 +8,7 @@
   }
 
   #app {
-    @apply h-full flex flex-col text-slate-800;
+    @apply overflow-hidden h-full flex flex-col text-slate-800;
   }
 
   h1 {
@@ -23,7 +23,7 @@
     @apply flex justify-center items-center mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
     
     &:hover {
-      @apply bg-slate-800 text-white cursor-pointer border-slate-800;
+      @apply bg-slate-800 text-white cursor-pointer border-slate-100;
       svg path {
         @apply fill-white;
       }
@@ -43,7 +43,17 @@
   }
 
   main {
-    @apply px-2 pb-6 justify-center bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+    @apply px-2 pb-20 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+  }
+
+  aside {
+    :not(.button, a.link-button) {
+      @apply text-slate-100;
+    }
+
+    *:focus {
+      @apply outline-slate-100;
+    }
   }
 
   *:focus {

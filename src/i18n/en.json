@@ -6,7 +6,7 @@
   "menu": {
     "home": "Home",
     "search": "Search",
-    "selection": "Selection"
+    "ingredients": "Ingredients"
   },
   "searchField": {
     "label": "Search for Recipes",
@@ -18,6 +18,10 @@
     "title": "Results ({0})",
     "addDrink": "Add \"{0}\" to Selection",
     "removeDrink": "Remove \"{0}\" from selection"
+  },
+  "selectedDrinks": {
+    "title": "Your Drinks",
+    "readyButton": "Ready? Proceed to ingredients."
   },
   "tags": {
     "gin": "Gin",

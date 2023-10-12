@@ -10,9 +10,7 @@ export const useCocktailStore = defineStore('cocktail', {
     drinkDetails: [] as FullDetailsDrink[],
   }),
   getters: {
-    isDrinkSelected: (state) => (id: number) => {
-      return false;
-    },
+    getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id),
   },
   actions: {
     async addToSelection(id: number) {

@@ -6,7 +6,7 @@
   "menu": {
     "home": "Etusivu",
     "search": "Haku",
-    "selection": "Valinnat"
+    "ingredients": "Ainesosat"
   },
   "searchField": {
     "label": "Etsi reseptejä",
@@ -18,6 +18,10 @@
     "title": "Tulokset ({0})",
     "addDrink": "Lisää \"{0}\" valintoihin",
     "removeDrink": "Poista \"{0}\" valinnoista"
+  },
+  "selectedDrinks": {
+    "title": "Valitsemasi juomat",
+    "readyButton": "Valmis? Siirry selaamaan ainesosia."
   },
   "tags": {
     "gin": "Gin",

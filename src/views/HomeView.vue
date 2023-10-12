@@ -17,7 +17,7 @@ onMounted(() => {
   <div class="flex flex-col sm:flex-row h-full">
     <aside
       :style="{'background-image': `url('/${mainPhoto?.file}')`}"
-      class="h-1/2 sm:h-full sm:w-1/2 bg-slate-800 text-slate-100 text-center bg-cover bg-center"
+      class="h-1/2 sm:h-full sm:w-1/2 text-center bg-cover bg-center"
     >
       <div
         class="flex flex-col p-4 justify-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"

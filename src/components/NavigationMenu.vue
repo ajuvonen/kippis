@@ -8,12 +8,12 @@ const {t} = useI18n();
 const {selection} = storeToRefs(useCocktailStore());
 </script>
 <template>
-  <nav class="sticky top-0 flex-shrink-0 h-14 w-full z-50 bg-white shadow-sm">
+  <nav class="flex-shrink-0 h-14 w-full z-50 bg-white shadow-sm">
     <ul class="h-full flex flex-nowrap justify-center items-stretch">
       <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
       <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
-      <RouterLink class="relative" to="/selection">
-        {{ t('menu.selection') }}
+      <RouterLink class="relative" to="/ingredients">
+        {{ t('menu.ingredients') }}
         <div
           v-if="selection.size"
           class="absolute flex justify-center align-center pb-[0.15rem] top-0 right-0 w-4 h-4 text-white text-center bg-red-600 text-xs rounded-full"
