@@ -7,7 +7,7 @@ import type {
 import {BLACKLIST} from '@/utils/constants';
 
 export const transformSearchResults = (drinks: SearchResultAPIDrink[]) =>
-  drinks
+  (drinks || [])
     .filter(({idDrink}) => !BLACKLIST.includes(+idDrink))
     .map<SearchResultDrink>(({idDrink, strDrink, strDrinkThumb}) => ({
       id: +idDrink,
@@ -16,7 +16,7 @@ export const transformSearchResults = (drinks: SearchResultAPIDrink[]) =>
     }));
 
 export const transformFullDetails = (drinks: FullDetailsAPIDrink[]) =>
-  drinks
+  (drinks || [])
     .filter(({idDrink}) => !BLACKLIST.includes(+idDrink))
     .map<FullDetailsDrink>((drink) => ({
       id: +drink.idDrink,
