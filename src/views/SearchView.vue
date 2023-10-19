@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, watch} from 'vue';
+import {watch} from 'vue';
 import {storeToRefs} from 'pinia';
 import SearchField from '@/components/SearchField.vue';
 import SearchResults from '@/components/SearchResults.vue';
@@ -12,10 +12,9 @@ const props = defineProps<{
   tag?: string;
 }>();
 
-const searchString = ref('');
 const cocktailStore = useCocktailStore();
 const {search, searchNonAlcoholic, searchWithTag} = cocktailStore;
-const {searchResults, selection} = storeToRefs(cocktailStore);
+const {searchResults} = storeToRefs(cocktailStore);
 
 watch(
   props,
@@ -25,8 +24,7 @@ watch(
     } else if (newProps.tag && ALCOHOLS.filter(({tag}) => tag === newProps.tag)) {
       searchWithTag(newProps.tag);
     } else if (newProps.searchString) {
-      searchString.value = newProps.searchString.trim().slice(0, 20);
-      search(searchString.value);
+      search(newProps.searchString.trim().slice(0, 20));
     }
   },
   {immediate: true},
