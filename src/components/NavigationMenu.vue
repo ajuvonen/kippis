@@ -8,7 +8,7 @@ const {t} = useI18n();
 const {selection} = storeToRefs(useCocktailStore());
 </script>
 <template>
-  <nav class="flex-shrink-0 h-14 w-full z-50 bg-white shadow-sm">
+  <nav class="h-14 w-full z-50 bg-white shadow-sm">
     <ul class="h-full flex flex-nowrap justify-center items-stretch">
       <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
       <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>

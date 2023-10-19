@@ -21,6 +21,7 @@ const {selection} = storeToRefs(cocktailStore);
       <div
         :style="{background: `url(${item.thumb})`, backgroundSize: 'cover'}"
         class="search-result__image"
+        role="presentation"
       ></div>
       <div class="search-result__shadow">
         {{ item.name }}
