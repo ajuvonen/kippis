@@ -1,7 +1,14 @@
-import {getByIngredients, getBySearchString, getDetails, getNonAlcoholic, getByFirstLetter} from '@/api';
-import {ALCOHOLS} from '@/utils/constants';
+import {
+  getByIngredients,
+  getBySearchString,
+  getDetails,
+  getNonAlcoholic,
+  getByFirstLetter,
+} from '@/api';
+import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import type {FullDetailsDrink, SearchResultDrink} from '@/utils/types';
 import {defineStore} from 'pinia';
+import {compose, flatten, prop, sortBy, uniq, without} from 'ramda';
 
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
@@ -11,6 +18,20 @@ export const useCocktailStore = defineStore('cocktail', {
   }),
   getters: {
     getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id),
+    getAllIngredients: (state) =>
+      compose(
+        sortBy(prop(0)),
+        without(['water', 'ice']),
+        uniq,
+        flatten,
+      )(
+        Array.from(state.selection).map(
+          (id) =>
+            state.drinkDetails
+              .find((drink) => drink.id === id)
+              ?.ingredients.map(({ingredient}) => ingredient.toLowerCase()),
+        ),
+      ),
   },
   actions: {
     async addToSelection(id: number) {
@@ -34,7 +55,7 @@ export const useCocktailStore = defineStore('cocktail', {
     },
     async searchWithTag(tag: string) {
       this.searchResults = await getByIngredients(
-        ALCOHOLS.find((alcohol) => tag === alcohol.tag)?.ingredients!,
+        SEARCHABLE_ALCOHOLS.find((alcohol) => tag === alcohol.tag)?.ingredients!,
       );
     },
   },

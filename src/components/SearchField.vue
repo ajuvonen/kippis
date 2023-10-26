@@ -2,7 +2,7 @@
 import {onMounted, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import {useI18n} from 'vue-i18n';
-import {ALCOHOLS} from '@/utils/constants';
+import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
 import IconComponent from '@/components/IconComponent.vue';
 
@@ -38,7 +38,7 @@ onMounted(() => {
     </button>
   </div>
   <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
-    <li class="inline" v-for="{tag} in ALCOHOLS" :key="tag">
+    <li class="inline" v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
       <LinkButton :to="`/search?tag=${tag}`">
         {{ t(`tags.${tag}`) }}
       </LinkButton>
