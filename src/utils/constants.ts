@@ -156,13 +156,10 @@ export const FRUITS = [
   'Ginger',
   'Grapes',
   'Kiwi',
-  'Lemon peel',
   'Lemon',
-  'Lime peel',
   'Lime',
   'Mango',
   'Mint',
-  'Orange peel',
   'Orange',
   'Papaya',
   'Pineapple',
@@ -272,6 +269,7 @@ export const BLACKLIST = [
   12786, // Thai Iced Tea
   12790, // Absinthe #2
   12876, // Berry deadly
+  13086, // Atomic lokade
   13192, // National aquarium
   15224, // Malibu twister
   15254, // Zenmeister
