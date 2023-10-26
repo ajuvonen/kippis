@@ -17,7 +17,12 @@ const router = createRouter({
         tag: route.query.tag,
       }),
       component: () => import('@/views/SearchView.vue'),
-    }
+    },
+    {
+      path: '/ingredients',
+      name: 'ingredients',
+      component: () => import('@/views/IngredientsView.vue'),
+    },
   ],
 });
 
