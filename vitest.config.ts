@@ -1,3 +1,5 @@
+/// <reference types="vitest"/>
+
 import {fileURLToPath} from 'node:url';
 import {mergeConfig, defineConfig} from 'vite';
 import {configDefaults} from 'vitest/config';
@@ -12,9 +14,6 @@ export default mergeConfig(
       root: fileURLToPath(new URL('./', import.meta.url)),
       globals: true,
       setupFiles: ['./vitest.setup.ts'],
-      transformMode: {
-        web: [/\.[jt]sx$/],
-      },
     },
   }),
 );
