@@ -27,7 +27,7 @@ export const useCocktailStore = defineStore('cocktail', {
         flatten<string[][]>,
         map((id: number) =>
           this.getDrinkDetails(id)!.ingredients.map(({ingredient}) =>
-            ingredient.toLowerCase().replace(' peel', ''),
+            ingredient.replace(' peel', ''),
           ),
         ),
       )(Array.from(state.selection));
