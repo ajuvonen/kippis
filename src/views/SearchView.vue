@@ -31,11 +31,9 @@ watch(
 );
 </script>
 <template>
-  <div class="flex h-full min-h-0">
-    <SelectedDrinks />
-    <main class="flex-1">
-      <SearchField />
-      <SearchResults :items="searchResults" />
-    </main>
-  </div>
+  <SelectedDrinks />
+  <main class="flex-1">
+    <SearchField />
+    <SearchResults :items="searchResults" />
+  </main>
 </template>

@@ -1,32 +1,36 @@
 <script setup lang="ts">
-import {useCocktailStore} from '@/stores/cocktail';
-import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
 import {computed} from 'vue';
 import {useI18n} from 'vue-i18n';
+import {storeToRefs} from 'pinia';
+import {useCocktailStore} from '@/stores/cocktail';
+import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
+import SelectedDrinks from '@/components/SelectedDrinks.vue';
 
 const {t} = useI18n();
 const cocktailStore = useCocktailStore();
-const {getAllIngredients} = cocktailStore;
+const {getAllIngredients} = storeToRefs(cocktailStore);
 
 const finder = (sources: string[]) =>
-  getAllIngredients.filter(
+  getAllIngredients.value.filter(
     (candidate) =>
-      sources.findIndex((source) => source.toLowerCase() === candidate.toLowerCase()) > -1,
+      sources.findIndex((source) => source === candidate) > -1,
   );
 
 const alcohols = computed(() => finder(ALCOHOLS));
 const mixers = computed(() => finder(MIXERS));
 const fruits = computed(() => finder(FRUITS));
 const others = computed(() =>
-  getAllIngredients.filter((ingredient) =>
-    !alcohols.value.includes(ingredient) &&
-    !mixers.value.includes(ingredient) &&
-    !fruits.value.includes(ingredient)
+  getAllIngredients.value.filter(
+    (ingredient) =>
+      !alcohols.value.includes(ingredient) &&
+      !mixers.value.includes(ingredient) &&
+      !fruits.value.includes(ingredient)
   ),
 );
 </script>
 <template>
-  <main class="h-full">
+  <SelectedDrinks />
+  <main class="flex-1">
     <h1>{{ t('ingredientsView.title') }}</h1>
     <h2>Alcohols</h2>
     {{ alcohols }}

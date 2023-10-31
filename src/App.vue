@@ -4,6 +4,10 @@ import NavigationMenu from '@/components/NavigationMenu.vue';
 </script>
 
 <template>
-  <NavigationMenu />
-  <RouterView />
+  <div class="h-screen flex flex-col overflow-hidden text-slate-800">
+    <NavigationMenu />
+    <div class="flex flex-col sm:flex-row h-full min-h-0 items-stretch">
+      <RouterView />
+    </div>
+  </div>
 </template>

@@ -13,18 +13,15 @@ const {t} = useI18n();
 </script>
 <template>
   <Transition>
-    <aside
-      v-if="selection.size"
-      class="w-[400px] px-2 hidden md:flex flex-col bg-slate-800 h-full"
-    >
+    <aside v-if="selection.size" class="w-[400px] px-2 hidden md:flex flex-col bg-slate-800">
       <h1>{{ t('selectedDrinks.title') }}</h1>
-      <div class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll">
-        <SearchResultCard
-          v-for="id in selection"
-          :key="id"
-          :item="getDrinkDetails(id) as SearchResultDrink"
-        />
-      </div>
+      <ul
+        class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll"
+      >
+        <li v-for="id in selection" :key="id">
+          <SearchResultCard :item="getDrinkDetails(id) as SearchResultDrink" />
+        </li>
+      </ul>
       <LinkButton to="/ingredients" class="flex-shrink-0">
         {{ t('selectedDrinks.readyButton') }}
       </LinkButton>
@@ -32,7 +29,8 @@ const {t} = useI18n();
   </Transition>
 </template>
 <style lang="scss" scoped>
-.v-enter-to, .v-leave-from {
+.v-enter-to,
+.v-leave-from {
   margin-left: 0;
 }
 

@@ -14,25 +14,23 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="flex flex-col sm:flex-row h-full">
-    <aside
-      :style="{'background-image': `url('/${mainPhoto?.file}')`}"
-      class="relative h-1/2 sm:h-full sm:w-1/2 text-center bg-cover bg-center"
+  <aside
+    :style="{'background-image': `url('/${mainPhoto?.file}')`}"
+    class="relative h-1/2 sm:h-full sm:w-1/2 text-center bg-cover bg-center"
+  >
+    <div
+      class="flex flex-col p-4 justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"
     >
-      <div
-        class="flex flex-col p-4 justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"
-      >
-        <h1>{{ t('homeView.title') }}</h1>
-        <p>{{ t('homeView.ingress') }}</p>
-        <div class="absolute bottom-4">
-          <a :href="mainPhoto?.link" target="_blank" class="text-xs" noreferrer noopener>{{
-            t('homeView.credit', [mainPhoto?.acknowledgement])
-          }}</a>
-        </div>
+      <h1>{{ t('homeView.title') }}</h1>
+      <p>{{ t('homeView.ingress') }}</p>
+      <div class="absolute bottom-4">
+        <a :href="mainPhoto?.link" target="_blank" class="text-xs" noreferrer noopener>{{
+          t('homeView.credit', [mainPhoto?.acknowledgement])
+        }}</a>
       </div>
-    </aside>
-    <main class="flex flex-col justify-center h-1/2 sm:h-full sm:w-1/2">
-      <SearchField />
-    </main>
-  </div>
+    </div>
+  </aside>
+  <main class="flex flex-col justify-center h-1/2 sm:h-full sm:w-1/2">
+    <SearchField />
+  </main>
 </template>

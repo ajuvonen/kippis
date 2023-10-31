@@ -3,16 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply h-screen;
-  }
-
-  #app {
-    @apply overflow-hidden h-full flex flex-col text-slate-800;
-  }
-
   h1 {
     @apply text-center text-3xl my-4;
+  }
+
+  h2 {
+    @apply text-xl my-4;
   }
 
   p {
@@ -43,7 +39,7 @@
   }
 
   main {
-    @apply px-2 pb-20 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+    @apply px-2 pb-12 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
   }
 
   aside {
