@@ -14,12 +14,12 @@ onMounted(() => {
 });
 </script>
 <template>
-  <aside
+  <div
     :style="{'background-image': `url('/${mainPhoto?.file}')`}"
     class="relative h-1/2 sm:h-full sm:w-1/2 text-center bg-cover bg-center"
   >
-    <div
-      class="flex flex-col p-4 justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"
+    <aside
+      class="flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"
     >
       <h1>{{ t('homeView.title') }}</h1>
       <p>{{ t('homeView.ingress') }}</p>
@@ -28,8 +28,8 @@ onMounted(() => {
           t('homeView.credit', [mainPhoto?.acknowledgement])
         }}</a>
       </div>
-    </div>
-  </aside>
+    </aside>
+  </div>
   <main class="flex flex-col justify-center h-1/2 sm:h-full sm:w-1/2">
     <SearchField />
   </main>

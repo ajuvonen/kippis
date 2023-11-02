@@ -43,6 +43,8 @@
   }
 
   aside {
+    @apply p-4;
+
     :not(.button, a.link-button) {
       @apply text-slate-100;
     }
