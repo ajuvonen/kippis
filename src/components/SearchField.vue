@@ -13,10 +13,10 @@ const {t} = useI18n();
 const searchString = ref('');
 
 onMounted(() => {
-  if (route.query.searchString) {
-    searchString.value = route.query.searchString.toString().trim().slice(0, 20);
-  }
+  searchString.value = (route.query.searchString || '').toString().slice(0, 20);
 });
+
+const search = () => router.push({name: 'search', query: {searchString: searchString.value}})
 </script>
 
 <template>
@@ -28,10 +28,11 @@ onMounted(() => {
       type="search"
       maxlength="20"
       class="relative rounded-tr-none rounded-br-none pb-1"
+      @keyup.enter="search"
     />
     <button
       class="relative rounded-tl-none rounded-bl-none"
-      @click="router.push({name: 'search', query: {searchString}})"
+      @click="search"
     >
       <IconComponent icon="magnify" />
       <span>{{ t('searchField.search') }}</span>
