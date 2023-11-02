@@ -1,16 +1,18 @@
 import type {MainPhoto} from './types';
 
 export const SEARCHABLE_ALCOHOLS = [
+  {tag: 'gin', ingredients: ['gin', 'sloe gin']},
   {
-    tag: 'whiskey',
+    tag: 'rum',
     ingredients: [
-      'whiskey',
-      'blended whiskey',
-      'irish whiskey',
-      'scotch',
-      'bourbon',
-      'johnnie walker',
-      'rye whiskey',
+      'rum',
+      'light rum',
+      'dark rum',
+      'spiced rum',
+      'añejo rum',
+      '151 proof rum',
+      'gold rum',
+      'spiced rum',
     ],
   },
   {
@@ -25,18 +27,16 @@ export const SEARCHABLE_ALCOHOLS = [
       'lime vodka',
     ],
   },
-  {tag: 'gin', ingredients: ['gin', 'sloe gin']},
   {
-    tag: 'rum',
+    tag: 'whiskey',
     ingredients: [
-      'rum',
-      'light rum',
-      'dark rum',
-      'spiced rum',
-      'añejo rum',
-      '151 proof rum',
-      'gold rum',
-      'spiced rum',
+      'whiskey',
+      'blended whiskey',
+      'irish whiskey',
+      'scotch',
+      'bourbon',
+      'johnnie walker',
+      'rye whiskey',
     ],
   },
   {tag: 'virgin'},
@@ -180,6 +180,7 @@ export const MIXERS = [
   'cola',
   'cranberry juice',
   'espresso',
+  'fruit juice',
   'ginger ale',
   'grape juice',
   'grape soda',
@@ -340,5 +341,10 @@ export const MAIN_PHOTOS = [
     file: 'main_2.jpg',
     link: 'https://www.pexels.com/photo/close-up-photo-of-margarita-3407782/',
     acknowledgement: 'Sebastian Coman Photography',
+  },
+  {
+    file: 'main_3.jpg',
+    link: 'https://www.pexels.com/fi-fi/kuva/ravintola-cocktail-juoma-juomalasi-17606261/',
+    acknowledgement: 'Marcos Kohler',
   },
 ] as MainPhoto[];

@@ -9,7 +9,7 @@ const {t} = useI18n();
 
 const mainPhoto = ref<MainPhoto>();
 onMounted(() => {
-  const randomIndex = Math.floor(Math.random() * 3);
+  const randomIndex = Math.floor(Math.random() * MAIN_PHOTOS.length);
   mainPhoto.value = MAIN_PHOTOS[randomIndex];
 });
 </script>
