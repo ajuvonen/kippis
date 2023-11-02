@@ -24,6 +24,7 @@
     "removeDrink": "Remove \"{0}\" from selection"
   },
   "selectedDrinks": {
+    "backButton": "Thirsty? Return to search.",
     "title": "Your Drinks",
     "readyButton": "Ready? Proceed to ingredients."
   },

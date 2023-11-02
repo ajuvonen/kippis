@@ -1,5 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import {isEmpty} from 'ramda';
 import HomeView from '@/views/HomeView.vue';
+import {useCocktailStore} from '@/stores/cocktail';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,9 +15,18 @@ const router = createRouter({
       path: '/search',
       name: 'search',
       props: (route) => ({
-        searchString: route.query.searchString,
+        searchString: !route.query.tag ? route.query.searchString : undefined,
         tag: route.query.tag,
       }),
+      beforeEnter: (to) => {
+        if (isEmpty(to.query)) {
+          const cocktailStore = useCocktailStore();
+          if (cocktailStore.currentSearch.tag || cocktailStore.currentSearch.searchString) {
+            cocktailStore.preventFetch = true;
+            return {path: to.path, query: {...cocktailStore.currentSearch}};
+          }
+        }
+      },
       component: () => import('@/views/SearchView.vue'),
     },
     {

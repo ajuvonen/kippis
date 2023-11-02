@@ -23,6 +23,7 @@
     "removeDrink": "Poista \"{0}\" valinnoista"
   },
   "selectedDrinks": {
+    "backButton": "Janoinen? Palaa hakuun.",
     "title": "Valitsemasi juomat",
     "readyButton": "Valmis? Siirry selaamaan ainesosia."
   },

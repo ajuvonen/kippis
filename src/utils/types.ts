@@ -35,3 +35,8 @@ export type MainPhoto = {
   link: string;
   acknowledgement: string;
 };
+
+export type SearchStringProps = {
+  searchString?: string;
+  tag?: string;
+};

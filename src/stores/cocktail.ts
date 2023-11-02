@@ -6,15 +6,17 @@ import {
   getByFirstLetter,
 } from '@/api';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
-import type {FullDetailsDrink, SearchResultDrink} from '@/utils/types';
+import type {FullDetailsDrink, SearchResultDrink, SearchStringProps} from '@/utils/types';
 import {defineStore} from 'pinia';
 import {compose, flatten, map, prop, sortBy, uniq, without} from 'ramda';
 
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
+    currentSearch: {} as SearchStringProps,
+    drinkDetails: [] as FullDetailsDrink[],
+    preventFetch: false,
     searchResults: [] as SearchResultDrink[],
     selection: new Set<number>(),
-    drinkDetails: [] as FullDetailsDrink[],
   }),
   getters: {
     getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id),
