@@ -69,6 +69,6 @@ const {selection} = storeToRefs(cocktailStore);
 }
 
 .search-result__action-button {
-  @apply absolute -bottom-4 right-2 p-0 rounded-full w-10 text-lg;
+  @apply absolute bottom-2 right-2 p-0 m-0 rounded-md w-10 text-lg;
 }
 </style>
