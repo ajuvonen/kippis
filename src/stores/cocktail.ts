@@ -20,7 +20,7 @@ export const useCocktailStore = defineStore('cocktail', {
   }),
   getters: {
     getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id),
-    // Get a "shopping list" of ingredients. They should be lowercase, unique, sorted and without some obvious items
+    // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients(state): string[] {
       return compose(
         sortBy(prop(0)),
@@ -28,8 +28,9 @@ export const useCocktailStore = defineStore('cocktail', {
         uniq,
         flatten<string[][]>,
         map((id: number) =>
+          // Make cream, egg, and citrus fruits show up as their base form 
           this.getDrinkDetails(id)!.ingredients.map(({ingredient}) =>
-            ingredient.replace(' peel', ''),
+            ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$/, ''),
           ),
         ),
       )(Array.from(state.selection));
