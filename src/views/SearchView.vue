@@ -39,6 +39,6 @@ watch(
   <SelectedCocktails />
   <main class="flex-1">
     <SearchField />
-    <SearchResults :items="searchResults" />
+    <SearchResults :cocktails="searchResults" />
   </main>
 </template>

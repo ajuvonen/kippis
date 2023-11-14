@@ -4,16 +4,16 @@ import type {SearchResultCocktail} from '@/utils/types';
 import SearchResultCard from '@/components/SearchResultCard.vue';
 
 defineProps<{
-  items: SearchResultCocktail[];
+  cocktails: SearchResultCocktail[];
 }>();
 
 const {t} = useI18n();
 </script>
 <template>
-  <h1>{{ t('searchResults.title', [items.length]) }}</h1>
+  <h1>{{ t('searchResults.title', [cocktails.length]) }}</h1>
   <ul class="flex flex-wrap gap-6 justify-center">
-    <li v-for="item in items" :key="item.id">
-      <SearchResultCard :item="item" />
+    <li v-for="cocktail in cocktails" :key="cocktail.id">
+      <SearchResultCard :cocktail="cocktail" />
     </li>
   </ul>
 </template>

@@ -9,7 +9,7 @@ import type {SearchResultCocktail} from '@/utils/types';
 
 const route = useRoute();
 const cocktailStore = useCocktailStore();
-const {getCocktailDetails: getDrinkDetails} = cocktailStore;
+const {getCocktailDetails} = cocktailStore;
 const {selection} = storeToRefs(cocktailStore);
 const {t} = useI18n();
 </script>
@@ -21,7 +21,7 @@ const {t} = useI18n();
         class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll"
       >
         <li v-for="id in selection" :key="id">
-          <SearchResultCard :item="getDrinkDetails(id) as SearchResultCocktail" />
+          <SearchResultCard :cocktail="getCocktailDetails(id) as SearchResultCocktail" />
         </li>
       </ul>
       <LinkButton v-if="route.name === 'search'" to="/ingredients" class="flex-shrink-0">

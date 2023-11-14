@@ -1,29 +1,38 @@
 <script setup lang="ts">
-import {storeToRefs} from 'pinia';
+import { useI18n } from 'vue-i18n';
 import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
-import ActionButtons from './ActionButtons.vue';
+import ActionButtons from '@/components/ActionButtons.vue';
 
 defineProps<{
-  item: SearchResultCocktail;
+  cocktail: SearchResultCocktail;
 }>();
 
+const {t} = useI18n();
+
 const cocktailStore = useCocktailStore();
-const {highlightedCocktail} = storeToRefs(cocktailStore);
+const {openCocktailModal} = cocktailStore;
 </script>
 <template>
   <div class="search-result__wrapper">
-    <div class="search-result__image-wrapper" role="button" tabindex="0" @click="highlightedCocktail = item.id">
+    <div
+      :aria-label="t('searchResultCard.open', [cocktail.name])"
+      class="search-result__image-wrapper"
+      role="button"
+      tabindex="0"
+      @click="openCocktailModal(cocktail.id)"
+      @keyup.enter="openCocktailModal(cocktail.id)"
+    >
       <div
-        :style="{background: `url(${item.thumb}/preview)`, backgroundSize: 'cover'}"
+        :style="{background: `url(${cocktail.thumb}/preview)`, backgroundSize: 'cover'}"
         class="search-result__image"
         role="presentation"
       ></div>
       <div class="search-result__shadow">
-        {{ item.name }}
+        {{ cocktail.name }}
       </div>
     </div>
-    <ActionButtons :cocktail="item" />
+    <ActionButtons :cocktail="cocktail" />
   </div>
 </template>
 <style lang="scss" scoped>
