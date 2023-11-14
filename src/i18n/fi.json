@@ -24,6 +24,9 @@
     "search": "Etsi",
     "tagListTitle": "Reseptikategoriat"
   },
+  "searchResultCard": {
+    "open": "Katso lisätietoja: \"{0}\""
+  },
   "searchResults": {
     "title": "Tulokset ({0})",
     "addCocktail": "Lisää \"{0}\" valintoihin",

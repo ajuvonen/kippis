@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NavigationMenu > mounts 1`] = `
+"<nav data-v-fe35c617=\\"\\" class=\\"h-14 z-10 bg-white shadow-sm flex-shrink-0\\">
+  <ul data-v-fe35c617=\\"\\" class=\\"h-full flex flex-nowrap justify-center items-stretch\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/ingredients\\" class=\\"relative\\">Ingredients
+      <!--v-if-->
+    </a></ul>
+</nav>"
+`;

@@ -25,6 +25,9 @@
     "search": "Search",
     "tagListTitle": "Recipe Categories"
   },
+  "searchResultCard": {
+    "open": "View info about \"{0}\""
+  },
   "searchResults": {
     "title": "Results ({0})",
     "addCocktail": "Add \"{0}\" to Selection",
