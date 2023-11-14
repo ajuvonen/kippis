@@ -11,30 +11,22 @@ const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
-const {fetchCocktail, getCocktailDetails} = cocktailStore;
+const {getCocktailDetails} = cocktailStore;
 
 const cocktailDetails = ref<FullDetailsCocktail | null>(null);
-const showCocktailModal = ref(false);
 
-watch(
-  highlightedCocktail,
-  async (newValue) => {
-    if (newValue) {
-      await fetchCocktail(newValue);
-      cocktailDetails.value = getCocktailDetails(newValue);
-      showCocktailModal.value = true;
-    } else {
-      showCocktailModal.value = false;
-      cocktailDetails.value = null;
-    }
-  },
-  {immediate: true},
-);
+watch(highlightedCocktail, async (newValue) => {
+  if (newValue) {
+    cocktailDetails.value = getCocktailDetails(newValue);
+  } else {
+    cocktailDetails.value = null;
+  }
+});
 </script>
 <template>
   <ModalComponent
     :title="cocktailDetails?.name"
-    :show="showCocktailModal"
+    :show="!!cocktailDetails"
     @close="highlightedCocktail = null"
   >
     <div class="flex flex-col md:flex-row">
