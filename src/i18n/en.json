@@ -27,12 +27,12 @@
   },
   "searchResults": {
     "title": "Results ({0})",
-    "addDrink": "Add \"{0}\" to Selection",
-    "removeDrink": "Remove \"{0}\" from selection"
+    "addCocktail": "Add \"{0}\" to Selection",
+    "removeCocktail": "Remove \"{0}\" from selection"
   },
-  "selectedDrinks": {
+  "selectedCocktails": {
     "backButton": "Thirsty? Return to search.",
-    "title": "Your Drinks",
+    "title": "Your Cocktails",
     "readyButton": "Ready? Proceed to ingredients."
   },
   "tags": {

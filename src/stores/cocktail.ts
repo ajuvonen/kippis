@@ -6,21 +6,21 @@ import {
   getByFirstLetter,
 } from '@/api';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
-import type {FullDetailsDrink, SearchResultDrink, SearchStringProps} from '@/utils/types';
+import type {FullDetailsCocktail, SearchResultCocktail, SearchStringProps} from '@/utils/types';
 import {defineStore} from 'pinia';
 import {compose, flatten, map, prop, sortBy, uniq, without} from 'ramda';
 
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
     currentSearch: {} as SearchStringProps,
-    drinkDetails: [] as FullDetailsDrink[],
+    cocktailDetails: [] as FullDetailsCocktail[],
     preventFetch: false,
-    searchResults: [] as SearchResultDrink[],
+    searchResults: [] as SearchResultCocktail[],
     selection: new Set<number>(),
     highlightedCocktail: null as number | null,
   }),
   getters: {
-    getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id) || null,
+    getCocktailDetails: (state) => (id: number) => state.cocktailDetails.find((cocktail) => cocktail.id === id) || null,
     // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients(state): string[] {
       return compose(
@@ -30,7 +30,7 @@ export const useCocktailStore = defineStore('cocktail', {
         flatten<string[][]>,
         map((id: number) =>
           // Make cream, egg, and citrus fruits show up as their base form 
-          this.getDrinkDetails(id)!.ingredients.map(({ingredient}) =>
+          this.getCocktailDetails(id)!.ingredients.map(({ingredient}) =>
             ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$/, ''),
           ),
         ),
@@ -39,13 +39,17 @@ export const useCocktailStore = defineStore('cocktail', {
   },
   actions: {
     async addToSelection(id: number) {
-      await this.fetchDrink(id);
+      await this.fetchCocktail(id);
       this.selection.add(id);
     },
-    async fetchDrink(id: number) {
-      if (!this.drinkDetails.some((drink) => drink.id === id)) {
-        this.drinkDetails.push(await getDetails(id));
+    async fetchCocktail(id: number) {
+      if (!this.cocktailDetails.some((cocktail) => cocktail.id === id)) {
+        this.cocktailDetails.push(await getDetails(id));
       }
+    },
+    async openCocktailModal(id: number) {
+      await this.fetchCocktail(id);
+      this.highlightedCocktail = id;
     },
     removeFromSelection(id: number) {
       this.selection.delete(id);

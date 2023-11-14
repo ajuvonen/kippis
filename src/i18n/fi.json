@@ -26,10 +26,10 @@
   },
   "searchResults": {
     "title": "Tulokset ({0})",
-    "addDrink": "Lisää \"{0}\" valintoihin",
-    "removeDrink": "Poista \"{0}\" valinnoista"
+    "addCocktail": "Lisää \"{0}\" valintoihin",
+    "removeCocktail": "Poista \"{0}\" valinnoista"
   },
-  "selectedDrinks": {
+  "selectedCocktails": {
     "backButton": "Janoinen? Palaa hakuun.",
     "title": "Valitsemasi juomat",
     "readyButton": "Valmis? Siirry selaamaan ainesosia."

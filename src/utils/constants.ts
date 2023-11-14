@@ -303,7 +303,7 @@ export const REPLACED_INGREDIENTS = [
   ['whipping cream', 'whipped cream'],
 ];
 
-// Drinks that are weird or have very poor images/instructions
+// Cocktails that are weird or have very poor images/instructions
 export const BLACKLIST = [
   11034, // Angel face
   11052, // Archbishop
@@ -338,6 +338,8 @@ export const BLACKLIST = [
   12954, // Holloween Punch
   13086, // Atomic lokade
   13192, // National aquarium
+  13899, // 3 Wise Men
+  14610, // Acid
   15224, // Malibu twister
   15254, // Zenmeister
   15288, // 252

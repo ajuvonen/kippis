@@ -5,30 +5,30 @@ import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import SearchResultCard from '@/components/SearchResultCard.vue';
 import LinkButton from '@/components/LinkButton.vue';
-import type {SearchResultDrink} from '@/utils/types';
+import type {SearchResultCocktail} from '@/utils/types';
 
 const route = useRoute();
 const cocktailStore = useCocktailStore();
-const {getDrinkDetails} = cocktailStore;
+const {getCocktailDetails: getDrinkDetails} = cocktailStore;
 const {selection} = storeToRefs(cocktailStore);
 const {t} = useI18n();
 </script>
 <template>
   <Transition>
     <aside v-if="selection.size" class="w-[400px] hidden md:flex flex-col bg-slate-800">
-      <h2>{{ t('selectedDrinks.title') }}</h2>
+      <h2>{{ t('selectedCocktails.title') }}</h2>
       <ul
         class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll"
       >
         <li v-for="id in selection" :key="id">
-          <SearchResultCard :item="getDrinkDetails(id) as SearchResultDrink" />
+          <SearchResultCard :item="getDrinkDetails(id) as SearchResultCocktail" />
         </li>
       </ul>
       <LinkButton v-if="route.name === 'search'" to="/ingredients" class="flex-shrink-0">
-        {{ t('selectedDrinks.readyButton') }}
+        {{ t('selectedCocktails.readyButton') }}
       </LinkButton>
       <LinkButton v-else to="/search" class="flex-shrink-0">
-        {{ t('selectedDrinks.backButton') }}
+        {{ t('selectedCocktails.backButton') }}
       </LinkButton>
     </aside>
   </Transition>

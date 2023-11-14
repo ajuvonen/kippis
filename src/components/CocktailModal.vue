@@ -3,7 +3,7 @@ import {ref, watch} from 'vue';
 import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
-import type {FullDetailsDrink} from '@/utils/types';
+import type {FullDetailsCocktail} from '@/utils/types';
 import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
 
@@ -11,17 +11,17 @@ const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
-const {fetchDrink, getDrinkDetails} = cocktailStore;
+const {fetchCocktail, getCocktailDetails} = cocktailStore;
 
-const cocktailDetails = ref<FullDetailsDrink | null>(null);
+const cocktailDetails = ref<FullDetailsCocktail | null>(null);
 const showCocktailModal = ref(false);
 
 watch(
   highlightedCocktail,
   async (newValue) => {
     if (newValue) {
-      await fetchDrink(newValue);
-      cocktailDetails.value = getDrinkDetails(newValue);
+      await fetchCocktail(newValue);
+      cocktailDetails.value = getCocktailDetails(newValue);
       showCocktailModal.value = true;
     } else {
       showCocktailModal.value = false;

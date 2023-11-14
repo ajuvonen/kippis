@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
-import type {SearchResultDrink} from '@/utils/types';
+import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import ActionButtons from './ActionButtons.vue';
 
 defineProps<{
-  item: SearchResultDrink;
+  item: SearchResultCocktail;
 }>();
 
 const cocktailStore = useCocktailStore();

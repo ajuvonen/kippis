@@ -1,16 +1,16 @@
-export type SearchResultAPIDrink = {
+export type SearchResultAPICocktail = {
   idDrink: string;
   strDrink: string;
   strDrinkThumb: string;
 };
 
-export type SearchResultDrink = {
+export type SearchResultCocktail = {
   id: number;
   name: string;
   thumb: string;
 };
 
-export type FullDetailsAPIDrink = SearchResultAPIDrink & {
+export type FullDetailsAPICocktail = SearchResultAPICocktail & {
   strAlcoholic: string;
   strGlass: string;
   strInstructions: string;
@@ -23,7 +23,7 @@ export type Ingredient = {
   measure: string;
 };
 
-export type FullDetailsDrink = SearchResultDrink & {
+export type FullDetailsCocktail = SearchResultCocktail & {
   alcoholic: boolean;
   glass: string;
   ingredients: Ingredient[];

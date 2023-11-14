@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n';
-import type {SearchResultDrink} from '@/utils/types';
+import type {SearchResultCocktail} from '@/utils/types';
 import SearchResultCard from '@/components/SearchResultCard.vue';
 
 defineProps<{
-  items: SearchResultDrink[];
+  items: SearchResultCocktail[];
 }>();
 
 const {t} = useI18n();

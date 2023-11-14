@@ -3,10 +3,10 @@ import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import IconComponent from '@/components/IconComponent.vue';
-import type {SearchResultDrink} from '@/utils/types';
+import type {SearchResultCocktail} from '@/utils/types';
 
 defineProps<{
-  cocktail: SearchResultDrink;
+  cocktail: SearchResultCocktail;
 }>();
 
 const {t} = useI18n();
@@ -17,7 +17,7 @@ const {addToSelection, removeFromSelection} = cocktailStore;
 <template>
   <button
     v-if="!selection.has(cocktail.id)"
-    :aria-label="t('searchResults.addDrink', [cocktail.name])"
+    :aria-label="t('searchResults.addCocktail', [cocktail.name])"
     class="action-button"
     @click="addToSelection(cocktail.id)"
   >
@@ -25,7 +25,7 @@ const {addToSelection, removeFromSelection} = cocktailStore;
   </button>
   <button
     v-else
-    :aria-label="t('searchResults.removeDrink', [cocktail.name])"
+    :aria-label="t('searchResults.removeCocktail', [cocktail.name])"
     class="action-button bg-rose-400 border-slate-800"
     @click="removeFromSelection(cocktail.id)"
   >

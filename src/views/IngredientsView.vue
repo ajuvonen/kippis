@@ -4,7 +4,7 @@ import {useI18n} from 'vue-i18n';
 import {storeToRefs} from 'pinia';
 import {useCocktailStore} from '@/stores/cocktail';
 import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
-import SelectedDrinks from '@/components/SelectedDrinks.vue';
+import SelectedCocktails from '@/components/SelectedCocktails.vue';
 
 const {t} = useI18n();
 const cocktailStore = useCocktailStore();
@@ -29,7 +29,7 @@ const others = computed(() =>
 );
 </script>
 <template>
-  <SelectedDrinks />
+  <SelectedCocktails />
   <main class="flex-1">
     <h1>{{ t('ingredientsView.title') }}</h1>
     <h2>Alcohols</h2>
