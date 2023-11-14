@@ -18,6 +18,7 @@ const {addToSelection, removeFromSelection} = cocktailStore;
   <button
     v-if="!selection.has(cocktail.id)"
     :aria-label="t('searchResults.addCocktail', [cocktail.name])"
+    :data-test-id="`add-cocktail-${cocktail.id}`"
     class="action-button"
     @click="addToSelection(cocktail.id)"
   >
@@ -26,6 +27,7 @@ const {addToSelection, removeFromSelection} = cocktailStore;
   <button
     v-else
     :aria-label="t('searchResults.removeCocktail', [cocktail.name])"
+    :data-test-id="`remove-cocktail-${cocktail.id}`"
     class="action-button bg-rose-400 border-slate-800"
     @click="removeFromSelection(cocktail.id)"
   >

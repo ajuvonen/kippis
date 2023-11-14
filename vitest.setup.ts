@@ -6,10 +6,7 @@ import {createTestingPinia} from '@pinia/testing';
 config.global.plugins = [createTestingPinia(), i18n, router];
 
 const dataTestIdPlugin = (wrapper: VueWrapper) => ({
-  findByTestId: (testId: string) => {
-    const element = wrapper.element.querySelector(`[data-test-id='${testId}']`);
-    return new DOMWrapper(element);
-  },
+  findByTestId: (testId: string) => wrapper.find(`[data-test-id='${testId}']`),
 });
 
 config.plugins.VueWrapper.install(dataTestIdPlugin);
