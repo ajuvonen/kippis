@@ -323,6 +323,7 @@ export const BLACKLIST = [
   12138, // Scotch Cobbler
   12388, // Thriller
   12518, // Whiskey Mac
+  12572, // Bora Bora
   12692, // Lassi Khara
   12732, // Chocolate beverage
   12762, // Grizzly bear
@@ -334,11 +335,13 @@ export const BLACKLIST = [
   12786, // Thai Iced Tea
   12790, // Absinthe #2
   12876, // Berry deadly
+  12954, // Holloween Punch
   13086, // Atomic lokade
   13192, // National aquarium
   15224, // Malibu twister
   15254, // Zenmeister
   15288, // 252
+  15106, // Apello
   15300, // 3-Mile Long Island Iced Tea
   15330, // Orange Crush
   15346, // 155 Belmont
