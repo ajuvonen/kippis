@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {RouterView} from 'vue-router';
 import NavigationMenu from '@/components/NavigationMenu.vue';
+import CocktailModal from '@/components/CocktailModal.vue';
 </script>
 
 <template>
@@ -10,4 +11,5 @@ import NavigationMenu from '@/components/NavigationMenu.vue';
       <RouterView />
     </div>
   </div>
+  <CocktailModal />
 </template>

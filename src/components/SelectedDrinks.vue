@@ -16,7 +16,7 @@ const {t} = useI18n();
 <template>
   <Transition>
     <aside v-if="selection.size" class="w-[400px] hidden md:flex flex-col bg-slate-800">
-      <h1>{{ t('selectedDrinks.title') }}</h1>
+      <h2>{{ t('selectedDrinks.title') }}</h2>
       <ul
         class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll"
       >

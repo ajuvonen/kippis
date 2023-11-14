@@ -1,25 +1,21 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
-import {useI18n} from 'vue-i18n';
 import type {SearchResultDrink} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
-import IconComponent from '@/components/IconComponent.vue';
+import ActionButtons from './ActionButtons.vue';
 
 defineProps<{
   item: SearchResultDrink;
 }>();
 
-const {t} = useI18n();
-
 const cocktailStore = useCocktailStore();
-const {addToSelection, removeFromSelection} = cocktailStore;
-const {selection} = storeToRefs(cocktailStore);
+const {highlightedCocktail} = storeToRefs(cocktailStore);
 </script>
 <template>
   <div class="search-result__wrapper">
-    <div class="search-result__image-wrapper" role="button" tabindex="0">
+    <div class="search-result__image-wrapper" role="button" tabindex="0" @click="highlightedCocktail = item.id">
       <div
-        :style="{background: `url(${item.thumb})`, backgroundSize: 'cover'}"
+        :style="{background: `url(${item.thumb}/preview)`, backgroundSize: 'cover'}"
         class="search-result__image"
         role="presentation"
       ></div>
@@ -27,22 +23,7 @@ const {selection} = storeToRefs(cocktailStore);
         {{ item.name }}
       </div>
     </div>
-    <button
-      v-if="!selection.has(item.id)"
-      :aria-label="t('searchResults.addDrink', [item.name])"
-      class="search-result__action-button"
-      @click="addToSelection(item.id)"
-    >
-      <IconComponent icon="plus" />
-    </button>
-    <button
-      v-else
-      :aria-label="t('searchResults.removeDrink', [item.name])"
-      class="search-result__action-button bg-rose-400 border-slate-800"
-      @click="removeFromSelection(item.id)"
-    >
-      <IconComponent icon="trashCan" />
-    </button>
+    <ActionButtons :cocktail="item" />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -66,9 +47,5 @@ const {selection} = storeToRefs(cocktailStore);
 
 .search-result__shadow {
   @apply absolute w-full h-full top-0 pointer-events-none bg-gradient-to-b from-slate-800 to-transparent to-40% text-white uppercase text-xs p-2;
-}
-
-.search-result__action-button {
-  @apply absolute bottom-2 right-2 p-0 m-0 rounded-md w-10 text-lg;
 }
 </style>

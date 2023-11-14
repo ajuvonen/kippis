@@ -27,11 +27,11 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       v-model="searchString"
       type="search"
       maxlength="20"
-      class="relative rounded-tr-none rounded-br-none pb-1"
+      class="rounded-tr-none rounded-br-none pb-1"
       @keyup.enter="search"
     />
     <button
-      class="relative rounded-tl-none rounded-bl-none"
+      class="rounded-tl-none rounded-bl-none"
       @click="search"
     >
       <IconComponent icon="magnify" />

@@ -17,9 +17,10 @@ export const useCocktailStore = defineStore('cocktail', {
     preventFetch: false,
     searchResults: [] as SearchResultDrink[],
     selection: new Set<number>(),
+    highlightedCocktail: null as number | null,
   }),
   getters: {
-    getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id),
+    getDrinkDetails: (state) => (id: number) => state.drinkDetails.find((drink) => drink.id === id) || null,
     // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients(state): string[] {
       return compose(
@@ -38,10 +39,13 @@ export const useCocktailStore = defineStore('cocktail', {
   },
   actions: {
     async addToSelection(id: number) {
+      await this.fetchDrink(id);
+      this.selection.add(id);
+    },
+    async fetchDrink(id: number) {
       if (!this.drinkDetails.some((drink) => drink.id === id)) {
         this.drinkDetails.push(await getDetails(id));
       }
-      this.selection.add(id);
     },
     removeFromSelection(id: number) {
       this.selection.delete(id);

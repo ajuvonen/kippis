@@ -1,4 +1,8 @@
 {
+  "cocktailModal": {
+    "ingredients": "Ainesosat",
+    "instructions": "Ohjeet"
+  },
   "homeView": {
     "title": "Astu maistuvien cocktailien maailmaan!",
     "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun."
@@ -10,6 +14,9 @@
     "home": "Etusivu",
     "search": "Haku",
     "ingredients": "Ainesosat"
+  },
+  "modal": {
+    "close": "Sulje"
   },
   "searchField": {
     "label": "Etsi reseptejä",
