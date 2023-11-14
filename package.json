@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.3.67",
+    "@vueuse/core": "^10.6.1",
     "axios": "^1.6.1",
     "pinia": "^2.1.7",
     "ramda": "^0.29.1",
