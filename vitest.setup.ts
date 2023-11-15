@@ -1,4 +1,4 @@
-import {DOMWrapper, VueWrapper, config} from '@vue/test-utils';
+import {VueWrapper, config} from '@vue/test-utils';
 import i18n from '@/i18n';
 import router from '@/router';
 import {createTestingPinia} from '@pinia/testing';
