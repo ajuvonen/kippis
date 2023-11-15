@@ -21,7 +21,7 @@ const {openCocktailModal} = cocktailStore;
       role="button"
       tabindex="0"
       @click="openCocktailModal(cocktail.id)"
-      @keyup.enter="openCocktailModal(cocktail.id)"
+      @keypress.enter="openCocktailModal(cocktail.id)"
     >
       <div
         :style="{background: `url(${cocktail.thumb}/preview)`, backgroundSize: 'cover'}"
