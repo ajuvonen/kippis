@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchResultCard.vue > mounts 1`] = `
+"<div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
+  <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Test Cocktail&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
+    <div data-v-cd13f5f7=\\"\\" style=\\"background: url(test-thumb/preview); background-size: cover;\\" class=\\"search-result__image\\" role=\\"presentation\\"></div>
+    <div data-v-cd13f5f7=\\"\\" class=\\"search-result__shadow\\">Test Cocktail</div>
+  </div><button data-v-634d56d3=\\"\\" data-v-cd13f5f7=\\"\\" aria-label=\\"Add &quot;Test Cocktail&quot; to Selection\\" data-test-id=\\"add-cocktail-1\\" class=\\"action-button\\"><svg data-v-634d56d3=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+      <path d=\\"M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z\\" class=\\"transition-all ease-in-out\\"></path>
+    </svg></button>
+</div>"
+`;
