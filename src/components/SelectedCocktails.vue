@@ -1,29 +1,29 @@
 <script setup lang="ts">
+import {computed} from 'vue';
 import {useRoute} from 'vue-router';
 import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
-import SearchResultCard from '@/components/SearchResultCard.vue';
-import LinkButton from '@/components/LinkButton.vue';
 import type {SearchResultCocktail} from '@/utils/types';
+import LinkButton from '@/components/LinkButton.vue';
+import SearchResults from '@/components/SearchResults.vue';
 
 const route = useRoute();
+const {t} = useI18n();
+
 const cocktailStore = useCocktailStore();
 const {getCocktailDetails} = cocktailStore;
 const {selection} = storeToRefs(cocktailStore);
-const {t} = useI18n();
+
+const cocktails = computed(() => {
+  return Array.from(selection.value).map((id) => getCocktailDetails(id) as SearchResultCocktail);
+});
 </script>
 <template>
   <Transition>
     <aside v-if="selection.size" class="w-[400px] hidden md:flex flex-col bg-slate-800">
       <h2>{{ t('selectedCocktails.title') }}</h2>
-      <ul
-        class="flex flex-auto flex-wrap pt-2 mb-4 gap-6 justify-center content-start overflow-y-scroll"
-      >
-        <li v-for="id in selection" :key="id">
-          <SearchResultCard :cocktail="getCocktailDetails(id) as SearchResultCocktail" />
-        </li>
-      </ul>
+      <SearchResults class="pt-2 mb-4 overflow-y-scroll" :cocktails="cocktails" />
       <LinkButton v-if="route.name === 'search'" to="/ingredients" class="flex-shrink-0">
         {{ t('selectedCocktails.readyButton') }}
       </LinkButton>
