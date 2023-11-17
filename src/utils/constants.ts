@@ -49,7 +49,7 @@ export const SEARCHABLE_ALCOHOLS = [
       'wild turkey',
     ],
   },
-  {tag: 'virgin'},
+  {tag: 'virgin', ingredients: []},
 ];
 
 export const ALCOHOLS = [
