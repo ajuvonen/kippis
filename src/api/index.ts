@@ -1,8 +1,10 @@
 import axios from 'axios';
-import {prop, sortBy, compose, uniqBy, flatten} from 'ramda';
 import {BASE_API_ADDRESS} from '@/utils/constants';
 import {transformSearchResults, transformFullDetails} from '@/utils/helpers';
-import type {SearchResultAPICocktail, FullDetailsAPICocktail, SearchResultCocktail} from '@/utils/types';
+import type {
+  SearchResultAPICocktail,
+  FullDetailsAPICocktail,
+} from '@/utils/types';
 
 export const getByFirstLetter = (searchString: string) =>
   axios
@@ -16,24 +18,18 @@ export const getByIngredients = async (ingredients: string[]) => {
     ingredients.map((ingredient) =>
       axios
         .get(`${BASE_API_ADDRESS}/filter.php?i=${ingredient}`)
-        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) =>
-          transformSearchResults(drinks),
-        ),
+        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) => drinks),
     ),
   );
 
-  return compose(
-    sortBy(prop('name')),
-    uniqBy(prop('id')),
-    flatten<SearchResultCocktail[][]>,
-  )(cocktails);
+  return transformSearchResults(cocktails.flat());
 };
 
 export const getBySearchString = (searchString: string) =>
   axios
     .get(`${BASE_API_ADDRESS}/search.php?s=${searchString}`)
     .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) =>
-      sortBy(prop('name'), transformSearchResults(drinks)),
+      transformSearchResults(drinks),
     );
 
 export const getDetails = (id: number) =>

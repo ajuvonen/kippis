@@ -31,6 +31,35 @@ describe('transformSearchResults', () => {
     expect(result).toEqual([{id: 2, name: 'Test Cocktail 3', thumb: 'thumb3'}]);
   });
 
+  it('sorts the search results by name', () => {
+    const cocktails = [
+      {idDrink: '2', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
+      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
+    ];
+
+    const result = transformSearchResults(cocktails);
+
+    expect(result).toEqual([
+      {id: 1, name: 'Test Cocktail 1', thumb: 'thumb1'},
+      {id: 2, name: 'Test Cocktail 2', thumb: 'thumb2'},
+    ]);
+  });
+
+  it('returns unique search results', () => {
+    const cocktails = [
+      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
+      {idDrink: '2', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
+      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
+    ];
+
+    const result = transformSearchResults(cocktails);
+
+    expect(result).toEqual([
+      {id: 1, name: 'Test Cocktail 1', thumb: 'thumb1'},
+      {id: 2, name: 'Test Cocktail 2', thumb: 'thumb2'},
+    ]);
+  });
+
   it('returns an empty array when cocktails is empty, null or undefined', () => {
     expect(transformSearchResults([])).toEqual([]);
     expect(transformSearchResults(null!)).toEqual([]);

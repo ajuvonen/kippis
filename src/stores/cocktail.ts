@@ -8,7 +8,7 @@ import {
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import type {FullDetailsCocktail, SearchResultCocktail, SearchStringProps} from '@/utils/types';
 import {defineStore} from 'pinia';
-import {compose, flatten, map, prop, sortBy, uniq, without} from 'ramda';
+import {pipe, flatten, map, prop, sortBy, uniq, difference} from 'remeda';
 
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
@@ -23,18 +23,19 @@ export const useCocktailStore = defineStore('cocktail', {
     getCocktailDetails: (state) => (id: number) => state.cocktailDetails.find((cocktail) => cocktail.id === id) || null,
     // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients(state): string[] {
-      return compose(
-        sortBy(prop(0)),
-        without(['water', 'ice']),
-        uniq,
-        flatten<string[][]>,
+      return pipe(
+        Array.from(state.selection),
         map((id: number) =>
           // Make cream, egg, and citrus fruits show up as their base form 
           this.getCocktailDetails(id)!.ingredients.map(({ingredient}) =>
             ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$/, ''),
           ),
         ),
-      )(Array.from(state.selection));
+        flatten(),
+        uniq(),
+        difference(['water', 'ice']),
+        sortBy(prop(0)),
+      );
     },
   },
   actions: {
@@ -65,9 +66,10 @@ export const useCocktailStore = defineStore('cocktail', {
       this.searchResults = await getNonAlcoholic();
     },
     async searchWithTag(tag: string) {
-      this.searchResults = await getByIngredients(
-        SEARCHABLE_ALCOHOLS.find((alcohol) => tag === alcohol.tag)?.ingredients!,
-      );
+      const matchingTag = SEARCHABLE_ALCOHOLS.find((alcohol) => tag === alcohol.tag);
+      if (matchingTag) {
+        this.searchResults = await getByIngredients(matchingTag.ingredients);
+      }
     },
   },
 });

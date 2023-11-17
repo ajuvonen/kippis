@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import {isEmpty} from 'ramda';
+import {isEmpty} from 'remeda';
 import HomeView from '@/views/HomeView.vue';
 import {useCocktailStore} from '@/stores/cocktail';
 
