@@ -82,7 +82,6 @@ describe('transformFullDetails', () => {
         strIngredient3: null,
         strMeasure3: null,
         strAlcoholic: 'Alcoholic',
-        strGlass: 'Cocktail glass',
       },
     ];
 
@@ -92,7 +91,6 @@ describe('transformFullDetails', () => {
       {
         id: 1,
         alcoholic: true,
-        glass: 'Cocktail glass',
         name: 'Test Cocktail',
         thumb: 'thumb',
         instructions: 'Test Instructions',
@@ -116,7 +114,6 @@ describe('transformFullDetails', () => {
         strIngredient2: 'Jack Daniels',
         strMeasure2: '2 oz',
         strAlcoholic: 'Alcoholic',
-        strGlass: 'Cocktail glass',
       },
     ];
 
@@ -138,7 +135,6 @@ describe('transformFullDetails', () => {
         strIngredient1: ' Ingredient With Extra Spaces ',
         strMeasure1: '1 oz',
         strAlcoholic: 'Alcoholic',
-        strGlass: 'Cocktail glass',
       },
     ];
 
@@ -161,7 +157,6 @@ describe('transformFullDetails', () => {
         strIngredient2: null,
         strMeasure2: '2 oz',
         strAlcoholic: 'Alcoholic',
-        strGlass: 'Cocktail glass',
       },
     ];
 

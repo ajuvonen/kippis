@@ -12,7 +12,6 @@ export type SearchResultCocktail = {
 
 export type FullDetailsAPICocktail = SearchResultAPICocktail & {
   strAlcoholic: string;
-  strGlass: string;
   strInstructions: string;
   [other: `strIngredient${number}`]: string | null | undefined;
   [other: `strMeasure${number}`]: string | null | undefined;
@@ -25,7 +24,6 @@ export type Ingredient = {
 
 export type FullDetailsCocktail = SearchResultCocktail & {
   alcoholic: boolean;
-  glass: string;
   ingredients: Ingredient[];
   instructions: string;
 };

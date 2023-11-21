@@ -45,7 +45,6 @@ export const transformFullDetails = (cocktails: FullDetailsAPICocktail[]): FullD
         name: cocktail.strDrink,
         thumb: cocktail.strDrinkThumb,
         alcoholic: cocktail.strAlcoholic.toLowerCase() === 'alcoholic',
-        glass: cocktail.strGlass,
         instructions: cocktail.strInstructions,
         ingredients,
       };
