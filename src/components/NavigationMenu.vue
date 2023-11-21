@@ -15,11 +15,11 @@ const {selection} = storeToRefs(useCocktailStore());
       <RouterLink class="relative" to="/ingredients">
         {{ t('menu.ingredients') }}
         <div
-          v-if="selection.size"
+          v-if="selection.length"
           data-test-id="selection-size-indicator"
           class="absolute flex justify-center align-center pb-[0.15rem] top-0 right-0 w-4 h-4 text-white text-center bg-rose-500 text-xs rounded-full"
         >
-          {{ selection.size }}
+          {{ selection.length }}
         </div>
       </RouterLink>
     </ul>

@@ -13,21 +13,19 @@ import {pipe, flatten, map, prop, sortBy, uniq, difference} from 'remeda';
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
     currentSearch: {} as SearchStringProps,
-    cocktailDetails: [] as FullDetailsCocktail[],
     preventFetch: false,
     searchResults: [] as SearchResultCocktail[],
-    selection: new Set<number>(),
-    highlightedCocktail: null as number | null,
+    selection: [] as FullDetailsCocktail[],
+    highlightedCocktail: null as FullDetailsCocktail | null,
   }),
   getters: {
-    getCocktailDetails: (state) => (id: number) => state.cocktailDetails.find((cocktail) => cocktail.id === id) || null,
     // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients(state): string[] {
       return pipe(
-        Array.from(state.selection),
-        map((id: number) =>
+        state.selection,
+        map(({ingredients}) =>
           // Make cream, egg, and citrus fruits show up as their base form 
-          this.getCocktailDetails(id)!.ingredients.map(({ingredient}) =>
+          ingredients.map(({ingredient}) =>
             ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$/, ''),
           ),
         ),
@@ -40,20 +38,21 @@ export const useCocktailStore = defineStore('cocktail', {
   },
   actions: {
     async addToSelection(id: number) {
-      await this.fetchCocktail(id);
-      this.selection.add(id);
-    },
-    async fetchCocktail(id: number) {
-      if (!this.cocktailDetails.some((cocktail) => cocktail.id === id)) {
-        this.cocktailDetails.push(await getDetails(id));
+      if (!this.selection.some((cocktail) => cocktail.id === id)) {
+        const cocktail = await getDetails(id);
+        if (cocktail) {
+          this.selection.push(cocktail);
+        }
       }
     },
     async openCocktailModal(id: number) {
-      await this.fetchCocktail(id);
-      this.highlightedCocktail = id;
+      const cocktail = await getDetails(id);
+      if (cocktail) {
+        this.highlightedCocktail = cocktail;
+      }
     },
     removeFromSelection(id: number) {
-      this.selection.delete(id);
+      this.selection = this.selection.filter((cocktail) => cocktail.id !== id);
     },
     async search(searchString: string) {
       if (searchString.length === 1) {

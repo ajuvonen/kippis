@@ -27,7 +27,7 @@ onUpdated(() => {
 </script>
 <template>
   <button
-    v-if="!selection.has(cocktail.id)"
+    v-if="!selection.some(({id}) => id === cocktail.id)"
     ref="actionButton"
     :aria-label="t('searchResults.addCocktail', [cocktail.name])"
     :data-test-id="`add-cocktail-${cocktail.id}`"

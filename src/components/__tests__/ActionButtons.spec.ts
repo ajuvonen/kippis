@@ -3,6 +3,16 @@ import {describe, it, expect, beforeEach} from 'vitest';
 import ActionButtons from '@/components/ActionButtons.vue';
 import { useCocktailStore } from '@/stores/cocktail';
 
+const testCocktail = {
+  id: 1,
+  name: 'Test Cocktail',
+  ingredients: [],
+  instructions: '',
+  thumb: '',
+  alcoholic: false,
+  glass: '',
+};
+
 describe('ActionButtons', () => {
   const cocktailStore = useCocktailStore();
 
@@ -20,10 +30,10 @@ describe('ActionButtons', () => {
   });
 
   it('shows remove button', () => {
-    cocktailStore.selection.add(1);
+    cocktailStore.selection.push(testCocktail);
     const wrapper = mount(ActionButtons, {props: {cocktail: {
       id: 1,
-      name: 'Gin Tonic',
+      name: 'Test Cocktail',
       thumb: '',
     }}});
     expect(wrapper.findByTestId('remove-cocktail-1').exists()).toBe(true);
@@ -40,7 +50,7 @@ describe('ActionButtons', () => {
   });
 
   it('remove button works', () => {
-    cocktailStore.selection.add(1);
+    cocktailStore.selection.push(testCocktail);
     const wrapper = mount(ActionButtons, {props: {cocktail: {
       id: 1,
       name: 'Gin Tonic',

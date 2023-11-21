@@ -3,6 +3,7 @@ import {describe, it, expect, beforeEach} from 'vitest';
 import router from '@/router';
 import {useCocktailStore} from '@/stores/cocktail';
 import NavigationMenu from '@/components/NavigationMenu.vue';
+import {testCocktails} from '@/components/__tests__/mswHandlers';
 
 describe('NavigationMenu', () => {
   const cocktailStore = useCocktailStore();
@@ -17,7 +18,7 @@ describe('NavigationMenu', () => {
   });
 
   it('shows selection size', () => {
-    cocktailStore.selection.add(1);
+    cocktailStore.selection.push(testCocktails[0][1]);
     const wrapper = mount(NavigationMenu);
     expect(wrapper.findByTestId('selection-size-indicator').text()).toBe('1');
   });
