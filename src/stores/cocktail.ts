@@ -6,9 +6,9 @@ import {
   getByFirstLetter,
 } from '@/api';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
+import {listUniqueIngredients} from '@/utils/helpers';
 import type {FullDetailsCocktail, SearchResultCocktail, SearchStringProps} from '@/utils/types';
 import {defineStore} from 'pinia';
-import {pipe, flatten, map, prop, sortBy, uniq, difference} from 'remeda';
 
 export const useCocktailStore = defineStore('cocktail', {
   state: () => ({
@@ -20,21 +20,7 @@ export const useCocktailStore = defineStore('cocktail', {
   }),
   getters: {
     // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
-    getAllIngredients(state): string[] {
-      return pipe(
-        state.selection,
-        map(({ingredients}) =>
-          // Make cream, egg, and citrus fruits show up as their base form 
-          ingredients.map(({ingredient}) =>
-            ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$/, ''),
-          ),
-        ),
-        flatten(),
-        uniq(),
-        difference(['water', 'ice']),
-        sortBy(prop(0)),
-      );
-    },
+    getAllIngredients: (state): string[] => listUniqueIngredients(state.selection),
   },
   actions: {
     async addToSelection(id: number) {

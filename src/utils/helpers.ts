@@ -6,7 +6,7 @@ import type {
   Ingredient,
 } from '@/utils/types';
 import {BLACKLIST, REPLACED_INGREDIENTS} from '@/utils/constants';
-import {pipe, filter, map, prop, sortBy, uniqBy} from 'remeda';
+import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
 
 export const transformSearchResults = (cocktails: SearchResultAPICocktail[]): SearchResultCocktail[] =>
   pipe(
@@ -39,7 +39,7 @@ export const transformFullDetails = (cocktails: FullDetailsAPICocktail[]): FullD
           ingredients.push({ingredient, measure: (cocktail[`strMeasure${i}`] || '').trim()});
         }
       }
-      
+
       return {
         id: +cocktail.idDrink,
         name: cocktail.strDrink,
@@ -50,4 +50,19 @@ export const transformFullDetails = (cocktails: FullDetailsAPICocktail[]): FullD
       };
     }),
     sortBy(prop('name')),
+  );
+
+export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[] =>
+  pipe(
+    cocktails,
+    map(({ingredients}) =>
+      // Make cream, egg, olive, and citrus fruits show up as their base form
+      ingredients.map(({ingredient}) =>
+        ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$| brine$/, ''),
+      ),
+    ),
+    flatten(),
+    uniq(),
+    difference(['water', 'ice']),
+    sort((a, b) => a.localeCompare(b)),
   );

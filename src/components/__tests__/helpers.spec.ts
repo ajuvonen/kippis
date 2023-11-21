@@ -1,8 +1,7 @@
-// FILEPATH: /c:/Sources/Personal/tailwind/src/utils/__tests__/helpers.spec.ts
-
-import {transformFullDetails, transformSearchResults} from '@/utils/helpers';
+import {transformFullDetails, transformSearchResults, listUniqueIngredients} from '@/utils/helpers';
 import type {FullDetailsAPICocktail} from '@/utils/types';
 import {describe, it, expect} from 'vitest';
+import {testCocktails} from '@/components/__tests__/mswHandlers';
 
 describe('transformSearchResults', () => {
   it('transforms API cocktails to SearchResultCocktail objects', () => {
@@ -169,5 +168,84 @@ describe('transformFullDetails', () => {
     expect(transformFullDetails([])).toEqual([]);
     expect(transformFullDetails(null!)).toEqual([]);
     expect(transformFullDetails(undefined!)).toEqual([]);
+  });
+});
+
+describe('listUniqueIngredients', () => {
+  it('returns alphabetic ingredients from the given cocktails', () => {
+    const result = listUniqueIngredients([testCocktails[0][1]]);
+    expect(result).toEqual(['lime juice', 'salt', 'tequila', 'triple sec']);
+  });
+
+  it('removes duplicates', () => {
+    const result = listUniqueIngredients([testCocktails[0][1], testCocktails[0][1]]);
+    expect(result).toEqual(['lime juice', 'salt', 'tequila', 'triple sec']);
+  });
+
+  it('returns an empty array if no ingredients are provided', () => {
+    const result = listUniqueIngredients([]);
+    expect(result).toEqual([]);
+  });
+
+  it('removes water and ice', () => {
+    const result = listUniqueIngredients([
+      {
+        id: 0,
+        alcoholic: false,
+        ingredients: [
+          {
+            ingredient: 'water',
+            measure: '',
+          },
+          {
+            ingredient: 'ice',
+            measure: '',
+          },
+        ],
+        instructions: 'Pour water over ice',
+        name: 'Glass of water',
+        thumb: 'thumb',
+      },
+    ]);
+    expect(result).toEqual([]);
+  });
+
+  it('lists egg, cream and citrus fruits in their base form', () => {
+    const result = listUniqueIngredients([
+      {
+        id: 0,
+        alcoholic: false,
+        ingredients: [
+          {
+            ingredient: 'egg white',
+            measure: '1 pc',
+          },
+          {
+            ingredient: 'egg yolk',
+            measure: '1 pc',
+          },
+          {
+            ingredient: 'lemon peel',
+            measure: '',
+          },
+          {
+            ingredient: 'orange spiral',
+            measure: '',
+          },
+          {
+            ingredient: 'olive brine',
+            measure: '1/2 oz',
+          },
+          {
+            ingredient: 'whipped cream',
+            measure: '1 oz',
+          },
+        ],
+        instructions: 'Mix in blender',
+        name: 'Winners breakfast',
+        thumb: 'thumb',
+      },
+    ]);
+    expect(result).toEqual(['cream', 'egg', 'lemon', 'olive', 'orange']);
   });
 });
