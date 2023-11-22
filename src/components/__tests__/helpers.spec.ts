@@ -1,62 +1,39 @@
 import {transformFullDetails, transformSearchResults, listUniqueIngredients} from '@/utils/helpers';
 import type {FullDetailsAPICocktail} from '@/utils/types';
 import {describe, it, expect} from 'vitest';
-import {testCocktails} from '@/components/__tests__/mswHandlers';
+import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandlers';
+import test from 'node:test';
 
 describe('transformSearchResults', () => {
   it('transforms API cocktails to SearchResultCocktail objects', () => {
-    const cocktails = [
-      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
-      {idDrink: '2', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
-    ];
-
-    const result = transformSearchResults(cocktails);
-
-    expect(result).toEqual([
-      {id: 1, name: 'Test Cocktail 1', thumb: 'thumb1'},
-      {id: 2, name: 'Test Cocktail 2', thumb: 'thumb2'},
-    ]);
+    const result = transformSearchResults([testSearchResults[0][0], testSearchResults[1][0]]);
+    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
   });
 
   it('filters out cocktails in the blacklist', () => {
     const cocktails = [
       {idDrink: '12572', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
       {idDrink: '12784', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
-      {idDrink: '2', strDrink: 'Test Cocktail 3', strDrinkThumb: 'thumb3'},
+      testSearchResults[0][0],
     ];
 
     const result = transformSearchResults(cocktails);
-
-    expect(result).toEqual([{id: 2, name: 'Test Cocktail 3', thumb: 'thumb3'}]);
+    expect(result).toEqual([testSearchResults[0][1]]);
   });
 
   it('sorts the search results by name', () => {
-    const cocktails = [
-      {idDrink: '2', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
-      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
-    ];
-
-    const result = transformSearchResults(cocktails);
-
-    expect(result).toEqual([
-      {id: 1, name: 'Test Cocktail 1', thumb: 'thumb1'},
-      {id: 2, name: 'Test Cocktail 2', thumb: 'thumb2'},
-    ]);
+    const result = transformSearchResults([testSearchResults[1][0], testSearchResults[0][0]]);
+    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
   });
 
   it('returns unique search results', () => {
-    const cocktails = [
-      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
-      {idDrink: '2', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
-      {idDrink: '1', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
-    ];
-
-    const result = transformSearchResults(cocktails);
-
-    expect(result).toEqual([
-      {id: 1, name: 'Test Cocktail 1', thumb: 'thumb1'},
-      {id: 2, name: 'Test Cocktail 2', thumb: 'thumb2'},
+    const result = transformSearchResults([
+      testSearchResults[0][0],
+      testSearchResults[0][0],
+      testSearchResults[1][0],
     ]);
+
+    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
   });
 
   it('returns an empty array when cocktails is empty, null or undefined', () => {
@@ -68,37 +45,8 @@ describe('transformSearchResults', () => {
 
 describe('transformFullDetails', () => {
   it('transforms API cocktail details to FullDetailsCocktail object', () => {
-    const cocktailDetails = [
-      {
-        idDrink: '1',
-        strDrink: 'Test Cocktail',
-        strDrinkThumb: 'thumb',
-        strInstructions: 'Test Instructions',
-        strIngredient1: 'Ingredient 1',
-        strMeasure1: '1 oz',
-        strIngredient2: 'Ingredient 2',
-        strMeasure2: '2 oz',
-        strIngredient3: null,
-        strMeasure3: null,
-        strAlcoholic: 'Alcoholic',
-      },
-    ];
-
-    const result = transformFullDetails(cocktailDetails as FullDetailsAPICocktail[]);
-
-    expect(result).toEqual([
-      {
-        id: 1,
-        alcoholic: true,
-        name: 'Test Cocktail',
-        thumb: 'thumb',
-        instructions: 'Test Instructions',
-        ingredients: [
-          {ingredient: 'ingredient 1', measure: '1 oz'},
-          {ingredient: 'ingredient 2', measure: '2 oz'},
-        ],
-      },
-    ]);
+    const result = transformFullDetails([testCocktails[0][0]]);
+    expect(result).toEqual([testCocktails[0][1]]);
   });
 
   it('replaces ingredients correctly', () => {
@@ -144,14 +92,21 @@ describe('transformFullDetails', () => {
     ]);
   });
 
-  it('excludes null ingredients', () => {
+  it('transforms the alcoholic property correctly', () => {
+    const result = transformFullDetails([testCocktails[0][0], testCocktails[1][0]]);
+
+    expect(result[0].alcoholic).toBe(true);
+    expect(result[1].alcoholic).toBe(false);
+  });
+
+  it('excludes empty and null ingredients', () => {
     const cocktailDetails: FullDetailsAPICocktail[] = [
       {
         idDrink: '1',
         strDrink: 'Test Cocktail',
         strDrinkThumb: 'thumb',
         strInstructions: 'Test Instructions',
-        strIngredient1: 'Ingredient 1',
+        strIngredient1: '',
         strMeasure1: '1 oz',
         strIngredient2: null,
         strMeasure2: '2 oz',
@@ -161,7 +116,7 @@ describe('transformFullDetails', () => {
 
     const result = transformFullDetails(cocktailDetails);
 
-    expect(result[0].ingredients).toEqual([{ingredient: 'ingredient 1', measure: '1 oz'}]);
+    expect(result[0].ingredients).toEqual([]);
   });
 
   it('returns an empty array when cocktailDetails is empty, null or undefined', () => {
@@ -173,8 +128,17 @@ describe('transformFullDetails', () => {
 
 describe('listUniqueIngredients', () => {
   it('returns alphabetic ingredients from the given cocktails', () => {
-    const result = listUniqueIngredients([testCocktails[0][1]]);
-    expect(result).toEqual(['lime juice', 'salt', 'tequila', 'triple sec']);
+    const result = listUniqueIngredients([testCocktails[0][1], testCocktails[1][1]]);
+    expect(result).toEqual([
+      'lime',
+      'lime juice',
+      'mint',
+      'salt',
+      'soda water',
+      'sugar',
+      'tequila',
+      'triple sec',
+    ]);
   });
 
   it('removes duplicates', () => {
