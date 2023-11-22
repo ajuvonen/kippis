@@ -2,7 +2,6 @@ import {transformFullDetails, transformSearchResults, listUniqueIngredients} fro
 import type {FullDetailsAPICocktail} from '@/utils/types';
 import {describe, it, expect} from 'vitest';
 import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandlers';
-import test from 'node:test';
 
 describe('transformSearchResults', () => {
   it('transforms API cocktails to SearchResultCocktail objects', () => {

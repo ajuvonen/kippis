@@ -5,7 +5,8 @@
   },
   "homeView": {
     "title": "Astu maistuvien cocktailien maailmaan!",
-    "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun."
+    "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun.",
+    "credit": "Valokuva: {0}"
   },
   "ingredientsView": {
     "title": "Ainesosat"

@@ -19,7 +19,6 @@ export const useCocktailStore = defineStore('cocktail', {
     highlightedCocktail: null as FullDetailsCocktail | null,
   }),
   getters: {
-    // Get a "shopping list" of ingredients. They should be unique, sorted and without some obvious items
     getAllIngredients: (state): string[] => listUniqueIngredients(state.selection),
   },
   actions: {
@@ -43,7 +42,7 @@ export const useCocktailStore = defineStore('cocktail', {
     async search(searchString: string) {
       if (searchString.length === 1) {
         this.searchResults = await getByFirstLetter(searchString);
-      } else {
+      } else if (searchString.length) {
         this.searchResults = await getBySearchString(searchString);
       }
     },
