@@ -39,24 +39,24 @@ describe('ActionButtons', () => {
     expect(wrapper.findByTestId('remove-cocktail-1').exists()).toBe(true);
   });
 
-  it('add button works', () => {
+  it('add button works', async () => {
     const wrapper = mount(ActionButtons, {props: {cocktail: {
       id: 1,
       name: 'Gin Tonic',
       thumb: '',
     }}});
-    wrapper.findByTestId('add-cocktail-1').trigger('click');
+    await wrapper.findByTestId('add-cocktail-1').trigger('click');
     expect(cocktailStore.addToSelection).toHaveBeenCalledWith(1);
   });
 
-  it('remove button works', () => {
+  it('remove button works', async () => {
     cocktailStore.selection.push(testCocktail);
     const wrapper = mount(ActionButtons, {props: {cocktail: {
       id: 1,
       name: 'Gin Tonic',
       thumb: '',
     }}});
-    wrapper.findByTestId('remove-cocktail-1').trigger('click');
+    await wrapper.findByTestId('remove-cocktail-1').trigger('click');
     expect(cocktailStore.removeFromSelection).toHaveBeenCalledWith(1);
   });
 });
