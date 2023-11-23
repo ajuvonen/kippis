@@ -18,7 +18,7 @@ export const getByIngredients = async (ingredients: string[]) => {
     ingredients.map((ingredient) =>
       axios
         .get(`${BASE_API_ADDRESS}/filter.php?i=${ingredient}`)
-        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) => drinks),
+        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) => drinks || []),
     ),
   );
 
