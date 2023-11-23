@@ -5,6 +5,7 @@ import type {
   SearchResultAPICocktail,
   SearchResultCocktail,
 } from '@/utils/types';
+import {setupServer} from 'msw/node';
 
 export const testSearchResults = [
   [
@@ -138,11 +139,14 @@ export const restHandlers = [
       return HttpResponse.json({
         drinks: [cocktail[0]],
       });
-      // Missing id
-    } else if (id > 0) {
+    }
+    // Missing id
+    else if (id > 0) {
       return HttpResponse.json({drinks: null});
     }
     // Failing query
     return new HttpResponse(null, {status: 404});
   }),
 ];
+
+export const server = setupServer(...restHandlers);
