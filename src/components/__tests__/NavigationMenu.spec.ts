@@ -21,6 +21,7 @@ describe('NavigationMenu', () => {
     cocktailStore.selection.push(testCocktails[0][1]);
     const wrapper = mount(NavigationMenu);
     expect(wrapper.findByTestId('selection-size-indicator').text()).toBe('1');
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it.each(router.getRoutes())('includes link to $path', () => {

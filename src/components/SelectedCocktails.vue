@@ -17,10 +17,10 @@ const {selection} = storeToRefs(cocktailStore);
     <aside v-if="selection.length" class="w-[400px] hidden md:flex flex-col bg-slate-800">
       <h2>{{ t('selectedCocktails.title') }}</h2>
       <SearchResults class="pt-2 mb-4 overflow-y-scroll" :cocktails="selection" />
-      <LinkButton v-if="route.name === 'search'" to="/ingredients" class="flex-shrink-0">
+      <LinkButton v-if="route.name === 'search'" to="/ingredients" class="flex-shrink-0" data-test-id="selected-cocktails__action-button">
         {{ t('selectedCocktails.readyButton') }}
       </LinkButton>
-      <LinkButton v-else to="/search" class="flex-shrink-0">
+      <LinkButton v-else to="/search" class="flex-shrink-0" data-test-id="selected-cocktails__action-button">
         {{ t('selectedCocktails.backButton') }}
       </LinkButton>
     </aside>

@@ -16,7 +16,7 @@ describe('SearchField.vue', () => {
     const input = wrapper.find('input');
     await input.setValue('test search');
     await input.trigger('keyup.enter');
-  
+
     expect(pushSpy).toHaveBeenCalledWith({name: 'search', query: {searchString: 'test search'}});
   });
 
@@ -27,7 +27,7 @@ describe('SearchField.vue', () => {
     const input = wrapper.find('input');
     await input.setValue('test search');
     await wrapper.find('button').trigger('click');
-  
+
     expect(pushSpy).toHaveBeenCalledWith({name: 'search', query: {searchString: 'test search'}});
   });
 
@@ -43,5 +43,4 @@ describe('SearchField.vue', () => {
       expect(pushSpy).toHaveBeenCalledWith(`/search?tag=${tag}`);
     }
   });
-
 });
