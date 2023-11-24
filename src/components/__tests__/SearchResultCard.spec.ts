@@ -1,14 +1,10 @@
 import {mount} from '@vue/test-utils';
 import {describe, it, expect, vi} from 'vitest';
 import SearchResultCard from '@/components/SearchResultCard.vue';
-import type {SearchResultCocktail} from '@/utils/types';
+import {testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('SearchResultCard.vue', () => {
-  const cocktail: SearchResultCocktail = {
-    id: 1,
-    name: 'Test Cocktail',
-    thumb: 'test-thumb',
-  };
+  const cocktail = testSearchResults[0][1];
 
   it('mounts', () => {
     const wrapper = mount(SearchResultCard, {
@@ -34,7 +30,7 @@ describe('SearchResultCard.vue', () => {
     });
 
     await wrapper.find('.search-result__image-wrapper').trigger('click');
-    expect(openCocktailModal).toHaveBeenCalledWith(1);
+    expect(openCocktailModal).toHaveBeenCalledWith(0);
   });
 
   it('calls openCocktailModal when the image wrapper is focused and Enter is pressed', async () => {
@@ -53,6 +49,6 @@ describe('SearchResultCard.vue', () => {
     const imageWrapper = wrapper.find('.search-result__image-wrapper');
     await imageWrapper.trigger('focus');
     await imageWrapper.trigger('keypress.enter');
-    expect(openCocktailModal).toHaveBeenCalledWith(1);
+    expect(openCocktailModal).toHaveBeenCalledWith(0);
   });
 });

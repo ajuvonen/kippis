@@ -3,13 +3,11 @@ import {describe, it, expect} from 'vitest';
 import type {SearchResultCocktail} from '@/utils/types';
 import SearchResults from '@/components/SearchResults.vue';
 import SearchResultCard from '@/components/SearchResultCard.vue';
+import {testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('SearchResults.vue', () => {
   it('renders a list of SearchResultCard components', () => {
-    const cocktails: SearchResultCocktail[] = [
-      {id: 1, name: 'Test Cocktail 1', thumb: 'test-thumb-1'},
-      {id: 2, name: 'Test Cocktail 2', thumb: 'test-thumb-2'},
-    ];
+    const cocktails: SearchResultCocktail[] = [testSearchResults[0][1], testSearchResults[1][1]];
 
     const wrapper = mount(SearchResults, {
       props: {

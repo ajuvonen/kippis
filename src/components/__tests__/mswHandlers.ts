@@ -23,12 +23,12 @@ export const testSearchResults = [
   [
     {
       idDrink: '1',
-      strDrink: 'Tom Collins',
+      strDrink: 'Virgin Mojito',
       strDrinkThumb: 'https://locahost:3000/1.jpg',
     },
     {
       id: 1,
-      name: 'Tom Collins',
+      name: 'Virgin Mojito',
       thumb: 'https://locahost:3000/1.jpg',
     },
   ],
