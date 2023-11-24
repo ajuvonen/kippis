@@ -10,21 +10,18 @@ const {t} = useI18n();
 const cocktailStore = useCocktailStore();
 const {getAllIngredients} = storeToRefs(cocktailStore);
 
-const finder = (sources: string[]) =>
-  getAllIngredients.value.filter(
-    (candidate) =>
-      sources.findIndex((source) => source === candidate) > -1,
-  );
+const findFromList = (list: string[]) =>
+  getAllIngredients.value.filter((ingredient) => list.includes(ingredient));
 
-const alcohols = computed(() => finder(ALCOHOLS));
-const mixers = computed(() => finder(MIXERS));
-const fruits = computed(() => finder(FRUITS));
+const alcohols = computed(() => findFromList(ALCOHOLS));
+const mixers = computed(() => findFromList(MIXERS));
+const fruits = computed(() => findFromList(FRUITS));
 const others = computed(() =>
   getAllIngredients.value.filter(
     (ingredient) =>
       !alcohols.value.includes(ingredient) &&
       !mixers.value.includes(ingredient) &&
-      !fruits.value.includes(ingredient)
+      !fruits.value.includes(ingredient),
   ),
 );
 </script>
