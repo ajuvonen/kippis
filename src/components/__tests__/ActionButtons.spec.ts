@@ -1,17 +1,8 @@
 import {mount} from '@vue/test-utils';
 import {describe, it, expect, beforeEach} from 'vitest';
 import ActionButtons from '@/components/ActionButtons.vue';
-import { useCocktailStore } from '@/stores/cocktail';
-
-const testCocktail = {
-  id: 1,
-  name: 'Test Cocktail',
-  ingredients: [],
-  instructions: '',
-  thumb: '',
-  alcoholic: false,
-  glass: '',
-};
+import {useCocktailStore} from '@/stores/cocktail';
+import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('ActionButtons', () => {
   const cocktailStore = useCocktailStore();
@@ -21,42 +12,42 @@ describe('ActionButtons', () => {
   });
 
   it('mounts', () => {
-    const wrapper = mount(ActionButtons, {props: {cocktail: {
-      id: 1,
-      name: 'Gin Tonic',
-      thumb: '',
-    }}});
+    const wrapper = mount(ActionButtons, {
+      props: {
+        cocktail: testSearchResults[0][1],
+      },
+    });
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('shows remove button', () => {
-    cocktailStore.selection.push(testCocktail);
-    const wrapper = mount(ActionButtons, {props: {cocktail: {
-      id: 1,
-      name: 'Test Cocktail',
-      thumb: '',
-    }}});
-    expect(wrapper.findByTestId('remove-cocktail-1').exists()).toBe(true);
+    cocktailStore.selection.push(testCocktails[0][1]);
+    const wrapper = mount(ActionButtons, {
+      props: {
+        cocktail: testSearchResults[0][1],
+      },
+    });
+    expect(wrapper.find('.remove-cocktail-0').exists()).toBe(true);
   });
 
   it('add button works', async () => {
-    const wrapper = mount(ActionButtons, {props: {cocktail: {
-      id: 1,
-      name: 'Gin Tonic',
-      thumb: '',
-    }}});
-    await wrapper.findByTestId('add-cocktail-1').trigger('click');
+    const wrapper = mount(ActionButtons, {
+      props: {
+        cocktail: testSearchResults[1][1],
+      },
+    });
+    await wrapper.find('.add-cocktail-1').trigger('click');
     expect(cocktailStore.addToSelection).toHaveBeenCalledWith(1);
   });
 
   it('remove button works', async () => {
-    cocktailStore.selection.push(testCocktail);
-    const wrapper = mount(ActionButtons, {props: {cocktail: {
-      id: 1,
-      name: 'Gin Tonic',
-      thumb: '',
-    }}});
-    await wrapper.findByTestId('remove-cocktail-1').trigger('click');
-    expect(cocktailStore.removeFromSelection).toHaveBeenCalledWith(1);
+    cocktailStore.selection.push(testCocktails[0][1]);
+    const wrapper = mount(ActionButtons, {
+      props: {
+        cocktail: testSearchResults[0][1],
+      },
+    });
+    await wrapper.find('.remove-cocktail-0').trigger('click');
+    expect(cocktailStore.removeFromSelection).toHaveBeenCalledWith(0);
   });
 });

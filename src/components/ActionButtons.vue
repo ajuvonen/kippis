@@ -34,7 +34,7 @@ const remove = async (id: number) => {
     v-if="!selection.some(({id}) => id === cocktail.id)"
     ref="actionButton"
     :aria-label="t('searchResults.addCocktail', [cocktail.name])"
-    :data-test-id="`add-cocktail-${cocktail.id}`"
+    :class="`add-cocktail-${cocktail.id}`"
     class="action-button"
     @click="add(cocktail.id)"
   >
@@ -44,7 +44,7 @@ const remove = async (id: number) => {
     v-else
     ref="actionButton"
     :aria-label="t('searchResults.removeCocktail', [cocktail.name])"
-    :data-test-id="`remove-cocktail-${cocktail.id}`"
+    :class="`remove-cocktail-${cocktail.id}`"
     class="action-button bg-rose-400 border-slate-800"
     @click="remove(cocktail.id)"
   >
