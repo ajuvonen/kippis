@@ -16,8 +16,11 @@ config.plugins.VueWrapper.install(dataTestIdPlugin);
 // Start mock server before all tests
 beforeAll(() => server.listen({onUnhandledRequest: 'error'}));
 
+// Reset handlers after each test
+afterEach(() => {
+  config.global.plugins[0] = createTestingPinia();
+  server.resetHandlers();
+});
+
 // Close mock server after all tests
 afterAll(() => server.close());
-
-// Reset handlers after each test
-afterEach(() => server.resetHandlers());

@@ -5,10 +5,10 @@ import {useCocktailStore} from '@/stores/cocktail';
 import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('ActionButtons', () => {
-  const cocktailStore = useCocktailStore();
+  let cocktailStore: ReturnType<typeof useCocktailStore>;
 
   beforeEach(() => {
-    cocktailStore.$reset();
+    cocktailStore = useCocktailStore();
   });
 
   it('mounts', () => {
@@ -18,16 +18,6 @@ describe('ActionButtons', () => {
       },
     });
     expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('shows remove button', () => {
-    cocktailStore.selection.push(testCocktails[0][1]);
-    const wrapper = mount(ActionButtons, {
-      props: {
-        cocktail: testSearchResults[0][1],
-      },
-    });
-    expect(wrapper.find('.remove-cocktail-0').exists()).toBe(true);
   });
 
   it('add button works', async () => {

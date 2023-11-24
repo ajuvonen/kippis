@@ -1,15 +1,15 @@
 import {mount} from '@vue/test-utils';
 import {describe, it, expect, beforeEach} from 'vitest';
 import router from '@/router';
-import {useCocktailStore} from '@/stores/cocktail';
 import NavigationMenu from '@/components/NavigationMenu.vue';
 import {testCocktails} from '@/components/__tests__/mswHandlers';
+import {useCocktailStore} from '@/stores/cocktail';
 
 describe('NavigationMenu', () => {
-  const cocktailStore = useCocktailStore();
+  let cocktailStore: ReturnType<typeof useCocktailStore>;
 
   beforeEach(() => {
-    cocktailStore.$reset();
+    cocktailStore = useCocktailStore();
   });
 
   it('mounts', () => {

@@ -3,7 +3,7 @@ import {describe, beforeEach, it, expect} from 'vitest';
 import {HttpResponse, http} from 'msw';
 import {useCocktailStore} from '@/stores/cocktail';
 import {testCocktails, server, testSearchResults} from '@/components/__tests__/mswHandlers';
-import { SEARCHABLE_ALCOHOLS } from '@/utils/constants';
+import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 
 const testCocktail = testCocktails[0][1];
 
@@ -124,9 +124,11 @@ describe('Cocktail store', () => {
       }),
     );
     await cocktailStore.searchWithTag('whiskey');
-    expect(requestedIngredients).toEqual(SEARCHABLE_ALCOHOLS.find(({tag}) => tag === 'whiskey')?.ingredients);
+    expect(requestedIngredients).toEqual(
+      SEARCHABLE_ALCOHOLS.find(({tag}) => tag === 'whiskey')?.ingredients,
+    );
   });
-  
+
   it('does not search if tag is not found', async () => {
     const requestedIngredients: string[] = [];
     server.use(

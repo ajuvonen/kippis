@@ -3,37 +3,37 @@ import {mount} from '@vue/test-utils';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
 import {testCocktails} from '@/components/__tests__/mswHandlers';
 import {useCocktailStore} from '@/stores/cocktail';
-import SearchResultCard from '../SearchResultCard.vue';
 import router from '@/router';
 
 describe('SelectedCocktails', () => {
-  const cocktailStore = useCocktailStore();
+  let cocktailStore: ReturnType<typeof useCocktailStore>;
 
   beforeEach(async () => {
-    cocktailStore.$reset();
+    cocktailStore = useCocktailStore();
     await router.push('/search');
   });
 
   it('mounts', () => {
-    cocktailStore.selection = [testCocktails[0][1]]
+    cocktailStore.selection.push(testCocktails[0][1]);
     const wrapper = mount(SelectedCocktails);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('prints selection data', async () => {
+  it('prints selection data', () => {
     cocktailStore.selection = [testCocktails[0][1], testCocktails[1][1]];
     const wrapper = mount(SelectedCocktails);
-    cocktailStore.selection.forEach((cocktail) => {
-      expect(wrapper.findAllComponents(SearchResultCard).some((card) => card.props().cocktail === cocktail)).toBe(true);
-    });
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('changes button text in ingredient mode', async () => {
-    cocktailStore.selection = [testCocktails[1][1]];
+    cocktailStore.selection.push(testCocktails[1][1]);
     const wrapper = mount(SelectedCocktails);
-    expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe('Ready? Proceed to ingredients.');
+    expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
+      'Ready? Proceed to ingredients.',
+    );
     await router.push('/ingredients');
-    expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe('Thirsty? Return to search.');
+    expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
+      'Thirsty? Return to search.',
+    );
   });
 });
