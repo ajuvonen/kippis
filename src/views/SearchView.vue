@@ -24,7 +24,7 @@ watch(
     if (!preventFetch.value) {
       if (newProps.tag === 'virgin') {
         searchNonAlcoholic();
-      } else if (newProps.tag && SEARCHABLE_ALCOHOLS.filter(({tag}) => tag === newProps.tag)) {
+      } else if (newProps.tag) {
         searchWithTag(newProps.tag);
       } else if (newProps.searchString) {
         search(newProps.searchString.slice(0, 20));
