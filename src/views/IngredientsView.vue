@@ -2,6 +2,7 @@
 import {computed} from 'vue';
 import {useI18n} from 'vue-i18n';
 import {storeToRefs} from 'pinia';
+import {intersection} from 'remeda';
 import {useCocktailStore} from '@/stores/cocktail';
 import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
@@ -10,12 +11,9 @@ const {t} = useI18n();
 const cocktailStore = useCocktailStore();
 const {getAllIngredients} = storeToRefs(cocktailStore);
 
-const findFromList = (list: string[]) =>
-  getAllIngredients.value.filter((ingredient) => list.includes(ingredient));
-
-const alcohols = computed(() => findFromList(ALCOHOLS));
-const mixers = computed(() => findFromList(MIXERS));
-const fruits = computed(() => findFromList(FRUITS));
+const alcohols = computed(() => intersection(getAllIngredients.value, ALCOHOLS));
+const mixers = computed(() => intersection(getAllIngredients.value, MIXERS));
+const fruits = computed(() => intersection(getAllIngredients.value, FRUITS));
 const others = computed(() =>
   getAllIngredients.value.filter(
     (ingredient) =>
