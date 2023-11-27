@@ -8,7 +8,7 @@ import type {
 import {BLACKLIST, REPLACED_INGREDIENTS} from '@/utils/constants';
 import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
 
-export const transformSearchResults = (cocktails: SearchResultAPICocktail[]): SearchResultCocktail[] =>
+export const transformSearchResults = (cocktails: SearchResultAPICocktail[] | null): SearchResultCocktail[] =>
   pipe(
     cocktails || [],
     uniqBy(prop('idDrink')),
@@ -21,7 +21,7 @@ export const transformSearchResults = (cocktails: SearchResultAPICocktail[]): Se
     sortBy(prop('name')),
   );
 
-export const transformFullDetails = (cocktails: FullDetailsAPICocktail[]): FullDetailsCocktail[] =>
+export const transformFullDetails = (cocktails: FullDetailsAPICocktail[] | null): FullDetailsCocktail[] =>
   pipe(
     cocktails || [],
     uniqBy(prop('idDrink')),

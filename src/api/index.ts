@@ -9,7 +9,7 @@ import type {
 export const getByFirstLetter = (searchString: string) =>
   axios
     .get(`${BASE_API_ADDRESS}/search.php?f=${searchString}`)
-    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) =>
+    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) =>
       transformSearchResults(drinks),
     );
 
@@ -18,7 +18,7 @@ export const getByIngredients = async (ingredients: string[]) => {
     ingredients.map((ingredient) =>
       axios
         .get(`${BASE_API_ADDRESS}/filter.php?i=${ingredient}`)
-        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) => drinks || []),
+        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
     ),
   );
 
@@ -28,7 +28,7 @@ export const getByIngredients = async (ingredients: string[]) => {
 export const getBySearchString = (searchString: string) =>
   axios
     .get(`${BASE_API_ADDRESS}/search.php?s=${searchString}`)
-    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) =>
+    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) =>
       transformSearchResults(drinks),
     );
 
@@ -36,13 +36,13 @@ export const getDetails = (id: number) =>
   axios
     .get(`${BASE_API_ADDRESS}/lookup.php?i=${id}`)
     .then(
-      ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[]}}) =>
+      ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[] | null}}) =>
         transformFullDetails(drinks)[0],
     );
 
 export const getNonAlcoholic = () =>
   axios
     .get(`${BASE_API_ADDRESS}/filter.php?a=Non_Alcoholic`)
-    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[]}}) =>
+    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) =>
       transformSearchResults(drinks),
     );
