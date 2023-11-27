@@ -1,9 +1,10 @@
 import {setActivePinia, createPinia} from 'pinia';
 import {describe, beforeEach, it, expect} from 'vitest';
-import {HttpResponse, http} from 'msw';
+import {HttpResponse, http, type PathParams} from 'msw';
 import {useCocktailStore} from '@/stores/cocktail';
 import {testCocktails, server, testSearchResults} from '@/components/__tests__/mswHandlers';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
+import {type SearchResultAPICocktail} from '@/utils/types';
 
 const testCocktail = testCocktails[0][1];
 
@@ -70,36 +71,38 @@ describe('Cocktail store', () => {
   });
 
   it('searches with first letter', async () => {
-    let requestHandled = false;
     server.use(
-      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', ({request}) => {
-        const url = new URL(request.url);
-        const searchParam = url.searchParams.get('f');
-        if (searchParam === 'a') {
-          requestHandled = true;
-        }
-        return HttpResponse.json({drinks: [testSearchResults[0][0]]});
-      }),
+      http.get(
+        'https://www.thecocktaildb.com/api/json/v1/1/search.php',
+        ({request}) => {
+          const url = new URL(request.url);
+          const searchParam = url.searchParams.get('f');
+          if (searchParam === 'a') {
+            return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+          }
+          return new HttpResponse(null, {status: 404});
+        },
+      ),
     );
     await cocktailStore.search('a');
-    expect(requestHandled).toBe(true);
     expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1]]);
   });
 
   it('searches with search string', async () => {
-    let requestHandled = false;
     server.use(
-      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', ({request}) => {
-        const url = new URL(request.url);
-        const searchParam = url.searchParams.get('s');
-        if (searchParam === 'abc') {
-          requestHandled = true;
-        }
-        return HttpResponse.json({drinks: [testSearchResults[0][0]]});
-      }),
+      http.get(
+        'https://www.thecocktaildb.com/api/json/v1/1/search.php',
+        ({request}) => {
+          const url = new URL(request.url);
+          const searchParam = url.searchParams.get('s');
+          if (searchParam === 'abc') {
+            return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+          }
+          return new HttpResponse(null, {status: 404});
+        },
+      ),
     );
     await cocktailStore.search('abc');
-    expect(requestHandled).toBe(true);
     expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1]]);
   });
 
