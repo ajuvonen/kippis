@@ -6,7 +6,6 @@ import SearchField from '@/components/SearchField.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
 import {useCocktailStore} from '@/stores/cocktail';
-import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import type {SearchStringProps} from '@/utils/types';
 
 const props = defineProps<SearchStringProps>();
