@@ -28,7 +28,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       type="search"
       maxlength="20"
       class="rounded-tr-none rounded-br-none pb-1"
-      @keyup.enter="search"
+      @keypress.enter="search"
     />
     <button
       class="rounded-tl-none rounded-bl-none"

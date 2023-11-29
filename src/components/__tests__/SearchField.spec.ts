@@ -15,7 +15,7 @@ describe('SearchField.vue', () => {
 
     const input = wrapper.find('input');
     await input.setValue('test search');
-    await input.trigger('keyup.enter');
+    await input.trigger('keypress.enter');
 
     expect(pushSpy).toHaveBeenCalledWith({name: 'search', query: {searchString: 'test search'}});
   });
