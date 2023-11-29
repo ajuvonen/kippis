@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import {
   mdiClover,
+  mdiGlassCocktail,
+  mdiGlassCocktailOff,
   mdiMagnify,
   mdiPlus,
   mdiTrashCan,
 } from '@mdi/js';
 
-type IconString = 'clover' | 'magnify' | 'plus' | 'trashCan';
+type IconString = 'clover' | 'magnify' | 'plus' | 'trashCan' | 'cocktail' | 'cocktailOff';
 
 defineProps<{
   icon: IconString;
@@ -14,6 +16,8 @@ defineProps<{
 
 const icons = {
   clover: mdiClover,
+  cocktail: mdiGlassCocktail,
+  cocktailOff: mdiGlassCocktailOff,
   magnify: mdiMagnify,
   plus: mdiPlus,
   trashCan: mdiTrashCan,

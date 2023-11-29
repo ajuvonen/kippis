@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import {ref} from 'vue';
+import {useElementVisibility, watchOnce} from '@vueuse/core';
+import {useI18n} from 'vue-i18n';
 import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import ActionButtons from '@/components/ActionButtons.vue';
+import LazyImage from './LazyImage.vue';
 
 defineProps<{
   cocktail: SearchResultCocktail;
@@ -10,11 +13,19 @@ defineProps<{
 
 const {t} = useI18n();
 
+const wrapper = ref<HTMLDivElement | null>(null);
+const isVisible = useElementVisibility(wrapper);
+const loadContent = ref(isVisible.value);
+
+watchOnce(isVisible, () => {
+  loadContent.value = true;
+});
+
 const cocktailStore = useCocktailStore();
 const {openCocktailModal} = cocktailStore;
 </script>
 <template>
-  <div class="search-result__wrapper">
+  <div class="search-result__wrapper" ref="wrapper">
     <div
       :aria-label="t('searchResultCard.open', [cocktail.name])"
       class="search-result__image-wrapper"
@@ -23,11 +34,7 @@ const {openCocktailModal} = cocktailStore;
       @click="openCocktailModal(cocktail.id)"
       @keypress.enter="openCocktailModal(cocktail.id)"
     >
-      <div
-        :style="{background: `url(${cocktail.thumb}/preview)`, backgroundSize: 'cover'}"
-        class="search-result__image"
-        role="presentation"
-      ></div>
+      <LazyImage :src="loadContent ? `${cocktail.thumb}/preview` : ''" class="search-result__image" />
       <div class="search-result__shadow">
         {{ cocktail.name }}
       </div>

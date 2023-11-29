@@ -4,6 +4,7 @@ import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 const {t} = useI18n();
 
@@ -28,8 +29,10 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
           </li>
         </ul>
       </div>
-      <div class="relative md:w-1/2 order-1 md:order-2">
-        <img :src="highlightedCocktail?.thumb" role="presentation" class="rounded-lg" />
+      <div
+        class="relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden"
+      >
+        <LazyImage :src="highlightedCocktail?.thumb" />
         <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
       </div>
     </div>
@@ -39,3 +42,12 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
     </div>
   </ModalComponent>
 </template>
+<style lang="scss" scoped>
+:deep(.lazy-image__error), :deep(.lazy-image__fallback) {
+  @apply pt-[100%];
+  > svg {
+    @apply absolute top-1/2 left-1/2;
+    transform: translate(-50%, -50%);
+  }
+}
+</style>
