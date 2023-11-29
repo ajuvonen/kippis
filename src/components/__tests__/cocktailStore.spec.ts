@@ -1,10 +1,9 @@
 import {setActivePinia, createPinia} from 'pinia';
 import {describe, beforeEach, it, expect} from 'vitest';
-import {HttpResponse, http, type PathParams} from 'msw';
+import {HttpResponse, http} from 'msw';
 import {useCocktailStore} from '@/stores/cocktail';
 import {testCocktails, server, testSearchResults} from '@/components/__tests__/mswHandlers';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
-import {type SearchResultAPICocktail} from '@/utils/types';
 
 const testCocktail = testCocktails[0][1];
 
@@ -108,7 +107,7 @@ describe('Cocktail store', () => {
 
   it('does not search without searchString', async () => {
     server.use(
-      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', ({request}) => {
+      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', () => {
         throw new Error();
       }),
     );
