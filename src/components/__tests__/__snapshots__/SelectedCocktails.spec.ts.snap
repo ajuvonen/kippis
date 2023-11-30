@@ -8,8 +8,8 @@ exports[`SelectedCocktails > mounts 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
-              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
             </div>
@@ -19,7 +19,7 @@ exports[`SelectedCocktails > mounts 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-418939cb=\\"\\" href=\\"/ingredients\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to ingredients.</a>
+    </ul><a data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
   </aside>
 </transition-stub>"
 `;
@@ -32,8 +32,8 @@ exports[`SelectedCocktails > prints selection data 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
-              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
             </div>
@@ -46,8 +46,8 @@ exports[`SelectedCocktails > prints selection data 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Mojito&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
-              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
             </div>
@@ -57,7 +57,7 @@ exports[`SelectedCocktails > prints selection data 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-418939cb=\\"\\" href=\\"/ingredients\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to ingredients.</a>
+    </ul><a data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
   </aside>
 </transition-stub>"
 `;

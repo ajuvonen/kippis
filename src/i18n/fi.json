@@ -8,13 +8,10 @@
     "ingress": "Tällä palvelulla löydät inspiraatiota cocktailien valmistukseen ja luot ostoslistan illanviettoa varten. Käytä hakua tai kategoriatageja päästäksesi alkuun.",
     "credit": "Valokuva: {0}"
   },
-  "ingredientsView": {
-    "title": "Ainesosat"
-  },
   "menu": {
     "home": "Etusivu",
     "search": "Haku",
-    "ingredients": "Ainesosat"
+    "selection": "Valinnat"
   },
   "modal": {
     "close": "Sulje"
@@ -36,7 +33,15 @@
   "selectedCocktails": {
     "backButton": "Janoinen? Palaa hakuun.",
     "title": "Valitsemasi juomat",
-    "readyButton": "Valmis? Siirry selaamaan ainesosia."
+    "readyButton": "Valmis? Siirry valintoihin."
+  },
+  "selectionView": {
+    "title": "Valinnat",
+    "alcohols": "Alkoholit",
+    "fruits": "Hedelmät ja vihannekset",
+    "ingredients": "Ainesosat",
+    "mixers": "Mixerit",
+    "other": "Muut ainesosat"
   },
   "tags": {
     "gin": "Gin",

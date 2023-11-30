@@ -12,8 +12,8 @@ const {selection} = storeToRefs(useCocktailStore());
     <ul class="h-full flex flex-nowrap justify-center items-stretch">
       <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
       <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
-      <RouterLink class="relative" to="/ingredients">
-        {{ t('menu.ingredients') }}
+      <RouterLink class="relative" to="/selection">
+        {{ t('menu.selection') }}
         <div
           v-if="selection.length"
           data-test-id="selection-size-indicator"
