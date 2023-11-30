@@ -3,7 +3,7 @@ import {useI18n} from 'vue-i18n';
 import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import ActionButtons from '@/components/ActionButtons.vue';
-import LazyImage from '@/components/LazyImage.vue';
+import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 
 defineProps<{
   cocktail: SearchResultCocktail;
@@ -24,7 +24,7 @@ const {openCocktailModal} = cocktailStore;
       @click="openCocktailModal(cocktail.id)"
       @keypress.enter="openCocktailModal(cocktail.id)"
     >
-      <LazyImage :src="`${cocktail.thumb}/preview`" class="search-result__image" />
+      <LazyCocktailImage :src="`${cocktail.thumb}/preview`" class="search-result__image" />
       <div class="search-result__shadow">
         {{ cocktail.name }}
       </div>

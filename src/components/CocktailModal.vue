@@ -4,7 +4,7 @@ import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
-import LazyImage from '@/components/LazyImage.vue';
+import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 
 const {t} = useI18n();
 
@@ -32,7 +32,7 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
       <div
         class="relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden"
       >
-        <LazyImage :src="highlightedCocktail?.thumb" />
+        <LazyCocktailImage :src="highlightedCocktail?.thumb" />
         <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
       </div>
     </div>
