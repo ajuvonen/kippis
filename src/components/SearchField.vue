@@ -2,12 +2,17 @@
 import {onMounted, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import {useI18n} from 'vue-i18n';
+import {useCocktailStore} from '@/stores/cocktail';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
 import IconComponent from '@/components/IconComponent.vue';
 
+const cocktailStore = useCocktailStore();
+const {showRandomCocktail} = cocktailStore;
+
 const router = useRouter();
 const route = useRoute();
+
 const {t} = useI18n();
 
 const searchString = ref('');
@@ -45,7 +50,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       </LinkButton>
     </li>
     <li>
-      <button>
+      <button @click="showRandomCocktail" data-test-id="search-field__random-button">
         <IconComponent icon="clover" />
         <span>{{ t('searchField.random') }}</span>
       </button>

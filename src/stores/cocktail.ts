@@ -3,6 +3,7 @@ import {
   getBySearchString,
   getDetails,
   getNonAlcoholic,
+  getRandomCocktail,
   getByFirstLetter,
 } from '@/api';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
@@ -34,6 +35,11 @@ export const useCocktailStore = defineStore('cocktail', {
       const cocktail = await getDetails(id);
       if (cocktail) {
         this.highlightedCocktail = cocktail;
+      }
+    },
+    async showRandomCocktail() {
+      while (this.highlightedCocktail === null) {
+        this.highlightedCocktail = await getRandomCocktail();
       }
     },
     removeFromSelection(id: number) {

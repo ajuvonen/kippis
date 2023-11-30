@@ -71,17 +71,14 @@ describe('Cocktail store', () => {
 
   it('searches with first letter', async () => {
     server.use(
-      http.get(
-        'https://www.thecocktaildb.com/api/json/v1/1/search.php',
-        ({request}) => {
-          const url = new URL(request.url);
-          const searchParam = url.searchParams.get('f');
-          if (searchParam === 'a') {
-            return HttpResponse.json({drinks: [testSearchResults[0][0]]});
-          }
-          return new HttpResponse(null, {status: 404});
-        },
-      ),
+      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', ({request}) => {
+        const url = new URL(request.url);
+        const searchParam = url.searchParams.get('f');
+        if (searchParam === 'a') {
+          return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+        }
+        return new HttpResponse(null, {status: 404});
+      }),
     );
     await cocktailStore.search('a');
     expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1]]);
@@ -89,17 +86,14 @@ describe('Cocktail store', () => {
 
   it('searches with search string', async () => {
     server.use(
-      http.get(
-        'https://www.thecocktaildb.com/api/json/v1/1/search.php',
-        ({request}) => {
-          const url = new URL(request.url);
-          const searchParam = url.searchParams.get('s');
-          if (searchParam === 'abc') {
-            return HttpResponse.json({drinks: [testSearchResults[0][0]]});
-          }
-          return new HttpResponse(null, {status: 404});
-        },
-      ),
+      http.get('https://www.thecocktaildb.com/api/json/v1/1/search.php', ({request}) => {
+        const url = new URL(request.url);
+        const searchParam = url.searchParams.get('s');
+        if (searchParam === 'abc') {
+          return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+        }
+        return new HttpResponse(null, {status: 404});
+      }),
       http.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php', ({request}) => {
         const url = new URL(request.url);
         const ingredient = url.searchParams.get('i') || '';
@@ -151,5 +145,20 @@ describe('Cocktail store', () => {
     );
     await cocktailStore.searchWithTag('lemonade');
     expect(requestedIngredients).toEqual([]);
+  });
+
+  it('searches until a random cocktail is found', async () => {
+    let requestCount = 0;
+    server.use(
+      http.get('https://www.thecocktaildb.com/api/json/v1/1/random.php', () => {
+        if (requestCount === 3) {
+          return HttpResponse.json({drinks: [testCocktails[0][0]]});
+        }
+        requestCount = requestCount + 1;
+        return HttpResponse.json({drinks: []});
+      }),
+    );
+    await cocktailStore.showRandomCocktail();
+    expect(cocktailStore.highlightedCocktail).toEqual(testCocktails[0][1]);
   });
 });

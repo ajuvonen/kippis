@@ -1,9 +1,16 @@
 import {mount} from '@vue/test-utils';
-import {describe, it, expect, vi} from 'vitest';
+import {describe, it, expect, vi, beforeEach} from 'vitest';
 import router from '@/router';
 import SearchField from '@/components/SearchField.vue';
+import {useCocktailStore} from '@/stores/cocktail';
 
 describe('SearchField.vue', () => {
+  let cocktailStore: ReturnType<typeof useCocktailStore>;
+
+  beforeEach(async () => {
+    cocktailStore = useCocktailStore();
+  });
+
   it('mounts', () => {
     const wrapper = mount(SearchField);
     expect(wrapper.html()).toMatchSnapshot();
@@ -34,7 +41,7 @@ describe('SearchField.vue', () => {
   it('navigates to the correct route when a link button is clicked', async () => {
     const pushSpy = vi.spyOn(router, 'push');
     const wrapper = mount(SearchField);
-    const linkButtons = wrapper.findAllComponents({ name: 'LinkButton' });
+    const linkButtons = wrapper.findAllComponents({name: 'LinkButton'});
 
     for (let i = 0; i < linkButtons.length; i++) {
       const linkButton = linkButtons[i];
@@ -42,5 +49,11 @@ describe('SearchField.vue', () => {
       await linkButton.trigger('click');
       expect(pushSpy).toHaveBeenCalledWith(`/search?tag=${tag}`);
     }
+  });
+
+  it('triggers random cocktail search', async () => {
+    const wrapper = mount(SearchField);
+    await wrapper.findByTestId('search-field__random-button').trigger('click');
+    expect(cocktailStore.showRandomCocktail).toHaveBeenCalled();
   });
 });

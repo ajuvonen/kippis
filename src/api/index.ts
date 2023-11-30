@@ -49,3 +49,10 @@ export const getNonAlcoholic = () =>
     .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) =>
       transformSearchResults(drinks),
     );
+
+export const getRandomCocktail = () => axios
+.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+.then(
+  ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[] | null}}) =>
+    transformFullDetails(drinks)[0] || null,
+);
