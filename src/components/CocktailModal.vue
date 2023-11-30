@@ -5,11 +5,16 @@ import {useCocktailStore} from '@/stores/cocktail';
 import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
+import CapitalizedList from '@/components/CapitalizedList.vue';
+import type {Ingredient} from '@/utils/types';
 
 const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
+
+const joinIngredients = (ingredients: Ingredient[] | undefined) =>
+  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].join(' '));
 </script>
 <template>
   <ModalComponent
@@ -19,19 +24,12 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
   >
     <div class="flex flex-col md:flex-row">
       <div class="md:w-1/2 md:pr-4 order-2 md:order-1">
-        <h3 class="md:mt-0">{{ t('cocktailModal.ingredients') }}</h3>
-        <ul>
-          <li v-for="ingredient in highlightedCocktail?.ingredients" :key="ingredient.ingredient">
-            <span v-if="ingredient.measure" class="pr-1 text-sm uppercase">
-              {{ ingredient.measure }}
-            </span>
-            <span class="text-sm uppercase">{{ ingredient.ingredient }}</span>
-          </li>
-        </ul>
+        <CapitalizedList
+          :title="t('cocktailModal.ingredients')"
+          :items="joinIngredients(highlightedCocktail?.ingredients)"
+        ></CapitalizedList>
       </div>
-      <div
-        class="relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden"
-      >
+      <div class="relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden">
         <LazyCocktailImage :src="highlightedCocktail?.thumb" />
         <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
       </div>
@@ -43,7 +41,12 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
   </ModalComponent>
 </template>
 <style lang="scss" scoped>
-:deep(.lazy-image__error), :deep(.lazy-image__fallback) {
+:deep(.capitalized-list h3) {
+  @apply md:mt-0;
+}
+
+:deep(.lazy-image__error),
+:deep(.lazy-image__fallback) {
   @apply pt-[100%];
   > svg {
     @apply absolute top-1/2 left-1/2;
