@@ -100,9 +100,17 @@ describe('Cocktail store', () => {
           return new HttpResponse(null, {status: 404});
         },
       ),
+      http.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php', ({request}) => {
+        const url = new URL(request.url);
+        const ingredient = url.searchParams.get('i') || '';
+        if (ingredient === 'abc') {
+          return HttpResponse.json({drinks: [testSearchResults[1][0]]});
+        }
+        return new HttpResponse(null, {status: 404});
+      }),
     );
     await cocktailStore.search('abc');
-    expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1]]);
+    expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
   });
 
   it('does not search without searchString', async () => {

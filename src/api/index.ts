@@ -1,10 +1,7 @@
 import axios from 'axios';
 import {BASE_API_ADDRESS} from '@/utils/constants';
 import {transformSearchResults, transformFullDetails} from '@/utils/helpers';
-import type {
-  SearchResultAPICocktail,
-  FullDetailsAPICocktail,
-} from '@/utils/types';
+import type {SearchResultAPICocktail, FullDetailsAPICocktail} from '@/utils/types';
 
 export const getByFirstLetter = (searchString: string) =>
   axios
@@ -25,19 +22,25 @@ export const getByIngredients = async (ingredients: string[]) => {
   return transformSearchResults(cocktails.flat());
 };
 
-export const getBySearchString = (searchString: string) =>
-  axios
-    .get(`${BASE_API_ADDRESS}/search.php?s=${searchString}`)
-    .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) =>
-      transformSearchResults(drinks),
-    );
+export const getBySearchString = async (searchString: string) => {
+  const cocktails = await Promise.all([
+    axios
+      .get(`${BASE_API_ADDRESS}/filter.php?i=${searchString}`)
+      .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
+    axios
+      .get(`${BASE_API_ADDRESS}/search.php?s=${searchString}`)
+      .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
+  ]);
+
+  return transformSearchResults(cocktails.flat());
+};
 
 export const getDetails = (id: number) =>
   axios
     .get(`${BASE_API_ADDRESS}/lookup.php?i=${id}`)
     .then(
       ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[] | null}}) =>
-        transformFullDetails(drinks)[0],
+        transformFullDetails(drinks)[0] || null,
     );
 
 export const getNonAlcoholic = () =>
