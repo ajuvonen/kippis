@@ -8,9 +8,11 @@ exports[`SelectedCocktails > mounts 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
-                <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
-              </svg></div>
+            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+                  <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
+                </svg></div>
+            </div>
             <div data-v-cd13f5f7=\\"\\" class=\\"search-result__shadow\\">Margarita</div>
           </div><button data-v-634d56d3=\\"\\" data-v-cd13f5f7=\\"\\" aria-label=\\"Remove &quot;Margarita&quot; from selection\\" class=\\"remove-cocktail-0 action-button bg-rose-400 border-slate-800\\"><svg data-v-634d56d3=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
               <path d=\\"M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z\\" class=\\"transition-all ease-in-out\\"></path>
@@ -30,9 +32,11 @@ exports[`SelectedCocktails > prints selection data 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
-                <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
-              </svg></div>
+            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+                  <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
+                </svg></div>
+            </div>
             <div data-v-cd13f5f7=\\"\\" class=\\"search-result__shadow\\">Margarita</div>
           </div><button data-v-634d56d3=\\"\\" data-v-cd13f5f7=\\"\\" aria-label=\\"Remove &quot;Margarita&quot; from selection\\" class=\\"remove-cocktail-0 action-button bg-rose-400 border-slate-800\\"><svg data-v-634d56d3=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
               <path d=\\"M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z\\" class=\\"transition-all ease-in-out\\"></path>
@@ -42,9 +46,11 @@ exports[`SelectedCocktails > prints selection data 1`] = `
       <li>
         <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Mojito&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
-                <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
-              </svg></div>
+            <div data-v-c27c5544=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+              <div data-v-c27c5544=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-c27c5544=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
+                  <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
+                </svg></div>
+            </div>
             <div data-v-cd13f5f7=\\"\\" class=\\"search-result__shadow\\">Mojito</div>
           </div><button data-v-634d56d3=\\"\\" data-v-cd13f5f7=\\"\\" aria-label=\\"Remove &quot;Mojito&quot; from selection\\" class=\\"remove-cocktail-1 action-button bg-rose-400 border-slate-800\\"><svg data-v-634d56d3=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
               <path d=\\"M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z\\" class=\\"transition-all ease-in-out\\"></path>

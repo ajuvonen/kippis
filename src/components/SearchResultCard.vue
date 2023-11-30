@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-import {useElementVisibility, watchOnce} from '@vueuse/core';
 import {useI18n} from 'vue-i18n';
 import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import ActionButtons from '@/components/ActionButtons.vue';
-import LazyImage from './LazyImage.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 defineProps<{
   cocktail: SearchResultCocktail;
 }>();
 
 const {t} = useI18n();
-
-const wrapper = ref<HTMLDivElement | null>(null);
-const isVisible = useElementVisibility(wrapper);
-const loadContent = ref(isVisible.value);
-
-watchOnce(isVisible, () => {
-  loadContent.value = true;
-});
 
 const cocktailStore = useCocktailStore();
 const {openCocktailModal} = cocktailStore;
@@ -34,7 +24,7 @@ const {openCocktailModal} = cocktailStore;
       @click="openCocktailModal(cocktail.id)"
       @keypress.enter="openCocktailModal(cocktail.id)"
     >
-      <LazyImage :src="loadContent ? `${cocktail.thumb}/preview` : ''" class="search-result__image" />
+      <LazyImage :src="`${cocktail.thumb}/preview`" class="search-result__image" />
       <div class="search-result__shadow">
         {{ cocktail.name }}
       </div>
