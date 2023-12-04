@@ -24,7 +24,7 @@ watchOnce(isVisible, () => {
 </script>
 
 <template>
-  <div class="lazy-image__wrapper" ref="wrapper">
+  <div ref="wrapper">
     <UseImage :src="loadContent ? src : ''" :alt="alt">
       <template #loading>
         <div class="lazy-image__fallback">

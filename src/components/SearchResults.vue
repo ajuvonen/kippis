@@ -8,9 +8,20 @@ defineProps<{
 
 </script>
 <template>
-  <ul class="flex flex-auto flex-wrap gap-6 content-start justify-center">
+  <ul class="search-results">
     <li v-for="cocktail in cocktails" :key="cocktail.id">
       <SearchResultCard :cocktail="cocktail" />
     </li>
   </ul>
 </template>
+<style lang="scss" scoped>
+.search-results {
+  @apply flex flex-auto flex-wrap gap-6 content-start justify-center;
+}
+
+@media print {
+  .search-results {
+    @apply grid grid-cols-4 gap-4 place-items-center;
+  }
+}
+</style>

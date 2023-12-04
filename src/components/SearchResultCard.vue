@@ -15,7 +15,7 @@ const cocktailStore = useCocktailStore();
 const {openCocktailModal} = cocktailStore;
 </script>
 <template>
-  <div class="search-result__wrapper" ref="wrapper">
+  <div class="search-result" ref="wrapper">
     <div
       :aria-label="t('searchResultCard.open', [cocktail.name])"
       class="search-result__image-wrapper"
@@ -33,7 +33,7 @@ const {openCocktailModal} = cocktailStore;
   </div>
 </template>
 <style lang="scss" scoped>
-.search-result__wrapper {
+.search-result {
   @apply relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-shadow ease-in-out;
 }
 
@@ -53,5 +53,15 @@ const {openCocktailModal} = cocktailStore;
 
 .search-result__shadow {
   @apply absolute w-full h-full top-0 pointer-events-none bg-gradient-to-b from-slate-800 to-transparent to-40% text-white uppercase text-xs p-2;
+}
+
+@media print {
+  .search-result {
+    @apply w-fit;
+  }
+
+  .search-result__shadow {
+    @apply bg-none;
+  }
 }
 </style>

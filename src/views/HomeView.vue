@@ -14,12 +14,12 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div
+  <aside
     :style="{'background-image': `url('/${mainPhoto?.file}')`}"
-    class="relative h-1/2 sm:h-full sm:w-1/2 text-center bg-cover bg-center"
+    class="home__side-panel"
   >
-    <aside
-      class="flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%"
+    <div
+      class="home__side-panel-content-wrapper"
     >
       <h1>{{ t('homeView.title') }}</h1>
       <p>{{ t('homeView.ingress') }}</p>
@@ -28,9 +28,22 @@ onMounted(() => {
           t('homeView.credit', [mainPhoto?.acknowledgement])
         }}</a>
       </div>
-    </aside>
-  </div>
-  <main class="flex flex-col justify-center h-1/2 sm:h-full sm:w-1/2">
+    </div>
+  </aside>
+  <main class="home__main">
     <SearchField />
   </main>
 </template>
+<style lang="scss" scoped>
+.home__side-panel {
+  @apply p-0 relative h-3/5 sm:h-full sm:w-1/2 text-center bg-cover bg-center;
+}
+
+.home__side-panel-content-wrapper {
+  @apply p-4 flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%;
+}
+
+.home__main {
+  @apply flex flex-col justify-center h-2/5 sm:h-full sm:w-1/2;
+}
+</style>

@@ -21,30 +21,27 @@ onMounted(() => {
   searchString.value = (route.query.searchString || '').toString().slice(0, 20);
 });
 
-const search = () => router.push({name: 'search', query: {searchString: searchString.value}})
+const search = () => router.push({name: 'search', query: {searchString: searchString.value}});
 </script>
 
 <template>
-  <label for="search-box" class="block text-center text-3xl mt-4 mb-4">{{ t('searchField.label') }}</label>
-  <div class="flex justify-center divide-x mb-4">
+  <label for="search-input" class="search-field__label">{{ t('searchField.label') }}</label>
+  <div class="search-field__wrapper">
     <input
-      id="search-box"
+      id="search-input"
       v-model="searchString"
       type="search"
       maxlength="20"
-      class="rounded-tr-none rounded-br-none pb-1"
+      class="search-field__input"
       @keypress.enter="search"
     />
-    <button
-      class="rounded-tl-none rounded-bl-none"
-      @click="search"
-    >
+    <button class="search-field__search-button" @click="search">
       <IconComponent icon="magnify" />
       <span>{{ t('searchField.search') }}</span>
     </button>
   </div>
-  <ul class="flex flex-wrap justify-center" :aria-label="t('searchField.tagListTitle')">
-    <li class="inline" v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
+  <ul class="search-field__tag-container" :aria-label="t('searchField.tagListTitle')">
+    <li v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
       <LinkButton :to="`/search?tag=${tag}`">
         {{ t(`tags.${tag}`) }}
       </LinkButton>
@@ -58,11 +55,39 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
   </ul>
 </template>
 <style lang="scss" scoped>
+.search-field__label {
+  @apply block text-center text-3xl mt-4 mb-4;
+}
+
+.search-field__wrapper {
+  @apply flex justify-center divide-x mb-4;
+}
+
+.search-field__input {
+  @apply rounded-tr-none rounded-br-none pb-1;
+
+  &:focus {
+    z-index: 1;
+  }
+}
+
+.search-field__search-button {
+  @apply rounded-tl-none rounded-bl-none;
+}
+
+.search-field__tag-container {
+  @apply flex flex-wrap justify-center;
+}
+
 li + li {
   @apply ml-1;
 }
 
-input:focus {
-  z-index: 1;
+@media print {
+  .search-field__label,
+  .search-field__wrapper,
+  .search-field__tag-container {
+    @apply hidden;
+  }
 }
 </style>

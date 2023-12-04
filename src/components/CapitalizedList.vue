@@ -9,13 +9,13 @@ defineProps<{
   <div class="capitalized-list">
     <h3 v-if="items.length">{{ title }}</h3>
     <ul v-if="items.length">
-      <li v-for="item in items" :key="item">{{ item }}</li>
+      <li v-for="item in items" :key="item" class="capitalized-list__item">{{ item }}</li>
     </ul>
   </div>
 </template>
 
 <style lang="scss" scoped>
-li {
+.capitalized-list__item {
   @apply text-sm uppercase leading-8;
 }
 </style>

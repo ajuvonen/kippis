@@ -39,7 +39,7 @@ const randomDegree = () => Math.floor(Math.random() * 8) - 4;
         <CapitalizedList :title="t('selectionView.fruits')" :items="fruits"></CapitalizedList>
         <CapitalizedList :title="t('selectionView.other')" :items="other"></CapitalizedList>
       </div>
-      <div class="hidden lg:block w-1/3 ml-4">
+      <div class="selection__cocktail-image-wrapper">
         <LazyCocktailImage
           v-for="cocktail in selection"
           :key="cocktail.id"
@@ -52,6 +52,10 @@ const randomDegree = () => Math.floor(Math.random() * 8) - 4;
   </main>
 </template>
 <style scoped>
+.selection__cocktail-image-wrapper {
+  @apply hidden lg:block w-1/3 ml-4;
+}
+
 .selection__cocktail-image {
   @apply border-8 border-slate-100 shadow-sm;
 
@@ -61,6 +65,16 @@ const randomDegree = () => Math.floor(Math.random() * 8) - 4;
 
   + .selection__cocktail-image {
     @apply mt-8;
+  }
+}
+
+@media print {
+  .selection__cocktail-image-wrapper {
+    @apply block;
+  }
+
+  .selection__cocktail-image {
+    @apply break-inside-avoid;
   }
 }
 </style>

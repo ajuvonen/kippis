@@ -14,19 +14,39 @@ const {selection} = storeToRefs(cocktailStore);
 </script>
 <template>
   <Transition>
-    <aside v-if="selection.length" class="w-[400px] hidden md:flex flex-col bg-slate-800">
+    <aside v-if="selection.length" class="selected-cocktails">
       <h2>{{ t('selectedCocktails.title') }}</h2>
       <SearchResults class="pt-2 mb-4 overflow-y-scroll" :cocktails="selection" />
-      <LinkButton v-if="route.name === 'search'" to="/selection" class="flex-shrink-0" data-test-id="selected-cocktails__action-button">
+      <LinkButton
+        v-if="route.name === 'search'"
+        to="/selection"
+        class="flex-shrink-0"
+        data-test-id="selected-cocktails__action-button"
+      >
         {{ t('selectedCocktails.readyButton') }}
       </LinkButton>
-      <LinkButton v-else to="/search" class="flex-shrink-0" data-test-id="selected-cocktails__action-button">
+      <LinkButton
+        v-else
+        to="/search"
+        class="flex-shrink-0"
+        data-test-id="selected-cocktails__action-button"
+      >
         {{ t('selectedCocktails.backButton') }}
       </LinkButton>
     </aside>
   </Transition>
 </template>
 <style lang="scss" scoped>
+.selected-cocktails {
+  @apply w-[400px] hidden md:flex flex-col bg-slate-800;
+}
+
+@media print {
+  .selected-cocktails {
+    @apply hidden;
+  }
+}
+
 .v-enter-to,
 .v-leave-from {
   margin-left: 0;

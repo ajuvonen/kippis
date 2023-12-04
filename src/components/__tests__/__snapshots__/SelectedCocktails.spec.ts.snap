@@ -2,13 +2,13 @@
 
 exports[`SelectedCocktails > mounts 1`] = `
 "<transition-stub data-v-418939cb=\\"\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <aside data-v-418939cb=\\"\\" class=\\"w-[400px] hidden md:flex flex-col bg-slate-800\\">
+  <aside data-v-418939cb=\\"\\" class=\\"selected-cocktails\\">
     <h2 data-v-418939cb=\\"\\">Your Cocktails</h2>
-    <ul data-v-418939cb=\\"\\" class=\\"flex flex-auto flex-wrap gap-6 content-start justify-center pt-2 mb-4 overflow-y-scroll\\">
-      <li>
-        <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
+    <ul data-v-a73318e6=\\"\\" data-v-418939cb=\\"\\" class=\\"search-results pt-2 mb-4 overflow-y-scroll\\">
+      <li data-v-a73318e6=\\"\\">
+        <div data-v-cd13f5f7=\\"\\" data-v-a73318e6=\\"\\" class=\\"search-result\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"search-result__image\\">
               <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
@@ -19,20 +19,20 @@ exports[`SelectedCocktails > mounts 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
+    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
   </aside>
 </transition-stub>"
 `;
 
 exports[`SelectedCocktails > prints selection data 1`] = `
 "<transition-stub data-v-418939cb=\\"\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <aside data-v-418939cb=\\"\\" class=\\"w-[400px] hidden md:flex flex-col bg-slate-800\\">
+  <aside data-v-418939cb=\\"\\" class=\\"selected-cocktails\\">
     <h2 data-v-418939cb=\\"\\">Your Cocktails</h2>
-    <ul data-v-418939cb=\\"\\" class=\\"flex flex-auto flex-wrap gap-6 content-start justify-center pt-2 mb-4 overflow-y-scroll\\">
-      <li>
-        <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
+    <ul data-v-a73318e6=\\"\\" data-v-418939cb=\\"\\" class=\\"search-results pt-2 mb-4 overflow-y-scroll\\">
+      <li data-v-a73318e6=\\"\\">
+        <div data-v-cd13f5f7=\\"\\" data-v-a73318e6=\\"\\" class=\\"search-result\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Margarita&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"search-result__image\\">
               <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
@@ -43,10 +43,10 @@ exports[`SelectedCocktails > prints selection data 1`] = `
             </svg></button>
         </div>
       </li>
-      <li>
-        <div data-v-cd13f5f7=\\"\\" class=\\"search-result__wrapper\\">
+      <li data-v-a73318e6=\\"\\">
+        <div data-v-cd13f5f7=\\"\\" data-v-a73318e6=\\"\\" class=\\"search-result\\">
           <div data-v-cd13f5f7=\\"\\" aria-label=\\"View info about &quot;Mojito&quot;\\" class=\\"search-result__image-wrapper\\" role=\\"button\\" tabindex=\\"0\\">
-            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"lazy-image__wrapper search-result__image\\">
+            <div data-v-35e45732=\\"\\" data-v-cd13f5f7=\\"\\" class=\\"search-result__image\\">
               <div data-v-35e45732=\\"\\" class=\\"lazy-image__fallback\\"><svg data-v-35e45732=\\"\\" viewBox=\\"0 0 24 24\\" aria-hidden=\\"true\\" class=\\"w-5 h-5\\">
                   <path d=\\"M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z\\" class=\\"transition-all ease-in-out\\"></path>
                 </svg></div>
@@ -57,7 +57,7 @@ exports[`SelectedCocktails > prints selection data 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"flex items-center link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
+    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
   </aside>
 </transition-stub>"
 `;

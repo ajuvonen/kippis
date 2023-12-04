@@ -61,4 +61,10 @@
   *:focus {
     @apply outline outline-2 outline-slate-800;
   }
+
+  @media print {
+    button {
+      @apply hidden;
+    }
+  }
 }

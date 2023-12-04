@@ -11,7 +11,7 @@ describe('SearchView', () => {
     cocktailStore = useCocktailStore();
   });
 
-  it('renders correctly', () => {
+  it('mounts', () => {
     const wrapper = mount(SearchView);
     expect(wrapper.html()).toMatchSnapshot();
   });

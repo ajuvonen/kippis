@@ -8,16 +8,15 @@ const {t} = useI18n();
 const {selection} = storeToRefs(useCocktailStore());
 </script>
 <template>
-  <nav class="h-14 z-10 bg-white shadow-sm flex-shrink-0">
-    <ul class="h-full flex flex-nowrap justify-center items-stretch">
-      <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
-      <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
-      <RouterLink class="relative" to="/selection">
+  <nav class="navigation-menu">
+    <ul class="navigation-menu__link-container">
+      <RouterLink class="navigation-menu__link" to="/">{{ t('menu.home') }}</RouterLink>
+      <RouterLink class="navigation-menu__link" to="/search">{{ t('menu.search') }}</RouterLink>
+      <RouterLink class="navigation-menu__link relative" to="/selection">
         {{ t('menu.selection') }}
         <div
           v-if="selection.length"
-          data-test-id="selection-size-indicator"
-          class="absolute flex justify-center align-center pb-[0.15rem] top-0 right-0 w-4 h-4 text-white text-center bg-rose-500 text-xs rounded-full"
+          class="navigation-menu__selection-size"
         >
           {{ selection.length }}
         </div>
@@ -26,7 +25,19 @@ const {selection} = storeToRefs(useCocktailStore());
   </nav>
 </template>
 <style lang="scss" scoped>
-a {
+.navigation-menu {
+  @apply h-14 bg-white shadow-sm flex-shrink-0;
+}
+
+.navigation-menu__link-container {
+  @apply h-full flex flex-nowrap justify-center items-stretch;
+}
+
+.navigation-menu__selection-size {
+  @apply absolute top-0 right-0 w-5 h-5 pt-[0.1rem] text-slate-800 font-bold text-center bg-rose-400 text-xs rounded-full;
+}
+
+.navigation-menu__link {
   @apply flex flex-col justify-center w-1/3 sm:w-28 text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
 
   &:hover {
@@ -35,6 +46,12 @@ a {
 
   &.router-link-exact-active:not(:hover) {
     @apply bg-slate-100;
+  }
+}
+
+@media print {
+  .navigation-menu {
+    @apply hidden;
   }
 }
 </style>

@@ -6,7 +6,12 @@ defineProps<{
 }>();
 </script>
 <template>
-  <RouterLink class="flex items-center link-button" :to="to">
+  <RouterLink class="link-button" :to="to">
     <slot />
   </RouterLink>
 </template>
+<style lang="scss" scoped>
+.link-button {
+  @apply flex items-center;
+}
+</style>

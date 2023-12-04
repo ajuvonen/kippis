@@ -23,13 +23,12 @@ const joinIngredients = (ingredients: Ingredient[] | undefined) =>
     @close="highlightedCocktail = null"
   >
     <div class="flex flex-col md:flex-row">
-      <div class="md:w-1/2 md:pr-4 order-2 md:order-1">
-        <CapitalizedList
-          :title="t('cocktailModal.ingredients')"
-          :items="joinIngredients(highlightedCocktail?.ingredients)"
-        ></CapitalizedList>
-      </div>
-      <div class="relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden">
+      <CapitalizedList
+        :title="t('cocktailModal.ingredients')"
+        :items="joinIngredients(highlightedCocktail?.ingredients)"
+        class="cocktail-modal__ingredients"
+      ></CapitalizedList>
+      <div class="cocktail-modal__image-wrapper">
         <LazyCocktailImage :src="highlightedCocktail?.thumb" />
         <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
       </div>
@@ -41,6 +40,14 @@ const joinIngredients = (ingredients: Ingredient[] | undefined) =>
   </ModalComponent>
 </template>
 <style lang="scss" scoped>
+.cocktail-modal__ingredients {
+  @apply md:w-1/2 md:pr-4 order-2 md:order-1;
+}
+
+.cocktail-modal__image-wrapper {
+  @apply relative md:w-1/2 order-1 md:order-2 rounded-lg overflow-hidden;
+}
+
 :deep(.capitalized-list h3) {
   @apply md:mt-0;
 }

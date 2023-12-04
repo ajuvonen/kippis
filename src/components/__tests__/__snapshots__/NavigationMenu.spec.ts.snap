@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`NavigationMenu > mounts 1`] = `
-"<nav data-v-fe35c617=\\"\\" class=\\"h-14 z-10 bg-white shadow-sm flex-shrink-0\\">
-  <ul data-v-fe35c617=\\"\\" class=\\"h-full flex flex-nowrap justify-center items-stretch\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"relative\\">Selection
+"<nav data-v-fe35c617=\\"\\" class=\\"navigation-menu\\">
+  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection
       <!--v-if-->
     </a></ul>
 </nav>"
 `;
 
 exports[`NavigationMenu > shows selection size 1`] = `
-"<nav data-v-fe35c617=\\"\\" class=\\"h-14 z-10 bg-white shadow-sm flex-shrink-0\\">
-  <ul data-v-fe35c617=\\"\\" class=\\"h-full flex flex-nowrap justify-center items-stretch\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"relative\\">Selection <div data-v-fe35c617=\\"\\" data-test-id=\\"selection-size-indicator\\" class=\\"absolute flex justify-center align-center pb-[0.15rem] top-0 right-0 w-4 h-4 text-white text-center bg-rose-500 text-xs rounded-full\\">1</div></a></ul>
+"<nav data-v-fe35c617=\\"\\" class=\\"navigation-menu\\">
+  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection <div data-v-fe35c617=\\"\\" class=\\"navigation-menu__selection-size\\">1</div></a></ul>
 </nav>"
 `;
