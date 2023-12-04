@@ -25,34 +25,36 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 </script>
 
 <template>
-  <label for="search-input" class="search-field__label">{{ t('searchField.label') }}</label>
-  <div class="search-field__wrapper">
-    <input
-      id="search-input"
-      v-model="searchString"
-      type="search"
-      maxlength="20"
-      class="search-field__input"
-      @keypress.enter="search"
-    />
-    <button class="search-field__search-button" @click="search">
-      <IconComponent icon="magnify" />
-      <span>{{ t('searchField.search') }}</span>
-    </button>
-  </div>
-  <ul class="search-field__tag-container" :aria-label="t('searchField.tagListTitle')">
-    <li v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
-      <LinkButton :to="`/search?tag=${tag}`">
-        {{ t(`tags.${tag}`) }}
-      </LinkButton>
-    </li>
-    <li>
-      <button @click="showRandomCocktail" data-test-id="search-field__random-button">
-        <IconComponent icon="clover" />
-        <span>{{ t('searchField.random') }}</span>
+  <div>
+    <label for="search-input" class="search-field__label">{{ t('searchField.label') }}</label>
+    <div class="search-field__wrapper">
+      <input
+        id="search-input"
+        v-model="searchString"
+        type="search"
+        maxlength="20"
+        class="search-field__input"
+        @keypress.enter="search"
+      />
+      <button class="search-field__search-button" @click="search">
+        <IconComponent icon="magnify" />
+        <span>{{ t('searchField.search') }}</span>
       </button>
-    </li>
-  </ul>
+    </div>
+    <ul class="search-field__tag-container" :aria-label="t('searchField.tagListTitle')">
+      <li v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
+        <LinkButton :to="`/search?tag=${tag}`">
+          {{ t(`tags.${tag}`) }}
+        </LinkButton>
+      </li>
+      <li>
+        <button @click="showRandomCocktail" data-test-id="search-field__random-button">
+          <IconComponent icon="clover" />
+          <span>{{ t('searchField.random') }}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>
 <style lang="scss" scoped>
 .search-field__label {
@@ -60,7 +62,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 }
 
 .search-field__wrapper {
-  @apply flex justify-center divide-x mb-4;
+  @apply flex justify-center mb-4;
 }
 
 .search-field__input {
