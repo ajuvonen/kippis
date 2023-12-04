@@ -43,7 +43,6 @@ const {openCocktailModal} = cocktailStore;
 }
 
 .search-result__image {
-  @apply h-full;
   filter: contrast(115%);
   transition: transform 0.5s ease-in-out;
   &:hover {

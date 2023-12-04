@@ -43,9 +43,10 @@ watchOnce(isVisible, () => {
 <style lang="scss" scoped>
 .lazy-image__fallback,
 .lazy-image__error {
-  @apply bg-slate-800 h-full flex items-center justify-center fill-slate-100;
+  @apply bg-slate-800 pt-[100%] fill-slate-100;
   > svg {
-    @apply w-16 h-16;
+    @apply w-16 h-16 absolute top-1/2 left-1/2;
+    transform: translate(-50%, -50%);
   }
 }
 </style>

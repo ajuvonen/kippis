@@ -51,13 +51,4 @@ const joinIngredients = (ingredients: Ingredient[] | undefined) =>
 :deep(.capitalized-list h3) {
   @apply md:mt-0;
 }
-
-:deep(.lazy-image__error),
-:deep(.lazy-image__fallback) {
-  @apply pt-[100%];
-  > svg {
-    @apply absolute top-1/2 left-1/2;
-    transform: translate(-50%, -50%);
-  }
-}
 </style>
