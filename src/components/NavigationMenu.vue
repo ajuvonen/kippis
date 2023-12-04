@@ -10,27 +10,30 @@ const {selection} = storeToRefs(useCocktailStore());
 <template>
   <nav class="navigation-menu">
     <ul class="navigation-menu__link-container">
-      <RouterLink class="navigation-menu__link" to="/">{{ t('menu.home') }}</RouterLink>
-      <RouterLink class="navigation-menu__link" to="/search">{{ t('menu.search') }}</RouterLink>
-      <RouterLink class="navigation-menu__link relative" to="/selection">
-        {{ t('menu.selection') }}
-        <div
-          v-if="selection.length"
-          class="navigation-menu__selection-size"
-        >
-          {{ selection.length }}
-        </div>
-      </RouterLink>
+      <li class="navigation-menu__link">
+        <RouterLink to="/">{{ t('menu.home') }}</RouterLink>
+      </li>
+      <li class="navigation-menu__link">
+        <RouterLink to="/search">{{ t('menu.search') }}</RouterLink>
+      </li>
+      <li class="navigation-menu__link relative">
+        <RouterLink to="/selection">
+          {{ t('menu.selection') }}
+          <div v-if="selection.length" class="navigation-menu__selection-size">
+            {{ selection.length }}
+          </div>
+        </RouterLink>
+      </li>
     </ul>
   </nav>
 </template>
 <style lang="scss" scoped>
 .navigation-menu {
-  @apply h-14 bg-white shadow-sm flex-shrink-0;
+  @apply h-14 bg-white shadow-sm;
 }
 
 .navigation-menu__link-container {
-  @apply h-full flex flex-nowrap justify-center items-stretch;
+  @apply h-full flex justify-center;
 }
 
 .navigation-menu__selection-size {
