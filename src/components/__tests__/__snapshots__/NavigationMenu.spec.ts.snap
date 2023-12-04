@@ -2,14 +2,22 @@
 
 exports[`NavigationMenu > mounts 1`] = `
 "<nav data-v-fe35c617=\\"\\" class=\\"navigation-menu\\">
-  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection
-      <!--v-if-->
-    </a></ul>
+  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\">
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"\\">Home</a></li>
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link\\"><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"\\">Search</a></li>
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link relative\\"><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"\\">Selection
+        <!--v-if-->
+      </a></li>
+  </ul>
 </nav>"
 `;
 
 exports[`NavigationMenu > shows selection size 1`] = `
 "<nav data-v-fe35c617=\\"\\" class=\\"navigation-menu\\">
-  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection <div data-v-fe35c617=\\"\\" class=\\"navigation-menu__selection-size\\">1</div></a></ul>
+  <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\">
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"\\">Home</a></li>
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link\\"><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"\\">Search</a></li>
+    <li data-v-fe35c617=\\"\\" class=\\"navigation-menu__link relative\\"><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"\\">Selection <div data-v-fe35c617=\\"\\" class=\\"navigation-menu__selection-size\\">1</div></a></li>
+  </ul>
 </nav>"
 `;
