@@ -30,9 +30,9 @@ const router = createRouter({
       component: () => import('@/views/SearchView.vue'),
     },
     {
-      path: '/selection',
-      name: 'selection',
-      component: () => import('@/views/SelectionView.vue'),
+      path: '/instructions',
+      name: 'instructions',
+      component: () => import('@/views/InstructionsView.vue'),
     },
   ],
 });

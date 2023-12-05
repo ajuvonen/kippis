@@ -3,7 +3,7 @@
 exports[`SelectedCocktails > mounts 1`] = `
 "<transition-stub data-v-418939cb=\\"\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
   <aside data-v-418939cb=\\"\\" class=\\"selected-cocktails\\">
-    <h2 data-v-418939cb=\\"\\">Your Cocktails</h2>
+    <h2 data-v-418939cb=\\"\\" class=\\"text-3xl text-center\\">Your Cocktails</h2>
     <ul data-v-a73318e6=\\"\\" data-v-418939cb=\\"\\" class=\\"search-results pt-2 mb-4 overflow-y-scroll\\">
       <li data-v-a73318e6=\\"\\">
         <div data-v-cd13f5f7=\\"\\" data-v-a73318e6=\\"\\" class=\\"search-result\\">
@@ -19,7 +19,7 @@ exports[`SelectedCocktails > mounts 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
+    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/instructions\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to instructions.</a>
   </aside>
 </transition-stub>"
 `;
@@ -27,7 +27,7 @@ exports[`SelectedCocktails > mounts 1`] = `
 exports[`SelectedCocktails > prints selection data 1`] = `
 "<transition-stub data-v-418939cb=\\"\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
   <aside data-v-418939cb=\\"\\" class=\\"selected-cocktails\\">
-    <h2 data-v-418939cb=\\"\\">Your Cocktails</h2>
+    <h2 data-v-418939cb=\\"\\" class=\\"text-3xl text-center\\">Your Cocktails</h2>
     <ul data-v-a73318e6=\\"\\" data-v-418939cb=\\"\\" class=\\"search-results pt-2 mb-4 overflow-y-scroll\\">
       <li data-v-a73318e6=\\"\\">
         <div data-v-cd13f5f7=\\"\\" data-v-a73318e6=\\"\\" class=\\"search-result\\">
@@ -57,7 +57,7 @@ exports[`SelectedCocktails > prints selection data 1`] = `
             </svg></button>
         </div>
       </li>
-    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/selection\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to selection.</a>
+    </ul><a data-v-c2a26f37=\\"\\" data-v-418939cb=\\"\\" href=\\"/instructions\\" class=\\"link-button flex-shrink-0\\" data-test-id=\\"selected-cocktails__action-button\\">Ready? Proceed to instructions.</a>
   </aside>
 </transition-stub>"
 `;

@@ -15,11 +15,11 @@ const {selection} = storeToRefs(cocktailStore);
 <template>
   <Transition>
     <aside v-if="selection.length" class="selected-cocktails">
-      <h2>{{ t('selectedCocktails.title') }}</h2>
+      <h2 class="text-3xl text-center">{{ t('selectedCocktails.title') }}</h2>
       <SearchResults class="pt-2 mb-4 overflow-y-scroll" :cocktails="selection" />
       <LinkButton
         v-if="route.name === 'search'"
-        to="/selection"
+        to="/instructions"
         class="flex-shrink-0"
         data-test-id="selected-cocktails__action-button"
       >

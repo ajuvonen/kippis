@@ -5,7 +5,7 @@ exports[`NavigationMenu > mounts 1`] = `
   <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\">
     <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a></li>
     <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a></li>
-    <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection
+    <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/instructions\\" class=\\"navigation-menu__link relative\\">instructions
         <!--v-if-->
       </a></li>
   </ul>
@@ -17,7 +17,7 @@ exports[`NavigationMenu > shows selection size 1`] = `
   <ul data-v-fe35c617=\\"\\" class=\\"navigation-menu__link-container\\">
     <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/\\" class=\\"navigation-menu__link\\">Home</a></li>
     <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/search\\" class=\\"navigation-menu__link\\">Search</a></li>
-    <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/selection\\" class=\\"navigation-menu__link relative\\">Selection <div data-v-fe35c617=\\"\\" class=\\"navigation-menu__selection-size\\">1</div></a></li>
+    <li data-v-fe35c617=\\"\\"><a data-v-fe35c617=\\"\\" href=\\"/instructions\\" class=\\"navigation-menu__link relative\\">instructions <div data-v-fe35c617=\\"\\" class=\\"navigation-menu__selection-size\\">1</div></a></li>
   </ul>
 </nav>"
 `;

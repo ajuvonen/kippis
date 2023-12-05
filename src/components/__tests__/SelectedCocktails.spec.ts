@@ -25,11 +25,11 @@ describe('SelectedCocktails', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('changes button text in selection mode', async () => {
+  it('changes button text depending of page', async () => {
     cocktailStore.selection.push(testCocktails[1][1]);
     const wrapper = mount(SelectedCocktails);
     expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
-      'Ready? Proceed to selection.',
+      'Ready? Proceed to instructions.',
     );
     await router.push('/selection');
     expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(

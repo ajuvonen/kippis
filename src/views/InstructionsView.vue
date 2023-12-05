@@ -30,50 +30,69 @@ const randomDegree = () => Math.floor(Math.random() * 8) - 4;
 <template>
   <SelectedCocktails />
   <main class="flex-1">
-    <h1>{{ t('selectionView.title') }}</h1>
+    <h1>{{ t('instructionsView.title') }}</h1>
     <div class="flex flex-row">
       <div class="flex-1">
-        <h2>{{ t('selectionView.ingredients') }}</h2>
-        <CapitalizedList :title="t('selectionView.alcohols')" :items="alcohols"></CapitalizedList>
-        <CapitalizedList :title="t('selectionView.mixers')" :items="mixers"></CapitalizedList>
-        <CapitalizedList :title="t('selectionView.fruits')" :items="fruits"></CapitalizedList>
-        <CapitalizedList :title="t('selectionView.other')" :items="other"></CapitalizedList>
+        <h2>{{ t('instructionsView.ingredients') }}</h2>
+        <CapitalizedList
+          :title="t('instructionsView.alcohols')"
+          :items="alcohols"
+        ></CapitalizedList>
+        <CapitalizedList :title="t('instructionsView.mixers')" :items="mixers"></CapitalizedList>
+        <CapitalizedList :title="t('instructionsView.fruits')" :items="fruits"></CapitalizedList>
+        <CapitalizedList :title="t('instructionsView.other')" :items="other"></CapitalizedList>
       </div>
-      <div class="selection__cocktail-image-wrapper">
-        <LazyCocktailImage
+      <div class="instructions__cocktail-image-container">
+        <div
           v-for="cocktail in selection"
           :key="cocktail.id"
-          :src="cocktail.thumb"
           :style="`transform: rotate(${randomDegree()}deg);`"
-          class="selection__cocktail-image"
-        />
+          class="instructions__cocktail-image-wrapper"
+        >
+          <LazyCocktailImage
+            :src="cocktail.thumb"
+            class="instructions__cocktail-image"
+          />
+          <div class="instructions__cocktail-image-label">
+            {{ cocktail.name }}
+          </div>
+        </div>
       </div>
     </div>
   </main>
 </template>
 <style scoped>
-.selection__cocktail-image-wrapper {
+.instructions__cocktail-image-container {
   @apply hidden lg:block w-1/3 ml-4;
 }
 
-.selection__cocktail-image {
-  @apply border-8 border-slate-100 shadow-sm;
+.instructions__cocktail-image-wrapper {
+  @apply shadow-sm;
+}
+
+.instructions__cocktail-image {
+  @apply border-8 border-b-0 border-white;
 
   &:first-child {
     @apply mt-4;
   }
 
-  + .selection__cocktail-image {
+  + .instructions__cocktail-image {
     @apply mt-8;
   }
 }
 
+.instructions__cocktail-image-label {
+  @apply bg-white h-12 p-2 text-center whitespace-nowrap overflow-hidden overflow-ellipsis text-3xl;
+  font-family: 'Ephesis';
+}
+
 @media print {
-  .selection__cocktail-image-wrapper {
+  .instructions__cocktail-image-container {
     @apply block;
   }
 
-  .selection__cocktail-image {
+  .instructions__cocktail-image {
     @apply break-inside-avoid;
   }
 }

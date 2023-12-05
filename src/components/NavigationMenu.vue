@@ -17,8 +17,8 @@ const {selection} = storeToRefs(useCocktailStore());
         <RouterLink class="navigation-menu__link" to="/search">{{ t('menu.search') }}</RouterLink>
       </li>
       <li>
-        <RouterLink class="navigation-menu__link relative" to="/selection">
-          {{ t('menu.selection') }}
+        <RouterLink class="navigation-menu__link relative" to="/instructions">
+          {{ t('menu.instructions') }}
           <div v-if="selection.length" class="navigation-menu__selection-size">
             {{ selection.length }}
           </div>
@@ -36,13 +36,13 @@ const {selection} = storeToRefs(useCocktailStore());
   @apply h-full flex justify-center;
 
   > li {
-    @apply flex;
+    @apply flex w-1/3 sm:w-auto;
   }
 }
 
 
 .navigation-menu__link {
-  @apply flex flex-col justify-center w-1/3 sm:w-28 text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
+  @apply w-full sm:w-32 flex flex-col justify-center text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
 
   &:hover {
     @apply bg-slate-800 text-white;
