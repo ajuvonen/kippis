@@ -11,7 +11,7 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
 
 <template>
   <div
-    :class="!highlightedCocktail ? 'app--modal-open' : ''"
+    :class="highlightedCocktail ? 'app--modal-open' : ''"
     class="app"
   >
     <NavigationMenu />
@@ -23,16 +23,21 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
 </template>
 <style lang="scss" scoped>
 .app {
-  @apply h-screen flex flex-col overflow-hidden text-slate-800;
+  @apply grid h-screen text-slate-800;
+  grid-template-rows: auto 1fr;
 }
 
 .app__view-wrapper {
-  @apply flex flex-col sm:flex-row h-full min-h-0 items-stretch;
+  @apply flex flex-col sm:flex-row min-h-0;
 }
   
 @media print {
-  .app--modal-open {
-    @apply overflow-visible h-full;
+  .app:not(.app--modal-open) {
+    @apply h-full;
+  }
+
+  .app__view-wrapper {
+    @apply min-h-screen;
   }
 }
 </style>
