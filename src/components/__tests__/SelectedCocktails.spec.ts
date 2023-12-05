@@ -31,7 +31,7 @@ describe('SelectedCocktails', () => {
     expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
       'Ready? Proceed to instructions.',
     );
-    await router.push('/selection');
+    await router.push('/instructions');
     expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
       'Thirsty? Return to search.',
     );
