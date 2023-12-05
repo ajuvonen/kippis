@@ -6,6 +6,7 @@ import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
+import IconComponent from '@/components/IconComponent.vue';
 import type {Ingredient} from '@/utils/types';
 
 const {t} = useI18n();
@@ -15,6 +16,8 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
 
 const joinIngredients = (ingredients: Ingredient[] | undefined) =>
   (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].join(' '));
+
+const print = () => window.print();
 </script>
 <template>
   <ModalComponent
@@ -22,21 +25,29 @@ const joinIngredients = (ingredients: Ingredient[] | undefined) =>
     :show="!!highlightedCocktail"
     @close="highlightedCocktail = null"
   >
-    <div class="flex flex-col md:flex-row">
-      <CapitalizedList
-        :title="t('cocktailModal.ingredients')"
-        :items="joinIngredients(highlightedCocktail?.ingredients)"
-        class="cocktail-modal__ingredients"
-      ></CapitalizedList>
-      <div class="cocktail-modal__image-wrapper">
-        <LazyCocktailImage :src="highlightedCocktail?.thumb" />
-        <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
+    <template #content>
+      <div class="flex flex-col md:flex-row">
+        <CapitalizedList
+          :title="t('cocktailModal.ingredients')"
+          :items="joinIngredients(highlightedCocktail?.ingredients)"
+          class="cocktail-modal__ingredients"
+        ></CapitalizedList>
+        <div class="cocktail-modal__image-wrapper">
+          <LazyCocktailImage :src="highlightedCocktail?.thumb" />
+          <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
+        </div>
       </div>
-    </div>
-    <div>
-      <h3>{{ t('cocktailModal.instructions') }}</h3>
-      <p>{{ highlightedCocktail?.instructions }}</p>
-    </div>
+      <div>
+        <h3>{{ t('cocktailModal.instructions') }}</h3>
+        <p>{{ highlightedCocktail?.instructions }}</p>
+      </div>
+    </template>
+    <template #actions>
+      <button @click="print()">
+        <IconComponent icon="printer" />
+        <span>{{ t('cocktailModal.print') }}</span>
+      </button>
+    </template>
   </ModalComponent>
 </template>
 <style lang="scss" scoped>

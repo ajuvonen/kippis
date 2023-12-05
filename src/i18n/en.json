@@ -1,7 +1,8 @@
 {
   "cocktailModal": {
     "ingredients": "Ingredients",
-    "instructions": "Instructions"
+    "instructions": "Instructions",
+    "print": "Print"
   },
   "homeView": {
     "title": "Enter the World of Delicious Cocktails!",

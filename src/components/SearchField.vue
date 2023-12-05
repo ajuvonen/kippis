@@ -49,7 +49,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       </li>
       <li>
         <button @click="showRandomCocktail" data-test-id="search-field__random-button">
-          <IconComponent icon="clover" />
+          <IconComponent icon="gift" />
           <span>{{ t('searchField.random') }}</span>
         </button>
       </li>
@@ -62,7 +62,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 }
 
 .search-field__wrapper {
-  @apply flex justify-center mb-4;
+  @apply flex justify-center mb-4 divide-x;
 }
 
 .search-field__input {

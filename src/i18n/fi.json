@@ -1,7 +1,8 @@
 {
   "cocktailModal": {
     "ingredients": "Ainesosat",
-    "instructions": "Ohjeet"
+    "instructions": "Ohjeet",
+    "print": "Tulosta"
   },
   "homeView": {
     "title": "Astu maistuvien cocktailien maailmaan!",

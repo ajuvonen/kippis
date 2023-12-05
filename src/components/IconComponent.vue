@@ -1,28 +1,39 @@
 <script setup lang="ts">
 import {
-  mdiClover,
+  mdiCloseCircleOutline,
+  mdiGiftOutline,
   mdiGlassCocktail,
   mdiGlassCocktailOff,
   mdiMagnify,
   mdiPlus,
+  mdiPrinterOutline,
   mdiTrashCan,
 } from '@mdi/js';
 
-type IconString = 'clover' | 'magnify' | 'plus' | 'trashCan' | 'cocktail' | 'cocktailOff';
+type IconString =
+  | 'closeCircle'
+  | 'cocktail'
+  | 'cocktailOff'
+  | 'gift'
+  | 'magnify'
+  | 'plus'
+  | 'printer'
+  | 'trashCan';
 
 defineProps<{
   icon: IconString;
 }>();
 
 const icons = {
-  clover: mdiClover,
+  closeCircle: mdiCloseCircleOutline,
   cocktail: mdiGlassCocktail,
   cocktailOff: mdiGlassCocktailOff,
+  gift: mdiGiftOutline,
   magnify: mdiMagnify,
+  printer: mdiPrinterOutline,
   plus: mdiPlus,
   trashCan: mdiTrashCan,
 };
-
 </script>
 <template>
   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">

@@ -3,6 +3,7 @@ import {ref} from 'vue';
 import {onClickOutside, onKeyStroke} from '@vueuse/core';
 import {UseFocusTrap} from '@vueuse/integrations/useFocusTrap/component';
 import {useI18n} from 'vue-i18n';
+import IconComponent from '@/components/IconComponent.vue';
 
 defineProps<{
   title?: string;
@@ -40,9 +41,13 @@ onKeyStroke('Escape', () => emit('close'));
             aria-labelledby="modal-title"
           >
             <h2 id="modal-title">{{ title }}</h2>
-            <slot />
+            <slot name="content" />
             <div class="flex flex-row justify-end">
-              <button @click="$emit('close')">{{ t('modal.close') }}</button>
+              <slot name="actions" />
+              <button @click="$emit('close')">
+                <IconComponent icon="closeCircle" />
+                <span>{{ t('modal.close') }}</span>
+              </button>
             </div>
           </div>
         </div>
@@ -52,17 +57,17 @@ onKeyStroke('Escape', () => emit('close'));
 </template>
 <style lang="scss" scoped>
 .modal-component__backdrop {
-  @apply fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-50;
+  @apply fixed z-10 inset-0 overflow-y-scroll bg-black bg-opacity-50;
 }
 
 .modal-component__modal {
-  @apply bg-white rounded-lg text-left overflow-hidden shadow-xl print:shadow-none p-4 w-4/5 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute;
+  @apply bg-white rounded-lg text-left shadow-xl p-4 w-4/5 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute;
   transform: translate(-50%, -50%);
 }
 
 @media print {
   .modal-component__modal {
-    @apply w-3/5;
+    @apply w-3/5 shadow-none;
   }
 }
 </style>
