@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fontsource/ephesis": "^5.0.17",
     "@mdi/js": "^7.3.67",
     "@vueuse/components": "^10.6.1",
     "@vueuse/core": "^10.6.1",
