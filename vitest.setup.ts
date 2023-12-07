@@ -1,9 +1,9 @@
 import {afterAll, afterEach, beforeAll} from 'vitest';
 import {VueWrapper, config} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
-import i18n from '@/i18n';
-import router from '@/router';
-import {server} from '@/components/__tests__/mswHandlers';
+import i18n from './src/i18n';
+import router from './src/router';
+import {server} from './src/components/__tests__/mswHandlers';
 
 config.global.plugins = [createTestingPinia(), i18n, router];
 
