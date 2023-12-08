@@ -1,4 +1,9 @@
-import {transformFullDetails, transformSearchResults, listUniqueIngredients} from '@/utils/helpers';
+import {
+  joinIngredients,
+  listUniqueIngredients,
+  transformFullDetails,
+  transformSearchResults,
+} from '@/utils/helpers';
 import type {FullDetailsAPICocktail} from '@/utils/types';
 import {describe, it, expect} from 'vitest';
 import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandlers';
@@ -210,5 +215,31 @@ describe('listUniqueIngredients', () => {
       },
     ]);
     expect(result).toEqual(['cream', 'egg', 'lemon', 'olive', 'orange']);
+  });
+});
+
+describe('joinIngredients', () => {
+  it('should join ingredients with their measures', () => {
+    const ingredients = [
+      {ingredient: 'Vodka', measure: '2 oz'},
+      {ingredient: 'Orange juice', measure: '4 oz'},
+      {ingredient: 'Grenadine', measure: '1 oz'},
+    ];
+
+    const result = joinIngredients(ingredients);
+
+    expect(result).toEqual(['2 oz Vodka', '4 oz Orange juice', '1 oz Grenadine']);
+  });
+
+  it('should handle undefined ingredients', () => {
+    const result = joinIngredients(undefined);
+
+    expect(result).toEqual([]);
+  });
+
+  it('should handle empty ingredients array', () => {
+    const result = joinIngredients([]);
+
+    expect(result).toEqual([]);
   });
 });
