@@ -5,7 +5,7 @@ import {storeToRefs} from 'pinia';
 import {intersection} from 'remeda';
 import {useCocktailStore} from '@/stores/cocktail';
 import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
-import {joinIngredients} from '@/utils/helpers';
+import {joinIngredients, randomDegree} from '@/utils/helpers';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
@@ -26,8 +26,6 @@ const other = computed(() =>
       !fruits.value.includes(ingredient),
   ),
 );
-
-const randomDegree = () => Math.floor(Math.random() * 8) - 4;
 </script>
 <template>
   <SelectedCocktails />

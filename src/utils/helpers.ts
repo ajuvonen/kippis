@@ -8,6 +8,11 @@ import type {
 import {BLACKLIST, REPLACED_INGREDIENTS} from '@/utils/constants';
 import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
 
+/**
+ * Transforms search results from the API into a standardized format.
+ * @param cocktails - The search results from the API.
+ * @returns The transformed search results.
+ */
 export const transformSearchResults = (
   cocktails: SearchResultAPICocktail[] | null,
 ): SearchResultCocktail[] =>
@@ -23,6 +28,11 @@ export const transformSearchResults = (
     sortBy(prop('name')),
   );
 
+/**
+ * Transforms an array of full details objects from API into a standardized format.
+ * @param cocktails - An array of FullDetailsAPICocktail objects.
+ * @returns An array of FullDetailsCocktail objects.
+ */
 export const transformFullDetails = (
   cocktails: FullDetailsAPICocktail[] | null,
 ): FullDetailsCocktail[] =>
@@ -56,6 +66,11 @@ export const transformFullDetails = (
     sortBy(prop('name')),
   );
 
+/**
+ * Returns a list of unique ingredients from an array of cocktails.
+ * @param cocktails - An array of cocktails.
+ * @returns An array of unique ingredients.
+ */
 export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[] =>
   pipe(
     cocktails,
@@ -71,5 +86,16 @@ export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[
     sort((a, b) => a.localeCompare(b)),
   );
 
+/**
+ * Joins the ingredients by combining the measure and ingredient name.
+ * @param ingredients - An array of Ingredient objects.
+ * @returns An array of strings representing the joined ingredients.
+ */
 export const joinIngredients = (ingredients: Ingredient[] | undefined) =>
-  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].join(' '));
+  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].filter(Boolean).join(' '));
+
+/**
+ * Generates a random degree value between -4 and 4.
+ * @returns {number} The random degree value.
+ */
+export const randomDegree = (): number => Math.floor(Math.random() * 9) - 4;

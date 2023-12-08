@@ -1,6 +1,7 @@
 import {
   joinIngredients,
   listUniqueIngredients,
+  randomDegree,
   transformFullDetails,
   transformSearchResults,
 } from '@/utils/helpers';
@@ -231,6 +232,14 @@ describe('joinIngredients', () => {
     expect(result).toEqual(['2 oz Vodka', '4 oz Orange juice', '1 oz Grenadine']);
   });
 
+  it('should not add space if there is no measure', () => {
+    const ingredients = [{ingredient: 'Vodka', measure: ''}];
+
+    const result = joinIngredients(ingredients);
+
+    expect(result).toEqual(['Vodka']);
+  });
+
   it('should handle undefined ingredients', () => {
     const result = joinIngredients(undefined);
 
@@ -241,5 +250,13 @@ describe('joinIngredients', () => {
     const result = joinIngredients([]);
 
     expect(result).toEqual([]);
+  });
+});
+
+describe('randomDegree', () => {
+  it('generates numbers between -4 and 4', () => {
+    const degrees = Array.from({length: 20}, randomDegree);
+
+    expect(degrees.every((degree) => degree >= -4 && degree <= 4)).toBe(true);
   });
 });
