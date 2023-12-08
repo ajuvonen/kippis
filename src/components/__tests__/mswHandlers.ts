@@ -129,7 +129,7 @@ export const testCocktails = [
   ],
 ] as [FullDetailsAPICocktail, FullDetailsCocktail][];
 
-export const restHandlers: HttpHandler[] = [
+const restHandlers: HttpHandler[] = [
   http.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', ({request}) => {
     const url = new URL(request.url);
     const id = +(url.searchParams.get('i') || -1);
