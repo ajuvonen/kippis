@@ -1,14 +1,16 @@
 import type {
-  SearchResultAPICocktail,
   FullDetailsAPICocktail,
-  SearchResultCocktail,
   FullDetailsCocktail,
   Ingredient,
+  SearchResultAPICocktail,
+  SearchResultCocktail,
 } from '@/utils/types';
 import {BLACKLIST, REPLACED_INGREDIENTS} from '@/utils/constants';
 import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
 
-export const transformSearchResults = (cocktails: SearchResultAPICocktail[] | null): SearchResultCocktail[] =>
+export const transformSearchResults = (
+  cocktails: SearchResultAPICocktail[] | null,
+): SearchResultCocktail[] =>
   pipe(
     cocktails || [],
     uniqBy(prop('idDrink')),
@@ -21,7 +23,9 @@ export const transformSearchResults = (cocktails: SearchResultAPICocktail[] | nu
     sortBy(prop('name')),
   );
 
-export const transformFullDetails = (cocktails: FullDetailsAPICocktail[] | null): FullDetailsCocktail[] =>
+export const transformFullDetails = (
+  cocktails: FullDetailsAPICocktail[] | null,
+): FullDetailsCocktail[] =>
   pipe(
     cocktails || [],
     uniqBy(prop('idDrink')),
@@ -66,3 +70,6 @@ export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[
     difference(['water', 'ice']),
     sort((a, b) => a.localeCompare(b)),
   );
+
+export const joinIngredients = (ingredients: Ingredient[] | undefined) =>
+  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].join(' '));

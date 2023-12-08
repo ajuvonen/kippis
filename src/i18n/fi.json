@@ -14,7 +14,9 @@
     "alcohols": "Alkoholit",
     "fruits": "Hedelmät ja vihannekset",
     "ingredients": "Ainesosat",
+    "instructions": "Ohjeet",
     "mixers": "Mixerit",
+    "noCocktails": "Ei valittuja cocktaileja. Käytä hakua ja löydä suosikkisi!",
     "other": "Muut ainesosat"
   },
   "menu": {

@@ -2,20 +2,17 @@
 import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
+import {joinIngredients} from '@/utils/helpers';
 import ModalComponent from '@/components/ModalComponent.vue';
 import ActionButtons from '@/components/ActionButtons.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
 import IconComponent from '@/components/IconComponent.vue';
-import type {Ingredient} from '@/utils/types';
 
 const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
-
-const joinIngredients = (ingredients: Ingredient[] | undefined) =>
-  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].join(' '));
 
 const print = () => window.print();
 </script>

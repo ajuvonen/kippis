@@ -14,7 +14,9 @@
     "alcohols": "Alcohols",
     "fruits": "Fruits and vegetables",
     "ingredients": "Ingredients",
+    "instructions": "Instructions",
     "mixers": "Mixers",
+    "noCocktails": "No cocktails selected. Use the search and find your favorites!",
     "other": "Other ingredients"
   },
   "menu": {

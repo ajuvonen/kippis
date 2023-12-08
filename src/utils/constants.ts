@@ -308,7 +308,7 @@ export const BLACKLIST = [
   11034, // Angel face
   11052, // Archbishop
   11119, // Blue mountain
-  11255, // Clove cocktail
+  11239, // Cherry rum
   11255, // Clove cocktail
   11368, // Flying Dutchman
   11382, // Frisco Sour
