@@ -40,7 +40,6 @@ const {selection} = storeToRefs(useCocktailStore());
   }
 }
 
-
 .navigation-menu__link {
   @apply w-full sm:w-32 flex flex-col justify-center text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
 
