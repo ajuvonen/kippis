@@ -31,8 +31,8 @@ onKeyStroke('Escape', () => emit('close'));
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <UseFocusTrap v-if="show">
-        <div class="modal-component__backdrop">
+      <div v-if="show" class="modal-component__backdrop">
+        <UseFocusTrap>
           <div
             class="modal-component__modal"
             role="dialog"
@@ -50,8 +50,8 @@ onKeyStroke('Escape', () => emit('close'));
               </button>
             </div>
           </div>
-        </div>
-      </UseFocusTrap>
+        </UseFocusTrap>
+      </div>
     </Transition>
   </Teleport>
 </template>
