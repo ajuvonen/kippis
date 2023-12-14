@@ -74,9 +74,9 @@ exports[`InstructionsView > displays the instructions 1`] = `
         <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
           <h3 data-v-c94dac3b="">Margarita</h3>
           <ul data-v-c94dac3b="">
-            <li data-v-c94dac3b="" class="capitalized-list__item">1 oz tequila</li>
-            <li data-v-c94dac3b="" class="capitalized-list__item">1/2 oz triple sec</li>
-            <li data-v-c94dac3b="" class="capitalized-list__item">1 oz lime juice</li>
+            <li data-v-c94dac3b="" class="capitalized-list__item">3 CL tequila</li>
+            <li data-v-c94dac3b="" class="capitalized-list__item">1 CL triple sec</li>
+            <li data-v-c94dac3b="" class="capitalized-list__item">3 CL lime juice</li>
             <li data-v-c94dac3b="" class="capitalized-list__item">salt</li>
           </ul>
         </div>
@@ -89,7 +89,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
             <li data-v-c94dac3b="" class="capitalized-list__item">Juice of 1 lime</li>
             <li data-v-c94dac3b="" class="capitalized-list__item">2 tsp sugar</li>
             <li data-v-c94dac3b="" class="capitalized-list__item">2-4 mint</li>
-            <li data-v-c94dac3b="" class="capitalized-list__item">2 oz soda water</li>
+            <li data-v-c94dac3b="" class="capitalized-list__item">6 CL soda water</li>
           </ul>
         </div>
         <p data-v-384a5d4b="" class="mt-2">Muddle mint leaves with sugar and lime juice. Add a splash of soda water and fill the glass with cracked ice.</p>

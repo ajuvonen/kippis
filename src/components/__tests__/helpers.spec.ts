@@ -1,4 +1,5 @@
 import {
+  convertMeasure,
   joinIngredients,
   listUniqueIngredients,
   randomDegree,
@@ -72,8 +73,8 @@ describe('transformFullDetails', () => {
     const result = transformFullDetails(cocktailDetails);
 
     expect(result[0].ingredients).toEqual([
-      {ingredient: 'scotch', measure: '1 oz'},
-      {ingredient: 'bourbon', measure: '2 oz'},
+      {ingredient: 'scotch', measure: '3 CL'},
+      {ingredient: 'bourbon', measure: '6 CL'},
     ]);
   });
 
@@ -93,7 +94,7 @@ describe('transformFullDetails', () => {
     const result = transformFullDetails(cocktailDetails);
 
     expect(result[0].ingredients).toEqual([
-      {ingredient: 'ingredient with extra spaces', measure: '1 oz'},
+      {ingredient: 'ingredient with extra spaces', measure: '3 CL'},
     ]);
   });
 
@@ -258,5 +259,77 @@ describe('randomDegree', () => {
     const degrees = Array.from({length: 20}, randomDegree);
 
     expect(degrees.every((degree) => degree >= -4 && degree <= 4)).toBe(true);
+  });
+});
+
+describe('convertMeasure', () => {
+  it('converts fractions to decimals', () => {
+    expect(convertMeasure('1/2')).toBe('0.5');
+    expect(convertMeasure('1/4')).toBe('0.25');
+    expect(convertMeasure('1/3')).toBe((1/3).toString());
+    expect(convertMeasure('2/3')).toBe((2/3).toString());
+    expect(convertMeasure('1 1/4')).toBe('1.25');
+    expect(convertMeasure('5 1/3')).toBe((5 + 1/3).toString());
+    expect(convertMeasure('10 2/3')).toBe((10 + 2/3).toString());
+    expect(convertMeasure('3 3/4')).toBe('3.75');
+    expect(convertMeasure('0')).toBe('0');
+    expect(convertMeasure('1')).toBe('1');
+    expect(convertMeasure('10')).toBe('10');
+  });
+
+  it('converts ounces, shots and jiggers to CL', () => {
+    expect(convertMeasure('1 ounce')).toBe('3 CL');
+    expect(convertMeasure('1 jigger')).toBe('3 CL');
+    expect(convertMeasure('2 shots')).toBe('6 CL');
+    expect(convertMeasure('2 1/2 oz')).toBe('7 CL');
+    expect(convertMeasure('3 OZ')).toBe('9 CL');
+    expect(convertMeasure('10 ounces')).toBe('30 CL');
+  });
+
+  it('converts quarts to L', () => {
+    expect(convertMeasure('1 quart')).toBe('1 L');
+    expect(convertMeasure('2 qt')).toBe('1.9 L');
+    expect(convertMeasure('2 1/2 QT')).toBe('2.4 L');
+    expect(convertMeasure('3 quarts')).toBe('2.9 L');
+  });
+
+  it('converts cups to CL', () => {
+    expect(convertMeasure('1 cup')).toBe('24 CL');
+    expect(convertMeasure('2 CUPS')).toBe('47 CL');
+  });
+
+  it('converts fifths to L', () => {
+    expect(convertMeasure('1 fifth')).toBe('0.75 L');
+    expect(convertMeasure('2 FIFTHS')).toBe('1.5 L');
+  });
+
+  it('converts gallons to L', () => {
+    expect(convertMeasure('1 gal')).toBe('3.8 L');
+    expect(convertMeasure('1/2 GALLONS')).toBe('1.9 L');
+  });
+
+  it('converts mls to CL', () => {
+    expect(convertMeasure('20 ML')).toBe('2 CL');
+    expect(convertMeasure('355 mls')).toBe('36 CL');
+  });
+
+  it('does not convert units that are not oz, qt or cups', () => {
+    [
+      ['', ''],
+      ['1 tsp', '1 tsp'],
+      ['1/2 tsp', '0.5 tsp'],
+      ['1 tbsp', '1 tbsp'],
+      ['1 3/4 tblsp', '1.75 tblsp'],
+      ['dash', 'dash'],
+      ['0.5 kg frozen', '0.5 kg frozen'],
+    ].forEach(([input, output]) => {
+      expect(convertMeasure(input)).toBe(output);
+    });
+  });
+
+  it('does not convert too small fractions', () => {
+    expect(convertMeasure('1/8')).toBe('1/8');
+    expect(convertMeasure('1/6')).toBe('1/6');
+    expect(convertMeasure('1/5')).toBe('1/5');
   });
 });

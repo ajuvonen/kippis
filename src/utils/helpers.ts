@@ -5,7 +5,7 @@ import type {
   SearchResultAPICocktail,
   SearchResultCocktail,
 } from '@/utils/types';
-import {BLACKLIST, REPLACED_INGREDIENTS} from '@/utils/constants';
+import {BLACKLIST, REPLACED_INGREDIENTS, UNIT_CONVERSIONS} from '@/utils/constants';
 import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
 
 /**
@@ -50,7 +50,8 @@ export const transformFullDetails = (
           if (replaced) {
             ingredient = replaced[1];
           }
-          ingredients.push({ingredient, measure: (cocktail[`strMeasure${i}`] || '').trim()});
+          const measure = convertMeasure((cocktail[`strMeasure${i}`] || ''));
+          ingredients.push({ingredient, measure});
         }
       }
 
@@ -92,10 +93,45 @@ export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[
  * @returns An array of strings representing the joined ingredients.
  */
 export const joinIngredients = (ingredients: Ingredient[] | undefined) =>
-  (ingredients || []).map(({ingredient, measure}) => [measure, ingredient].filter(Boolean).join(' '));
+  (ingredients || []).map(({ingredient, measure}) =>
+    [measure, ingredient].filter(Boolean).join(' '),
+  );
 
 /**
  * Generates a random degree value between -4 and 4.
  * @returns {number} The random degree value.
  */
 export const randomDegree = (): number => Math.floor(Math.random() * 9) - 4;
+
+/**
+ * Attempts to convert a measure to metric units and decimal number.
+ * @param measure - The measure to convert.
+ * @returns The converted measure.
+ */
+export const convertMeasure = (measure: string): string => {
+  const parsedMeasure = measure.trim().match(/^((\d+(\.\d+)?)\s+)?(\d+\/\d+)?\s*(.*)$/);
+  if (!parsedMeasure) {
+    return '';
+  }
+
+  let numericAmount = +(parsedMeasure[2] || 0);
+  const fraction: string = parsedMeasure[4] || '';
+
+  // TODO: this will break if there's a unit conversion with a fraction smaller than 1/4
+  if (['1/4', '1/3', '1/2', '2/3', '3/4'].includes(fraction)) {
+    const [enumerator, divider] = fraction.split('/');
+    numericAmount = numericAmount + +enumerator / +divider;
+  }
+
+  let unit = parsedMeasure[5] || '';
+  if (numericAmount) {
+    const conversion = UNIT_CONVERSIONS.find(({regex}) => regex.test(unit));
+    if (conversion) {
+      numericAmount = conversion.converter(numericAmount);
+      unit = unit.replace(conversion.regex, conversion.unit);
+    }
+  }
+
+  // There might not be a unit, in case the ingredient is like "1 banana", hence the filter
+  return numericAmount ? [numericAmount, unit].filter(Boolean).join(' ') : `${parsedMeasure[0]}`;
+};

@@ -357,6 +357,7 @@ export const BLACKLIST = [
   15789, // Snakebite and Black
   15801, // Zimadori Zinger
   15813, // Herbal Flame
+  15841, // Mojito Extra
   15933, // Zambeer
   16047, // Campari Beer
   16178, // Jitterbug
@@ -367,10 +368,12 @@ export const BLACKLIST = [
   16985, // Shot-gun
   16987, // Irish curdling cow
   16992, // Pink Penocha
+  17006, // Kool First Aid
   17020, // Auburn Headbanger
   17027, // Zima Blaster
   17035, // Buccaneer
   17044, // Homemade Kahlua
+  17065, // Caribbean Boilermaker
   17105, // 501 Blue
   17108, // Coke and Drops
   17120, // Brain Fart
@@ -415,3 +418,40 @@ export const MAIN_PHOTOS = [
     acknowledgement: 'Marcos Kohler',
   },
 ] as MainPhoto[];
+
+// TODO: Pint (should it be US or UK?)
+// Convert and replace units. Use regex match just in the beginning because the data might be for example "3 OZ frozen"
+// Shot and jigger are interpreted as 1 OZ
+// Quarts and gallons are rounded up to the next full deciliter and converted to liters
+export const UNIT_CONVERSIONS = [
+  {
+    regex: /^(oz|ounce|shot|jigger)s?/i,
+    converter: (amount: number) => Math.round(amount * 2.95735),
+    unit: 'CL',
+  },
+  {
+    regex: /^(qt|quart)s?/i,
+    converter: (amount: number) => Math.ceil((amount * 94.6352946) / 10) / 10,
+    unit: 'L',
+  },
+  {
+    regex: /^cups?/i,
+    converter: (amount: number) => Math.round(amount * 23.6588236),
+    unit: 'CL',
+  },
+  {
+    regex: /^fifths?/i,
+    converter: (amount: number) => amount * 0.75,
+    unit: 'L',
+  },
+  {
+    regex: /^gal(lon)?s?/i,
+    converter: (amount: number) => Math.ceil(amount * 3.78541178 * 10) / 10,
+    unit: 'L',
+  },
+  {
+    regex: /mls?/i,
+    converter: (amount: number) => Math.round(amount / 10),
+    unit: 'CL',
+  },
+];

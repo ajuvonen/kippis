@@ -61,15 +61,15 @@ export const testCocktails = [
       ingredients: [
         {
           ingredient: 'tequila',
-          measure: '1 oz',
+          measure: '3 CL',
         },
         {
           ingredient: 'triple sec',
-          measure: '1/2 oz',
+          measure: '1 CL',
         },
         {
           ingredient: 'lime juice',
-          measure: '1 oz',
+          measure: '3 CL',
         },
         {
           ingredient: 'salt',
@@ -118,7 +118,7 @@ export const testCocktails = [
         },
         {
           ingredient: 'soda water',
-          measure: '2 oz',
+          measure: '6 CL',
         },
       ],
       instructions:
