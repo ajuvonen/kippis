@@ -42,7 +42,7 @@ onKeyStroke('Escape', () => emit('close'));
           >
             <h2 id="modal-title">{{ title }}</h2>
             <slot name="content" />
-            <div class="flex flex-row justify-end">
+            <div class="flex justify-end">
               <slot name="actions" />
               <button @click="$emit('close')">
                 <IconComponent icon="closeCircle" />

@@ -38,7 +38,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
 </transition-stub>
 <main data-v-384a5d4b="" class="flex-1">
   <h1 data-v-384a5d4b="">Instructions and Ingredients</h1>
-  <div data-v-384a5d4b="" class="flex flex-row">
+  <div data-v-384a5d4b="" class="flex">
     <div data-v-384a5d4b="" class="flex-1">
       <h2 data-v-384a5d4b="">Ingredients</h2>
       <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">

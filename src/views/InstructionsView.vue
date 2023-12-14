@@ -31,7 +31,7 @@ const other = computed(() =>
   <SelectedCocktails />
   <main class="flex-1">
     <h1>{{ t('instructionsView.title') }}</h1>
-    <div v-if="selection.length" class="flex flex-row">
+    <div v-if="selection.length" class="flex">
       <div class="flex-1">
         <h2>{{ t('instructionsView.ingredients') }}</h2>
         <CapitalizedList
