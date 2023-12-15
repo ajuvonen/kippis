@@ -2,11 +2,11 @@
 import {watch} from 'vue';
 import {useI18n} from 'vue-i18n';
 import {storeToRefs} from 'pinia';
+import {useCocktailStore} from '@/stores/cocktail';
+import type {SearchStringProps} from '@/utils/types';
 import SearchField from '@/components/SearchField.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
-import {useCocktailStore} from '@/stores/cocktail';
-import type {SearchStringProps} from '@/utils/types';
 
 const props = defineProps<SearchStringProps>();
 

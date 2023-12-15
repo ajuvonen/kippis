@@ -44,7 +44,9 @@
   "selectedCocktails": {
     "backButton": "Janoinen? Palaa hakuun.",
     "title": "Valitsemasi juomat",
-    "readyButton": "Valmis? Siirry ohjeisiin."
+    "readyButton": "Valmis? Siirry ohjeisiin.",
+    "openSideBar": "Avaa valitut cocktailit",
+    "closeSideBar": "Sulje valittujen cocktailien lista"
   },
   "tags": {
     "gin": "Gin",

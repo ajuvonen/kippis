@@ -1,22 +1,39 @@
 <script setup lang="ts">
+import {ref} from 'vue';
 import {useRoute} from 'vue-router';
 import {storeToRefs} from 'pinia';
 import {useI18n} from 'vue-i18n';
+import useScreenSize from '@/hooks/screenSize';
 import {useCocktailStore} from '@/stores/cocktail';
 import LinkButton from '@/components/LinkButton.vue';
 import SearchResults from '@/components/SearchResults.vue';
+import IconComponent from '@/components/IconComponent.vue';
 
 const route = useRoute();
 const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {selection} = storeToRefs(cocktailStore);
+
+const {isSmallScreen} = useScreenSize();
+
+const sideBarOpen = ref(false);
 </script>
 <template>
+  <button
+    v-if="selection.length && isSmallScreen"
+    class="selected-cocktails__mobile-button"
+    :aria-label="
+      t(sideBarOpen ? 'selectedCocktails.closeSideBar' : 'selectedCocktails.openSideBar')
+    "
+    @click="sideBarOpen = !sideBarOpen"
+  >
+    <IconComponent :icon="sideBarOpen ? 'arrowLeft' : 'arrowRight'" />
+  </button>
   <Transition>
-    <aside v-if="selection.length" class="selected-cocktails">
+    <aside v-if="(!isSmallScreen || sideBarOpen) && selection.length" class="selected-cocktails">
       <h2 class="text-3xl text-center">{{ t('selectedCocktails.title') }}</h2>
-      <SearchResults class="pt-2 mb-4 overflow-y-scroll" :cocktails="selection" />
+      <SearchResults class="pt-2 mb-4 pb-2 overflow-y-scroll" :cocktails="selection" />
       <LinkButton
         v-if="route.name === 'search'"
         to="/instructions"
@@ -37,8 +54,17 @@ const {selection} = storeToRefs(cocktailStore);
   </Transition>
 </template>
 <style lang="scss" scoped>
+.selected-cocktails__mobile-button {
+  @apply z-[2] absolute top-6 -left-6 w-14 h-14 pr-0 rounded-md;
+}
+
+.selected-cocktails__mobile-button--open {
+  left: unset;
+  @apply -right-6;
+}
+
 .selected-cocktails {
-  @apply w-[400px] hidden md:flex flex-col bg-slate-800;
+  @apply absolute z-[1] w-full h-full md:w-[400px] md:static flex flex-col bg-slate-800;
 }
 
 @media print {
@@ -49,7 +75,7 @@ const {selection} = storeToRefs(cocktailStore);
 
 .v-enter-to,
 .v-leave-from {
-  margin-left: 0;
+  @apply ml-0;
 }
 
 .v-enter-active,
@@ -59,6 +85,6 @@ const {selection} = storeToRefs(cocktailStore);
 
 .v-enter-from,
 .v-leave-to {
-  margin-left: -400px;
+  @apply ml-[-100%] md:ml-[-400px];
 }
 </style>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {
+  mdiArrowLeft,
+  mdiArrowRight,
   mdiCloseCircleOutline,
   mdiGiftOutline,
   mdiGlassCocktail,
@@ -11,6 +13,8 @@ import {
 } from '@mdi/js';
 
 type IconString =
+  | 'arrowLeft'
+  | 'arrowRight'
   | 'closeCircle'
   | 'cocktail'
   | 'cocktailOff'
@@ -25,6 +29,8 @@ defineProps<{
 }>();
 
 const icons = {
+  arrowLeft: mdiArrowLeft,
+  arrowRight: mdiArrowRight,
   closeCircle: mdiCloseCircleOutline,
   cocktail: mdiGlassCocktail,
   cocktailOff: mdiGlassCocktailOff,

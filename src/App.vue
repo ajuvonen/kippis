@@ -28,7 +28,7 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
 }
 
 .app__view-wrapper {
-  @apply flex flex-col sm:flex-row min-h-0;
+  @apply relative flex flex-col sm:flex-row min-h-0;
 }
   
 @media print {

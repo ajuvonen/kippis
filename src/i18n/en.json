@@ -44,7 +44,9 @@
   "selectedCocktails": {
     "backButton": "Thirsty? Return to search.",
     "title": "Your Cocktails",
-    "readyButton": "Ready? Proceed to instructions."
+    "readyButton": "Ready? Proceed to instructions.",
+    "openSideBar": "View Selected Cocktails",
+    "closeSideBar": "Close Selected Cocktails View"
   },
   "tags": {
     "gin": "Gin",
