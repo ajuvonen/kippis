@@ -39,7 +39,7 @@ onKeyStroke('Escape', () => emit('close'));
           >
             <h2 id="modal-title">{{ title }}</h2>
             <slot name="content" />
-            <div class="flex justify-end">
+            <div class="modal-component__actions-container">
               <slot name="actions" />
               <button @click="$emit('close')">
                 <IconComponent icon="closeCircle" />
@@ -54,12 +54,16 @@ onKeyStroke('Escape', () => emit('close'));
 </template>
 <style lang="scss" scoped>
 .modal-component__backdrop {
-  @apply fixed z-20 inset-0 overflow-y-scroll bg-black bg-opacity-50;
+  @apply fixed z-20 inset-0 overflow-hidden bg-black bg-opacity-50;
 }
 
 .modal-component__modal {
-  @apply bg-white rounded-lg text-left shadow-xl p-4 w-5/6 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute;
+  @apply bg-white rounded-lg text-left shadow-xl max-h-[90%] p-4 w-5/6 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute overflow-y-scroll;
   transform: translate(-50%, -50%);
+}
+
+.modal-component__actions-container {
+  @apply flex justify-center mt-4;
 }
 
 @media print {
