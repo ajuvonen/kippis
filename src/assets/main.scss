@@ -42,6 +42,10 @@
     @apply px-4 rounded-3xl border-2 border-slate-200 h-10;
   }
 
+  .left-button {
+    @apply absolute z-20 left-0 w-6 h-14 p-0 m-0 border-l-0 rounded-md rounded-tl-none rounded-bl-none flex flex-col;
+  }
+
   main {
     @apply p-6 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
   }

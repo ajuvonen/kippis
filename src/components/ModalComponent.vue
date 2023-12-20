@@ -58,7 +58,7 @@ onKeyStroke('Escape', () => emit('close'));
 }
 
 .modal-component__modal {
-  @apply bg-white rounded-lg text-left shadow-xl p-6 w-4/5 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute;
+  @apply bg-white rounded-lg text-left shadow-xl p-4 w-5/6 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute;
   transform: translate(-50%, -50%);
 }
 

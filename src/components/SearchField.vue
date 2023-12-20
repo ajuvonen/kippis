@@ -69,7 +69,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 </template>
 <style lang="scss" scoped>
 .search-field__label {
-  @apply block text-center text-3xl mt-4 mb-4;
+  @apply block text-center text-3xl my-4;
 
   &--sr-only {
     @apply sr-only;
@@ -81,7 +81,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 }
 
 .search-field__input {
-  @apply rounded-tr-none rounded-br-none pb-1;
+  @apply rounded-tr-none rounded-br-none pb-1 min-w-0;
 
   &:focus {
     @apply z-10;

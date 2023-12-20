@@ -15,7 +15,7 @@ watch(locale, async () => {
 </script>
 <template>
   <button
-    class="locale-changer"
+    class="locale-changer left-button"
     ref="changer"
     :aria-label="$t('localeChanger.changeLocale', [nextLocale])"
     @click="() => (locale = nextLocale)"
@@ -26,6 +26,6 @@ watch(locale, async () => {
 </template>
 <style lang="scss" scoped>
 .locale-changer {
-  @apply z-20 absolute top-4 -left-6 w-12 h-14 pr-0 pl-5 m-0 rounded-md flex flex-col;
+  @apply top-4;
 }
 </style>

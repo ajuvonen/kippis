@@ -35,7 +35,7 @@ const {openCocktailModal} = cocktailStore;
 }
 
 .search-result__image-wrapper {
-  @apply relative overflow-hidden w-40 h-40 rounded-md;
+  @apply relative overflow-hidden w-[200px] h-[200px] sm:w-40 sm:h-40 rounded-md;
   outline-offset: 0.2rem;
 }
 
@@ -48,7 +48,7 @@ const {openCocktailModal} = cocktailStore;
 }
 
 .search-result__shadow {
-  @apply absolute w-full h-full top-0 pointer-events-none bg-gradient-to-b from-slate-800 to-transparent to-40% text-white uppercase text-xs p-2;
+  @apply absolute w-full h-full top-0 pointer-events-none bg-gradient-to-b from-slate-800 to-transparent to-40% text-white uppercase text-sm sm:text-xs p-2;
 }
 
 @media print {

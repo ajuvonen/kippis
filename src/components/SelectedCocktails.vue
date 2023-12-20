@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import {ref, watch} from 'vue';
 import {useRoute} from 'vue-router';
 import {storeToRefs} from 'pinia';
 import useScreenSize from '@/hooks/screenSize';
@@ -16,11 +16,14 @@ const {selection} = storeToRefs(cocktailStore);
 const {isSmallScreen} = useScreenSize();
 
 const sideBarOpen = ref(false);
+watch(isSmallScreen, () => {
+  sideBarOpen.value = false;
+});
 </script>
 <template>
   <button
     v-if="selection.length && isSmallScreen"
-    class="selected-cocktails__mobile-button"
+    class="selected-cocktails__mobile-button left-button"
     :aria-label="
       $t(sideBarOpen ? 'selectedCocktails.closeSideBar' : 'selectedCocktails.openSideBar')
     "
@@ -54,22 +57,11 @@ const sideBarOpen = ref(false);
 </template>
 <style lang="scss" scoped>
 .selected-cocktails__mobile-button {
-  @apply z-20 absolute top-[5.5rem] -left-6 w-12 h-14 pr-0 pl-5 m-0 rounded-md flex flex-col;
-}
-
-.selected-cocktails__mobile-button--open {
-  left: unset;
-  @apply -right-6;
+  @apply top-[5.5rem];
 }
 
 .selected-cocktails {
   @apply absolute z-10 w-full h-full md:w-[400px] md:static flex flex-col bg-slate-800;
-}
-
-@media print {
-  .selected-cocktails {
-    @apply hidden;
-  }
 }
 
 .v-enter-to,
@@ -85,5 +77,11 @@ const sideBarOpen = ref(false);
 .v-enter-from,
 .v-leave-to {
   @apply ml-[-100%] md:ml-[-400px];
+}
+
+@media print {
+  .selected-cocktails {
+    @apply hidden;
+  }
 }
 </style>
