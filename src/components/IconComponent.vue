@@ -3,6 +3,7 @@ import {
   mdiArrowLeft,
   mdiArrowRight,
   mdiCloseCircleOutline,
+  mdiEarth,
   mdiGiftOutline,
   mdiGlassCocktail,
   mdiGlassCocktailOff,
@@ -18,6 +19,7 @@ type IconString =
   | 'closeCircle'
   | 'cocktail'
   | 'cocktailOff'
+  | 'earth'
   | 'gift'
   | 'magnify'
   | 'plus'
@@ -34,6 +36,7 @@ const icons = {
   closeCircle: mdiCloseCircleOutline,
   cocktail: mdiGlassCocktail,
   cocktailOff: mdiGlassCocktailOff,
+  earth: mdiEarth,
   gift: mdiGiftOutline,
   magnify: mdiMagnify,
   printer: mdiPrinterOutline,

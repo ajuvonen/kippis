@@ -19,6 +19,9 @@
     "noCocktails": "No cocktails selected. Use the search and find your favorites!",
     "other": "Other ingredients"
   },
+  "localeChanger": {
+    "changeLocale": "Change language to {0}"
+  },
   "menu": {
     "home": "Home",
     "search": "Search",

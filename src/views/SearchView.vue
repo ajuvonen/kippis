@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {watch} from 'vue';
-import {useI18n} from 'vue-i18n';
 import {storeToRefs} from 'pinia';
 import {useCocktailStore} from '@/stores/cocktail';
 import type {SearchStringProps} from '@/utils/types';
@@ -9,8 +8,6 @@ import SearchResults from '@/components/SearchResults.vue';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
 
 const props = defineProps<SearchStringProps>();
-
-const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {search, searchNonAlcoholic, searchWithTag} = cocktailStore;
@@ -41,7 +38,7 @@ watch(
   <SelectedCocktails />
   <main class="flex-1">
     <SearchField />
-    <h1>{{ t('searchResults.title', [searchResults.length]) }}</h1>
+    <h1>{{ $t('searchResults.title', [searchResults.length]) }}</h1>
     <SearchResults :cocktails="searchResults" />
   </main>
 </template>

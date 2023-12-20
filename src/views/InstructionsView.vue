@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {computed} from 'vue';
-import {useI18n} from 'vue-i18n';
 import {storeToRefs} from 'pinia';
 import {intersection} from 'remeda';
 import {useCocktailStore} from '@/stores/cocktail';
@@ -11,7 +10,6 @@ import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
 import SearchField from '@/components/SearchField.vue';
 
-const {t} = useI18n();
 const cocktailStore = useCocktailStore();
 const {getAllIngredients, selection} = storeToRefs(cocktailStore);
 
@@ -30,18 +28,18 @@ const other = computed(() =>
 <template>
   <SelectedCocktails />
   <main class="flex-1">
-    <h1>{{ t('instructionsView.title') }}</h1>
+    <h1>{{ $t('instructionsView.title') }}</h1>
     <div v-if="selection.length" class="flex">
       <div class="flex-1">
-        <h2>{{ t('instructionsView.ingredients') }}</h2>
+        <h2>{{ $t('instructionsView.ingredients') }}</h2>
         <CapitalizedList
-          :title="t('instructionsView.alcohols')"
+          :title="$t('instructionsView.alcohols')"
           :items="alcohols"
         ></CapitalizedList>
-        <CapitalizedList :title="t('instructionsView.mixers')" :items="mixers"></CapitalizedList>
-        <CapitalizedList :title="t('instructionsView.fruits')" :items="fruits"></CapitalizedList>
-        <CapitalizedList :title="t('instructionsView.other')" :items="other"></CapitalizedList>
-        <h2>{{ t('instructionsView.instructions') }}</h2>
+        <CapitalizedList :title="$t('instructionsView.mixers')" :items="mixers"></CapitalizedList>
+        <CapitalizedList :title="$t('instructionsView.fruits')" :items="fruits"></CapitalizedList>
+        <CapitalizedList :title="$t('instructionsView.other')" :items="other"></CapitalizedList>
+        <h2>{{ $t('instructionsView.instructions') }}</h2>
         <div v-for="cocktail in selection" :key="cocktail.id">
           <CapitalizedList
             :title="cocktail.name"
@@ -65,7 +63,7 @@ const other = computed(() =>
       </div>
     </div>
     <div v-else>
-      <p class="text-center my-4">{{ t('instructionsView.noCocktails') }}</p>
+      <p class="text-center my-4">{{ $t('instructionsView.noCocktails') }}</p>
       <SearchField :omit-title="true" />
     </div>
   </main>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
-import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
@@ -22,8 +21,6 @@ const {showRandomCocktail} = cocktailStore;
 const router = useRouter();
 const route = useRoute();
 
-const {t} = useI18n();
-
 const searchString = ref('');
 
 onMounted(() => {
@@ -39,7 +36,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       for="search-input"
       class="search-field__label"
       :class="omitTitle ? 'search-field__label--sr-only' : ''"
-      >{{ t('searchField.label') }}</label
+      >{{ $t('searchField.label') }}</label
     >
     <div class="search-field__wrapper">
       <input
@@ -52,19 +49,19 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       />
       <button class="search-field__search-button" @click="search">
         <IconComponent icon="magnify" />
-        <span>{{ t('searchField.search') }}</span>
+        <span>{{ $t('searchField.search') }}</span>
       </button>
     </div>
-    <ul class="search-field__tag-container" :aria-label="t('searchField.tagListTitle')">
+    <ul class="search-field__tag-container" :aria-label="$t('searchField.tagListTitle')">
       <li v-for="{tag} in SEARCHABLE_ALCOHOLS" :key="tag">
         <LinkButton :to="`/search?tag=${tag}`">
-          {{ t(`tags.${tag}`) }}
+          {{ $t(`tags.${tag}`) }}
         </LinkButton>
       </li>
       <li>
         <button @click="showRandomCocktail" data-test-id="search-field__random-button">
           <IconComponent icon="gift" />
-          <span>{{ t('searchField.random') }}</span>
+          <span>{{ $t('searchField.random') }}</span>
         </button>
       </li>
     </ul>
@@ -87,7 +84,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
   @apply rounded-tr-none rounded-br-none pb-1;
 
   &:focus {
-    z-index: 1;
+    @apply z-10;
   }
 }
 

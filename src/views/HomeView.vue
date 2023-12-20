@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import {useI18n} from 'vue-i18n';
 import SearchField from '@/components/SearchField.vue';
 import {MAIN_PHOTOS} from '@/utils/constants';
 import type {MainPhoto} from '@/utils/types';
-
-const {t} = useI18n();
 
 const mainPhoto = ref<MainPhoto>();
 onMounted(() => {
@@ -21,11 +18,11 @@ onMounted(() => {
     <div
       class="home__side-panel-content-wrapper"
     >
-      <h1>{{ t('homeView.title') }}</h1>
-      <p>{{ t('homeView.ingress') }}</p>
+      <h1>{{ $t('homeView.title') }}</h1>
+      <p>{{ $t('homeView.ingress') }}</p>
       <div class="absolute bottom-4">
         <a :href="mainPhoto?.link" target="_blank" class="text-xs" noreferrer noopener>{{
-          t('homeView.credit', [mainPhoto?.acknowledgement])
+          $t('homeView.credit', [mainPhoto?.acknowledgement])
         }}</a>
       </div>
     </div>
@@ -40,7 +37,7 @@ onMounted(() => {
 }
 
 .home__side-panel-content-wrapper {
-  @apply p-4 flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%;
+  @apply p-6 flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%;
 }
 
 .home__main {

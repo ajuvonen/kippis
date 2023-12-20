@@ -19,6 +19,9 @@
     "noCocktails": "Ei valittuja cocktaileja. Käytä hakua ja löydä suosikkisi!",
     "other": "Muut ainesosat"
   },
+  "localeChanger": {
+    "changeLocale": "Vaihda kieleksi {0}"
+  },
   "menu": {
     "home": "Etusivu",
     "search": "Haku",
@@ -51,7 +54,7 @@
   "tags": {
     "gin": "Gin",
     "rum": "Rommi",
-    "virgin": "Alkoholittomat",
+    "virgin": "Alkoholiton",
     "vodka": "Vodka",
     "whiskey": "Viski"
   }

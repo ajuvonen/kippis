@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
 import type {SearchResultCocktail} from '@/utils/types';
 import {useCocktailStore} from '@/stores/cocktail';
 import ActionButtons from '@/components/ActionButtons.vue';
@@ -9,15 +8,13 @@ defineProps<{
   cocktail: SearchResultCocktail;
 }>();
 
-const {t} = useI18n();
-
 const cocktailStore = useCocktailStore();
 const {openCocktailModal} = cocktailStore;
 </script>
 <template>
   <div class="search-result" ref="wrapper">
     <div
-      :aria-label="t('searchResultCard.open', [cocktail.name])"
+      :aria-label="$t('searchResultCard.open', [cocktail.name])"
       class="search-result__image-wrapper"
       role="button"
       tabindex="0"

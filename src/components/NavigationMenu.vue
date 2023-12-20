@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
-import {useI18n} from 'vue-i18n';
 import {RouterLink} from 'vue-router';
 import {useCocktailStore} from '@/stores/cocktail';
 
-const {t} = useI18n();
 const {selection} = storeToRefs(useCocktailStore());
 </script>
 <template>
   <nav class="navigation-menu">
     <ul class="navigation-menu__link-container">
       <li>
-        <RouterLink class="navigation-menu__link" to="/">{{ t('menu.home') }}</RouterLink>
+        <RouterLink class="navigation-menu__link" to="/">{{ $t('menu.home') }}</RouterLink>
       </li>
       <li>
-        <RouterLink class="navigation-menu__link" to="/search">{{ t('menu.search') }}</RouterLink>
+        <RouterLink class="navigation-menu__link" to="/search">{{ $t('menu.search') }}</RouterLink>
       </li>
       <li>
         <RouterLink class="navigation-menu__link relative" to="/instructions">
-          {{ t('menu.instructions') }}
+          {{ $t('menu.instructions') }}
           <div v-if="selection.length" class="navigation-menu__selection-size">
             {{ selection.length }}
           </div>

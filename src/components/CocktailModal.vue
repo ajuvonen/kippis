@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
-import {useI18n} from 'vue-i18n';
 import {useCocktailStore} from '@/stores/cocktail';
 import {joinIngredients} from '@/utils/helpers';
 import ModalComponent from '@/components/ModalComponent.vue';
@@ -8,8 +7,6 @@ import ActionButtons from '@/components/ActionButtons.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
 import IconComponent from '@/components/IconComponent.vue';
-
-const {t} = useI18n();
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
@@ -25,7 +22,7 @@ const print = () => window.print();
     <template #content>
       <div class="flex flex-col md:flex-row">
         <CapitalizedList
-          :title="t('cocktailModal.ingredients')"
+          :title="$t('cocktailModal.ingredients')"
           :items="joinIngredients(highlightedCocktail?.ingredients)"
           class="cocktail-modal__ingredients"
         ></CapitalizedList>
@@ -35,14 +32,14 @@ const print = () => window.print();
         </div>
       </div>
       <div>
-        <h3>{{ t('cocktailModal.instructions') }}</h3>
+        <h3>{{ $t('cocktailModal.instructions') }}</h3>
         <p>{{ highlightedCocktail?.instructions }}</p>
       </div>
     </template>
     <template #actions>
       <button @click="print()">
         <IconComponent icon="printer" />
-        <span>{{ t('cocktailModal.print') }}</span>
+        <span>{{ $t('cocktailModal.print') }}</span>
       </button>
     </template>
   </ModalComponent>

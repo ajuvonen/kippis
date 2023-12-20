@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia';
 import {RouterView} from 'vue-router';
+import {useCocktailStore} from '@/stores/cocktail';
 import NavigationMenu from '@/components/NavigationMenu.vue';
 import CocktailModal from '@/components/CocktailModal.vue';
-import {useCocktailStore} from '@/stores/cocktail';
+import LocaleChanger from '@/components/LocaleChanger.vue';
 
 const cocktailStore = useCocktailStore();
 const {highlightedCocktail} = storeToRefs(cocktailStore);
@@ -16,6 +17,7 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
   >
     <NavigationMenu />
     <div class="app__view-wrapper">
+      <LocaleChanger />
       <RouterView />
     </div>
   </div>
@@ -28,7 +30,7 @@ const {highlightedCocktail} = storeToRefs(cocktailStore);
 }
 
 .app__view-wrapper {
-  @apply relative flex flex-col sm:flex-row min-h-0;
+  @apply relative overflow-hidden flex flex-col sm:flex-row min-h-0;
 }
   
 @media print {
