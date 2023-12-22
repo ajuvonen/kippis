@@ -63,7 +63,7 @@ onKeyStroke('Escape', () => emit('close'));
 }
 
 .modal-component__actions-container {
-  @apply flex justify-center mt-4;
+  @apply flex justify-end mt-4;
 }
 
 @media print {
