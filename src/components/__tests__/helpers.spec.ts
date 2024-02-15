@@ -263,15 +263,22 @@ describe('randomDegree', () => {
 });
 
 describe('convertMeasure', () => {
-  it('converts fractions to decimals', () => {
-    expect(convertMeasure('1/2')).toBe('0.5');
-    expect(convertMeasure('1/4')).toBe('0.25');
-    expect(convertMeasure('1/3')).toBe((1/3).toString());
-    expect(convertMeasure('2/3')).toBe((2/3).toString());
+  it('handles numbers correctly', () => {
+    // Fractions without unit conversion are not converted to decimals
+    expect(convertMeasure('1/4')).toBe('1/4');
+    expect(convertMeasure('2/3')).toBe('2/3');
+  
+    // Fractions with unit conversion are converted to decimals
+    expect(convertMeasure('1/4 cup')).toBe('6 CL');
+
+    // Fractions with whole numbers are converted to decimals
+    expect(convertMeasure('1 1/2')).toBe('1.5');
     expect(convertMeasure('1 1/4')).toBe('1.25');
     expect(convertMeasure('5 1/3')).toBe((5 + 1/3).toString());
     expect(convertMeasure('10 2/3')).toBe((10 + 2/3).toString());
     expect(convertMeasure('3 3/4')).toBe('3.75');
+
+    // Whole numbers remain as they are
     expect(convertMeasure('0')).toBe('0');
     expect(convertMeasure('1')).toBe('1');
     expect(convertMeasure('10')).toBe('10');
@@ -317,7 +324,7 @@ describe('convertMeasure', () => {
     [
       ['', ''],
       ['1 tsp', '1 tsp'],
-      ['1/2 tsp', '0.5 tsp'],
+      ['1/2 tsp', '1/2 tsp'],
       ['1 tbsp', '1 tbsp'],
       ['1 3/4 tblsp', '1.75 tblsp'],
       ['dash', 'dash'],

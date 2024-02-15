@@ -50,7 +50,7 @@ export const transformFullDetails = (
           if (replaced) {
             ingredient = replaced[1];
           }
-          const measure = convertMeasure((cocktail[`strMeasure${i}`] || ''));
+          const measure = convertMeasure(cocktail[`strMeasure${i}`] || '');
           ingredients.push({ingredient, measure});
         }
       }
@@ -116,20 +116,18 @@ export const convertMeasure = (measure: string): string => {
 
   let numericAmount = +(parsedMeasure[2] || 0);
   const fraction: string = parsedMeasure[4] || '';
+  let unit = parsedMeasure[5] || '';
+  const conversion = UNIT_CONVERSIONS.find(({regex}) => regex.test(unit));
 
-  // TODO: this will break if there's a unit conversion with a fraction smaller than 1/4
-  if (['1/4', '1/3', '1/2', '2/3', '3/4'].includes(fraction)) {
+  // TODO: this will break if there's a unit conversion with a fraction not included in the list
+  if ((numericAmount || conversion) && ['1/4', '1/3', '1/2', '2/3', '3/4'].includes(fraction)) {
     const [enumerator, divider] = fraction.split('/');
     numericAmount = numericAmount + +enumerator / +divider;
   }
 
-  let unit = parsedMeasure[5] || '';
-  if (numericAmount) {
-    const conversion = UNIT_CONVERSIONS.find(({regex}) => regex.test(unit));
-    if (conversion) {
-      numericAmount = conversion.converter(numericAmount);
-      unit = unit.replace(conversion.regex, conversion.unit);
-    }
+  if (numericAmount && conversion) {
+    numericAmount = conversion.converter(numericAmount);
+    unit = unit.replace(conversion.regex, conversion.unit);
   }
 
   // There might not be a unit, in case the ingredient is like "1 banana", hence the filter
