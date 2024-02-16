@@ -71,7 +71,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
         </ul>
       </div>
       <h2 data-v-384a5d4b="">Instructions</h2>
-      <div data-v-384a5d4b="">
+      <div data-v-384a5d4b="" lang="en">
         <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
           <h3 data-v-c94dac3b="">Margarita</h3>
           <ul data-v-c94dac3b="">
@@ -83,7 +83,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
         </div>
         <p data-v-384a5d4b="" class="mt-2">Rub the rim of the glass with the lime slice to make the salt stick to it.</p>
       </div>
-      <div data-v-384a5d4b="">
+      <div data-v-384a5d4b="" lang="en">
         <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
           <h3 data-v-c94dac3b="">Mojito</h3>
           <ul data-v-c94dac3b="">
@@ -97,22 +97,22 @@ exports[`InstructionsView > displays the instructions 1`] = `
       </div>
     </div>
     <div data-v-384a5d4b="" class="instructions__cocktail-image-container">
-      <div data-v-384a5d4b="" style="transform: rotate(0deg);" class="instructions__cocktail-image-wrapper">
+      <figure data-v-384a5d4b="" style="transform: rotate(0deg);" class="instructions__cocktail-image-wrapper">
         <div data-v-35e45732="" data-v-384a5d4b="" class="instructions__cocktail-image">
           <div data-v-35e45732="" class="lazy-image__fallback"><svg data-v-35e45732="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
               <path d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z" class="transition-all ease-in-out"></path>
             </svg></div>
         </div>
-        <div data-v-384a5d4b="" class="instructions__cocktail-image-label">Margarita</div>
-      </div>
-      <div data-v-384a5d4b="" style="transform: rotate(0deg);" class="instructions__cocktail-image-wrapper">
+        <figcaption data-v-384a5d4b="" class="instructions__cocktail-image-label">Margarita</figcaption>
+      </figure>
+      <figure data-v-384a5d4b="" style="transform: rotate(0deg);" class="instructions__cocktail-image-wrapper">
         <div data-v-35e45732="" data-v-384a5d4b="" class="instructions__cocktail-image">
           <div data-v-35e45732="" class="lazy-image__fallback"><svg data-v-35e45732="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
               <path d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z" class="transition-all ease-in-out"></path>
             </svg></div>
         </div>
-        <div data-v-384a5d4b="" class="instructions__cocktail-image-label">Mojito</div>
-      </div>
+        <figcaption data-v-384a5d4b="" class="instructions__cocktail-image-label">Mojito</figcaption>
+      </figure>
     </div>
   </div>
 </main>"

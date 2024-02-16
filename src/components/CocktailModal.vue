@@ -24,6 +24,7 @@ const print = () => window.print();
         <CapitalizedList
           :title="$t('cocktailModal.ingredients')"
           :items="joinIngredients(highlightedCocktail?.ingredients)"
+          lang="en"
           class="cocktail-modal__ingredients"
         ></CapitalizedList>
         <div class="cocktail-modal__image-wrapper">
@@ -33,7 +34,7 @@ const print = () => window.print();
       </div>
       <div>
         <h3>{{ $t('cocktailModal.instructions') }}</h3>
-        <p>{{ highlightedCocktail?.instructions }}</p>
+        <p lang="en">{{ highlightedCocktail?.instructions }}</p>
       </div>
     </template>
     <template #actions>

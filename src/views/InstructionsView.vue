@@ -40,7 +40,7 @@ const other = computed(() =>
         <CapitalizedList :title="$t('instructionsView.fruits')" :items="fruits"></CapitalizedList>
         <CapitalizedList :title="$t('instructionsView.other')" :items="other"></CapitalizedList>
         <h2>{{ $t('instructionsView.instructions') }}</h2>
-        <div v-for="cocktail in selection" :key="cocktail.id">
+        <div v-for="cocktail in selection" :key="cocktail.id" lang="en">
           <CapitalizedList
             :title="cocktail.name"
             :items="joinIngredients(cocktail.ingredients)"
@@ -49,17 +49,17 @@ const other = computed(() =>
         </div>
       </div>
       <div class="instructions__cocktail-image-container">
-        <div
+        <figure
           v-for="cocktail in selection"
           :key="cocktail.id"
           :style="`transform: rotate(${randomDegree()}deg);`"
           class="instructions__cocktail-image-wrapper"
         >
           <LazyCocktailImage :src="cocktail.thumb" class="instructions__cocktail-image" />
-          <div class="instructions__cocktail-image-label">
+          <figcaption class="instructions__cocktail-image-label">
             {{ cocktail.name }}
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </div>
     <div v-else>
