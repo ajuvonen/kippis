@@ -25,7 +25,7 @@
   "menu": {
     "home": "Home",
     "search": "Search",
-    "instructions": "instructions"
+    "instructions": "Guide"
   },
   "modal": {
     "close": "Close"
@@ -48,8 +48,8 @@
     "backButton": "Thirsty? Return to search.",
     "title": "Your Cocktails",
     "readyButton": "Ready? Proceed to instructions.",
-    "openSideBar": "View Selected Cocktails",
-    "closeSideBar": "Close Selected Cocktails View"
+    "openSelectedCocktails": "View Selected Cocktails",
+    "closeSelectedCocktails": "Close Selected Cocktails View"
   },
   "tags": {
     "gin": "Gin",

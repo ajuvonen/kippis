@@ -46,10 +46,10 @@
   },
   "selectedCocktails": {
     "backButton": "Janoinen? Palaa hakuun.",
-    "title": "Valitsemasi juomat",
+    "title": "Valitsemasi cocktailit",
     "readyButton": "Valmis? Siirry ohjeisiin.",
-    "openSideBar": "Avaa valitut cocktailit",
-    "closeSideBar": "Sulje valittujen cocktailien lista"
+    "openSelectedCocktails": "Avaa valitut cocktailit",
+    "closeSelectedCocktails": "Sulje valittujen cocktailien lista"
   },
   "tags": {
     "gin": "Gin",
