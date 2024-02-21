@@ -11,7 +11,7 @@ describe('LocaleChanger', () => {
   it('Changes locale', async () => {
     const wrapper = mount(App);
 
-    const localeButton = wrapper.find('.locale-changer');
+    const localeButton = wrapper.find('.navigation-menu__locale-changer');
 
     expect(wrapper.find('h1').text()).toBe('Enter the World of Delicious Cocktails!');
     expect(localeButton.text()).toBe('en');
