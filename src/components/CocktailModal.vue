@@ -32,9 +32,9 @@ const print = () => window.print();
           <ActionButtons v-if="highlightedCocktail" :cocktail="highlightedCocktail" />
         </div>
       </div>
-      <div>
+      <div v-if="highlightedCocktail?.instructions">
         <h3>{{ $t('cocktailModal.instructions') }}</h3>
-        <p lang="en">{{ highlightedCocktail?.instructions }}</p>
+        <p lang="en">{{ highlightedCocktail.instructions }}</p>
       </div>
     </template>
     <template #actions>
