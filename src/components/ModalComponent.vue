@@ -58,8 +58,10 @@ onKeyStroke('Escape', () => emit('close'));
 }
 
 .modal-component__modal {
-  @apply bg-white rounded-lg text-left shadow-xl max-h-[90%] p-4 w-5/6 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute overflow-y-scroll;
+  @apply rounded-lg text-left shadow-xl max-h-[90%] p-4 w-5/6 sm:w-3/5 lg:w-1/2 top-1/2 left-1/2 absolute overflow-y-scroll;
   transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, .80);  
+  backdrop-filter: blur(5px);
 }
 
 .modal-component__actions-container {
