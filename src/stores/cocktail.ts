@@ -26,7 +26,7 @@ export const useCocktailStore = defineStore('cocktail', {
     async addToSelection(id: number) {
       if (!this.selection.some((cocktail) => cocktail.id === id)) {
         const cocktail = await getDetails(id);
-        if (cocktail) {
+        if (cocktail && !this.selection.some((cocktail) => cocktail.id === id)) {
           this.selection.push(cocktail);
         }
       }
