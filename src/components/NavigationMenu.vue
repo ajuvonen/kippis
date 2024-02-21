@@ -43,7 +43,7 @@ const {selection} = storeToRefs(useCocktailStore());
 }
 
 .navigation-menu__link {
-  @apply w-full sm:w-32 flex items-center justify-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
+  @apply w-full sm:w-32 flex items-center justify-center m-1 rounded-md uppercase text-sm tracking-wide transition-all;
 
   &:hover {
     @apply bg-slate-800 text-white;

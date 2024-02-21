@@ -31,7 +31,7 @@ const {openCocktailModal} = cocktailStore;
 </template>
 <style lang="scss" scoped>
 .search-result {
-  @apply relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-shadow ease-in-out;
+  @apply relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-all;
 }
 
 .search-result__image-wrapper {

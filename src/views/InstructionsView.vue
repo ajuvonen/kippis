@@ -5,13 +5,17 @@ import {intersection} from 'remeda';
 import {useCocktailStore} from '@/stores/cocktail';
 import {ALCOHOLS, FRUITS, MIXERS} from '@/utils/constants';
 import {joinIngredients, randomDegree} from '@/utils/helpers';
+import useScreen from '@/hooks/screenSize';
 import SelectedCocktails from '@/components/SelectedCocktails.vue';
+import SelectedCocktailsMobile from '@/components/SelectedCocktailsMobile.vue';
 import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 import CapitalizedList from '@/components/CapitalizedList.vue';
 import SearchField from '@/components/SearchField.vue';
 
 const cocktailStore = useCocktailStore();
 const {getAllIngredients, selection} = storeToRefs(cocktailStore);
+
+const {isSmallScreen} = useScreen();
 
 const alcohols = computed(() => intersection(getAllIngredients.value, ALCOHOLS));
 const mixers = computed(() => intersection(getAllIngredients.value, MIXERS));
@@ -26,7 +30,8 @@ const other = computed(() =>
 );
 </script>
 <template>
-  <SelectedCocktails />
+  <SelectedCocktailsMobile v-if="isSmallScreen" />
+  <SelectedCocktails v-else />
   <main class="flex-1">
     <h1>{{ $t('instructionsView.title') }}</h1>
     <div v-if="selection.length" class="flex">
@@ -45,7 +50,7 @@ const other = computed(() =>
             :title="cocktail.name"
             :items="joinIngredients(cocktail.ingredients)"
           ></CapitalizedList>
-          <p class="mt-2">{{ cocktail.instructions }}</p>
+          <p v-if="cocktail.instructions" class="mt-2">{{ cocktail.instructions }}</p>
         </div>
       </div>
       <div class="instructions__cocktail-image-container">

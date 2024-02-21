@@ -16,7 +16,7 @@ defineProps<{
 </template>
 <style lang="scss" scoped>
 .search-results {
-  @apply flex flex-auto flex-wrap gap-6 content-start justify-center;
+  @apply flex flex-auto flex-wrap gap-6 content-start justify-center overflow-hidden overflow-y-auto;
 }
 
 @media print {

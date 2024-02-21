@@ -2,73 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  h1 {
-    @apply text-center text-3xl my-4;
-  }
+h1 {
+  @apply text-center text-3xl my-4;
+}
 
-  h2 {
-    @apply text-left text-2xl my-4;
-  }
+h2 {
+  @apply text-left text-2xl my-4;
+}
 
-  h3 {
-    @apply text-xl mt-4 mb-2;
-  }
+h3 {
+  @apply text-xl mt-4 mb-2;
+}
 
-  p {
-    @apply mb-2;
-  }
-  
-  button, a.link-button {
-    @apply flex justify-center items-center mb-1 text-sm uppercase tracking-wide transition-colors ease-in-out bg-white;
-    
-    &:hover {
-      @apply bg-slate-800 text-white cursor-pointer;
-      svg path {
-        @apply fill-white;
-      }
-    }
-    
-    + button, + a.link-button {
-      @apply ml-1;
-    }
+p {
+  @apply mb-2;
+}
 
-    * + * {
-      @apply ml-1;
+button,
+a.link-button {
+  @apply flex justify-center items-center mb-1 text-sm uppercase tracking-wide transition-all bg-white;
+
+  &:hover {
+    @apply bg-slate-800 text-white cursor-pointer;
+    svg path {
+      @apply fill-white;
     }
   }
 
-  button, a.link-button, input {
-    @apply px-4 rounded-3xl border-2 border-slate-200 h-10;
+  + button,
+  + a.link-button {
+    @apply ml-1;
   }
 
-  .left-button {
-    @apply absolute z-20 left-0 w-6 h-14 p-0 m-0 border-l-0 rounded-md rounded-tl-none rounded-bl-none flex flex-col;
+  * + * {
+    @apply ml-1;
   }
+}
 
-  main {
-    @apply p-6 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
-  }
+button,
+a.link-button,
+input {
+  @apply px-4 rounded-3xl border-2 border-slate-200 h-10;
+}
 
-  aside {
-    @apply p-6;
+main {
+  @apply p-4 pb-12 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+}
 
-    :not(.button, a.link-button) {
-      @apply text-slate-100;
-    }
+aside {
+  @apply p-4;
 
-    *:focus {
-      @apply outline-slate-100;
-    }
+  :not(.button, a.link-button) {
+    @apply text-slate-100;
   }
 
   *:focus {
-    @apply outline outline-2 outline-slate-800;
+    @apply outline-slate-100;
   }
+}
 
-  @media print {
-    button {
-      @apply hidden;
-    }
+*:focus {
+  @apply outline outline-2 outline-slate-800;
+}
+
+@media print {
+  button {
+    display: none !important;
   }
 }
