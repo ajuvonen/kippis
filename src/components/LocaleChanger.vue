@@ -5,7 +5,7 @@ import IconComponent from '@/components/IconComponent.vue';
 
 const {locale} = useI18n();
 
-const nextLocale = computed(() => locale.value === 'en' ? 'fi' : 'en');
+const nextLocale = computed(() => (locale.value === 'en' ? 'fi' : 'en'));
 
 const changer = ref<HTMLButtonElement | null>(null);
 
@@ -14,15 +14,20 @@ watch(locale, (newValue) => {
 });
 </script>
 <template>
-  <button
-    class="locale-changer left-button top-4"
+  <a
+    href="#"
+    role="button"
+    class="navigation-menu__link navigation-menu__locale-changer gap-1"
     ref="changer"
     :aria-label="$t('localeChanger.changeLocale', [nextLocale])"
-    @click="() => (locale = nextLocale)"
+    @click="locale = nextLocale"
   >
     <IconComponent icon="earth" />
     {{ locale }}
-  </button>
+  </a>
 </template>
 <style lang="scss" scoped>
+.navigation-menu__locale-changer {
+  @apply w-16;
+}
 </style>

@@ -2,6 +2,7 @@
 import {storeToRefs} from 'pinia';
 import {RouterLink} from 'vue-router';
 import {useCocktailStore} from '@/stores/cocktail';
+import LocaleChanger from '@/components/LocaleChanger.vue';
 
 const {selection} = storeToRefs(useCocktailStore());
 </script>
@@ -22,6 +23,9 @@ const {selection} = storeToRefs(useCocktailStore());
           </div>
         </RouterLink>
       </li>
+      <li>
+        <LocaleChanger />
+      </li>
     </ul>
   </nav>
 </template>
@@ -39,10 +43,13 @@ const {selection} = storeToRefs(useCocktailStore());
 }
 
 .navigation-menu__link {
-  @apply w-full sm:w-32 flex flex-col justify-center text-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
+  @apply w-full sm:w-32 flex items-center justify-center m-1 rounded-md uppercase text-sm tracking-wide transition-colors ease-in-out;
 
   &:hover {
     @apply bg-slate-800 text-white;
+    :deep(svg path) {
+      @apply fill-white;
+    }
   }
 }
 
