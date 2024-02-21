@@ -41,28 +41,28 @@ exports[`InstructionsView > displays the instructions 1`] = `
   <div data-v-384a5d4b="" class="flex">
     <div data-v-384a5d4b="" class="flex-1">
       <h2 data-v-384a5d4b="">Ingredients</h2>
-      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
+      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list" lang="en">
         <h3 data-v-c94dac3b="">Alcohols</h3>
         <ul data-v-c94dac3b="">
           <li data-v-c94dac3b="" class="capitalized-list__item">tequila</li>
           <li data-v-c94dac3b="" class="capitalized-list__item">triple sec</li>
         </ul>
       </div>
-      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
+      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list" lang="en">
         <h3 data-v-c94dac3b="">Mixers</h3>
         <ul data-v-c94dac3b="">
           <li data-v-c94dac3b="" class="capitalized-list__item">lime juice</li>
           <li data-v-c94dac3b="" class="capitalized-list__item">soda water</li>
         </ul>
       </div>
-      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
+      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list" lang="en">
         <h3 data-v-c94dac3b="">Fruits and vegetables</h3>
         <ul data-v-c94dac3b="">
           <li data-v-c94dac3b="" class="capitalized-list__item">lime</li>
           <li data-v-c94dac3b="" class="capitalized-list__item">mint</li>
         </ul>
       </div>
-      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list">
+      <div data-v-c94dac3b="" data-v-384a5d4b="" class="capitalized-list" lang="en">
         <h3 data-v-c94dac3b="">Other ingredients</h3>
         <ul data-v-c94dac3b="">
           <li data-v-c94dac3b="" class="capitalized-list__item">salt</li>

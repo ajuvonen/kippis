@@ -40,10 +40,23 @@ const other = computed(() =>
         <CapitalizedList
           :title="$t('instructionsView.alcohols')"
           :items="alcohols"
+          lang="en"
         ></CapitalizedList>
-        <CapitalizedList :title="$t('instructionsView.mixers')" :items="mixers"></CapitalizedList>
-        <CapitalizedList :title="$t('instructionsView.fruits')" :items="fruits"></CapitalizedList>
-        <CapitalizedList :title="$t('instructionsView.other')" :items="other"></CapitalizedList>
+        <CapitalizedList
+          :title="$t('instructionsView.mixers')"
+          :items="mixers"
+          lang="en"
+        ></CapitalizedList>
+        <CapitalizedList
+          :title="$t('instructionsView.fruits')"
+          :items="fruits"
+          lang="en"
+        ></CapitalizedList>
+        <CapitalizedList
+          :title="$t('instructionsView.other')"
+          :items="other"
+          lang="en"
+        ></CapitalizedList>
         <h2>{{ $t('instructionsView.instructions') }}</h2>
         <div v-for="cocktail in selection" :key="cocktail.id" lang="en">
           <CapitalizedList
