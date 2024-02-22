@@ -133,6 +133,7 @@ export const ALCOHOLS = [
   'orange curacao',
   'ouzo',
   'passoa',
+  'pastis',
   'peach brandy',
   'peach schnapps',
   'peach vodka',
@@ -146,7 +147,6 @@ export const ALCOHOLS = [
   'raspberry vodka',
   'red wine',
   'red vermouth',
-  'ricard',
   'rose wine',
   'rum',
   'rye whiskey',
@@ -242,7 +242,7 @@ export const MIXERS = [
   'tonic water',
 ];
 
-export const REPLACED_INGREDIENTS = [
+export const REPLACED_INGREDIENTS: [string, string][] = [
   ['7-up', 'lemonade'],
   ['absolut citron', 'lemon vodka'],
   ['absolut kurant', 'cassis vodka'],
@@ -255,6 +255,7 @@ export const REPLACED_INGREDIENTS = [
   ['blended whiskey', 'whiskey'],
   ['carbonated water', 'soda water'],
   ['chambord raspberry liqueur', 'raspberry liqueur'],
+  ['cherries', 'cocktail cherry'],
   ['cherry', 'cocktail cherry'],
   ['club soda', 'soda water'],
   ['coca-cola', 'cola'],
@@ -281,9 +282,9 @@ export const REPLACED_INGREDIENTS = [
   ['lillet', 'lillet blanc'],
   ['lime cordial', 'lime syrup'],
   ['malibu rum', 'malibu'],
-  ['maraschino cherry', 'cocktail cherry'],
   ['peachtree schnapps', 'peach schnapps'],
   ['pepsi cola', 'cola'],
+  ['ricard', 'pastis'],
   ['rose', 'rose wine'],
   ['roses sweetened lime juice', 'lime syrup'],
   ['rosso vermouth', 'red vermouth'],

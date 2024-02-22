@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BASE_API_ADDRESS} from '@/utils/constants';
+import {BASE_API_ADDRESS, REPLACED_INGREDIENTS} from '@/utils/constants';
 import {transformSearchResults, transformFullDetails} from '@/utils/helpers';
 import type {SearchResultAPICocktail, FullDetailsAPICocktail} from '@/utils/types';
 
@@ -15,7 +15,9 @@ export const getByIngredients = async (ingredients: string[]) => {
     ingredients.map((ingredient) =>
       axios
         .get(`${BASE_API_ADDRESS}/filter.php?i=${ingredient}`)
-        .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
+        .then(
+          ({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || [],
+        ),
     ),
   );
 
@@ -23,10 +25,20 @@ export const getByIngredients = async (ingredients: string[]) => {
 };
 
 export const getBySearchString = async (searchString: string) => {
+  const ingredients = REPLACED_INGREDIENTS.filter(([, replacement]) =>
+    replacement.includes(searchString.toLocaleLowerCase()),
+  )
+    .map(([original]) => original)
+    .concat([searchString]);
+
   const cocktails = await Promise.all([
-    axios
-      .get(`${BASE_API_ADDRESS}/filter.php?i=${searchString}`)
-      .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
+    ...ingredients.map((ingredient) =>
+      axios
+        .get(`${BASE_API_ADDRESS}/filter.php?i=${ingredient}`)
+        .then(
+          ({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || [],
+        ),
+    ),
     axios
       .get(`${BASE_API_ADDRESS}/search.php?s=${searchString}`)
       .then(({data: {drinks}}: {data: {drinks: SearchResultAPICocktail[] | null}}) => drinks || []),
@@ -50,9 +62,10 @@ export const getNonAlcoholic = () =>
       transformSearchResults(drinks),
     );
 
-export const getRandomCocktail = () => axios
-.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-.then(
-  ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[] | null}}) =>
-    transformFullDetails(drinks)[0] || null,
-);
+export const getRandomCocktail = () =>
+  axios
+    .get(`${BASE_API_ADDRESS}/random.php`)
+    .then(
+      ({data: {drinks}}: {data: {drinks: FullDetailsAPICocktail[] | null}}) =>
+        transformFullDetails(drinks)[0] || null,
+    );
