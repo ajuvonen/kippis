@@ -6,6 +6,7 @@ import LazyCocktailImage from '@/components/LazyCocktailImage.vue';
 
 defineProps<{
   cocktail: SearchResultCocktail;
+  preview: boolean;
 }>();
 
 const cocktailStore = useCocktailStore();
@@ -21,7 +22,7 @@ const {openCocktailModal} = cocktailStore;
       @click="openCocktailModal(cocktail.id)"
       @keypress.enter="openCocktailModal(cocktail.id)"
     >
-      <LazyCocktailImage :src="`${cocktail.thumb}/preview`" class="search-result__image" />
+      <LazyCocktailImage :src="preview ? `${cocktail.thumb}/preview` : cocktail.thumb" class="search-result__image" />
       <div class="search-result__shadow">
         {{ cocktail.name }}
       </div>
@@ -31,7 +32,7 @@ const {openCocktailModal} = cocktailStore;
 </template>
 <style lang="scss" scoped>
 .search-result {
-  @apply relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-all;
+  @apply m-2 relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-all;
 }
 
 .search-result__image-wrapper {

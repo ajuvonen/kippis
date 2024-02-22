@@ -9,6 +9,7 @@ describe('SearchResultCard.vue', () => {
   it('mounts', () => {
     const wrapper = mount(SearchResultCard, {
       props: {
+        preview: true,
         cocktail,
       },
     });
@@ -20,6 +21,7 @@ describe('SearchResultCard.vue', () => {
     const openCocktailModal = vi.fn();
     const wrapper = mount(SearchResultCard, {
       props: {
+        preview: true,
         cocktail,
       },
       global: {
@@ -37,6 +39,7 @@ describe('SearchResultCard.vue', () => {
     const openCocktailModal = vi.fn();
     const wrapper = mount(SearchResultCard, {
       props: {
+        preview: true,
         cocktail,
       },
       global: {
