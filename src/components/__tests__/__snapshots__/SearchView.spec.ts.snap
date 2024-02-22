@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SearchView > mounts 1`] = `
-"<transition-stub data-v-418939cb="" appear="false" persisted="false" css="true">
+"<transition-stub data-v-418939cb="" enterfromclass="ml-[-400px]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-400px]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
 <main class="flex-1">

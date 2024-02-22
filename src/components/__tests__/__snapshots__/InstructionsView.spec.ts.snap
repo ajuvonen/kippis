@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`InstructionsView > displays the instructions 1`] = `
-"<transition-stub data-v-418939cb="" data-v-384a5d4b="" appear="false" persisted="false" css="true">
+"<transition-stub data-v-418939cb="" data-v-384a5d4b="" enterfromclass="ml-[-400px]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-400px]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <aside data-v-418939cb="" class="selected-cocktails">
     <h2 class="text-3xl text-center">Your Cocktails</h2>
     <ul data-v-a73318e6="" class="search-results pt-2 mb-4 pb-2 overflow-y-scroll">
@@ -118,7 +118,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
 `;
 
 exports[`InstructionsView > mounts 1`] = `
-"<transition-stub data-v-418939cb="" data-v-384a5d4b="" appear="false" persisted="false" css="true">
+"<transition-stub data-v-418939cb="" data-v-384a5d4b="" enterfromclass="ml-[-400px]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-400px]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
 <main data-v-384a5d4b="" class="flex-1">
