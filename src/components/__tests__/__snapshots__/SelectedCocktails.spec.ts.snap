@@ -61,3 +61,53 @@ exports[`SelectedCocktails > prints selection data 1`] = `
   </aside>
 </transition-stub>"
 `;
+
+exports[`SelectedCocktailsMobile > mounts 1`] = `
+"<transition-stub data-v-dfc0a3f9="" enterfromclass="ml-[-100%]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-100%]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true"><button data-v-dfc0a3f9="" class="selected-cocktails__mobile-button selected-cocktails__mobile-button--bottom" aria-label="View Selected Cocktails"><svg data-v-dfc0a3f9="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+      <path d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z" class="transition-all"></path>
+    </svg></button></transition-stub>
+<transition-stub data-v-dfc0a3f9="" enterfromclass="top-[100%]" entertoclass="top-0" leavefromclass="top-0" leavetoclass="top-[100%]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>"
+`;
+
+exports[`SelectedCocktailsMobile > prints selection data 1`] = `
+"<transition-stub data-v-dfc0a3f9="" enterfromclass="ml-[-100%]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-100%]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true"><button data-v-dfc0a3f9="" class="selected-cocktails__mobile-button selected-cocktails__mobile-button--top" aria-label="Close Selected Cocktails View"><svg data-v-dfc0a3f9="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+      <path d="M16.59,5.59L18,7L12,13L6,7L7.41,5.59L12,10.17L16.59,5.59M16.59,11.59L18,13L12,19L6,13L7.41,11.59L12,16.17L16.59,11.59Z" class="transition-all"></path>
+    </svg></button></transition-stub>
+<transition-stub data-v-dfc0a3f9="" enterfromclass="top-[100%]" entertoclass="top-0" leavefromclass="top-0" leavetoclass="top-[100%]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
+  <aside data-v-dfc0a3f9="" class="selected-cocktails pt-10">
+    <h2 class="text-3xl text-center">Your Cocktails</h2>
+    <ul data-v-a73318e6="" class="search-results pt-2 mb-4 pb-2 overflow-y-scroll">
+      <li data-v-a73318e6="">
+        <div data-v-cd13f5f7="" data-v-a73318e6="" class="search-result">
+          <div data-v-cd13f5f7="" aria-label="View info about &quot;Margarita&quot;" class="search-result__image-wrapper" role="button" tabindex="0">
+            <div data-v-35e45732="" data-v-cd13f5f7="" class="search-result__image">
+              <div data-v-35e45732="" class="lazy-image__fallback"><svg data-v-35e45732="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+                  <path d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z" class="transition-all"></path>
+                </svg></div>
+            </div>
+            <div data-v-cd13f5f7="" class="search-result__shadow">Margarita</div>
+          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Margarita&quot; from selection" class="remove-cocktail-0 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+              <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" class="transition-all"></path>
+            </svg></button>
+        </div>
+      </li>
+      <li data-v-a73318e6="">
+        <div data-v-cd13f5f7="" data-v-a73318e6="" class="search-result">
+          <div data-v-cd13f5f7="" aria-label="View info about &quot;Mojito&quot;" class="search-result__image-wrapper" role="button" tabindex="0">
+            <div data-v-35e45732="" data-v-cd13f5f7="" class="search-result__image">
+              <div data-v-35e45732="" class="lazy-image__fallback"><svg data-v-35e45732="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+                  <path d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z" class="transition-all"></path>
+                </svg></div>
+            </div>
+            <div data-v-cd13f5f7="" class="search-result__shadow">Mojito</div>
+          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Mojito&quot; from selection" class="remove-cocktail-1 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+              <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" class="transition-all"></path>
+            </svg></button>
+        </div>
+      </li>
+    </ul><a data-v-c2a26f37="" href="/instructions" class="link-button flex-shrink-0" data-test-id="selected-cocktails__action-button">Ready? Proceed to instructions.</a>
+  </aside>
+</transition-stub>"
+`;
