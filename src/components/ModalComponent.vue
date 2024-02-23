@@ -9,11 +9,9 @@ defineProps<{
   show: boolean;
 }>();
 
-const emit = defineEmits<{
-  close: [];
-}>();
+const emit = defineEmits(['close']);
 
-const modal = ref(null);
+const modal = ref<HTMLDivElement | null>(null);
 
 onClickOutside(modal, () => emit('close'));
 onKeyStroke('Escape', () => emit('close'));
@@ -65,7 +63,7 @@ onKeyStroke('Escape', () => emit('close'));
 }
 
 .modal-component__actions-container {
-  @apply flex justify-end mt-4;
+  @apply flex gap-1 justify-end mt-4;
 }
 
 @media print {

@@ -6,9 +6,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="capitalized-list">
-    <h3 v-if="items.length">{{ title }}</h3>
-    <ul v-if="items.length">
+  <div v-if="items.length" class="capitalized-list">
+    <h3>{{ title }}</h3>
+    <ul>
       <li v-for="item in items" :key="item" class="capitalized-list__item">{{ item }}</li>
     </ul>
   </div>

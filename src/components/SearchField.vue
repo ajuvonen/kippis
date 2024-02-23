@@ -93,11 +93,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 }
 
 .search-field__tag-container {
-  @apply flex flex-wrap justify-center;
-}
-
-li + li {
-  @apply ml-1;
+  @apply flex flex-wrap gap-1 justify-center;
 }
 
 @media print {

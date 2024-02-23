@@ -1,4 +1,4 @@
-import {HttpHandler, HttpResponse, http} from 'msw';
+import {HttpResponse, http} from 'msw';
 import type {
   FullDetailsAPICocktail,
   FullDetailsCocktail,
@@ -7,7 +7,7 @@ import type {
 } from '@/utils/types';
 import {setupServer} from 'msw/node';
 
-export const testSearchResults = [
+export const testSearchResults: [SearchResultAPICocktail, SearchResultCocktail][] = [
   [
     {
       idDrink: '0',
@@ -32,9 +32,9 @@ export const testSearchResults = [
       thumb: 'https://locahost:3000/1.jpg',
     },
   ],
-] as [SearchResultAPICocktail, SearchResultCocktail][];
+];
 
-export const testCocktails = [
+export const testCocktails: [FullDetailsAPICocktail, FullDetailsCocktail][] = [
   [
     {
       idDrink: '0',
@@ -127,9 +127,9 @@ export const testCocktails = [
       thumb: 'https://locahost:3000/1.jpg',
     },
   ],
-] as [FullDetailsAPICocktail, FullDetailsCocktail][];
+];
 
-const restHandlers: HttpHandler[] = [
+const restHandlers = [
   http.get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php', ({request}) => {
     const url = new URL(request.url);
     const id = +(url.searchParams.get('i') || -1);

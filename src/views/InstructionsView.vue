@@ -88,7 +88,7 @@ const other = computed(() =>
 </template>
 <style scoped>
 .instructions__cocktail-image-container {
-  @apply hidden lg:block w-1/3 ml-4;
+  @apply hidden lg:flex flex-col w-1/3 ml-4;
 }
 
 .instructions__cocktail-image-wrapper {
@@ -100,10 +100,6 @@ const other = computed(() =>
 
   &:first-child {
     @apply mt-4;
-  }
-
-  + .instructions__cocktail-image {
-    @apply mt-8;
   }
 }
 
