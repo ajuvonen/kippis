@@ -2,8 +2,8 @@
 import {
   mdiChevronDoubleDown,
   mdiCloseCircleOutline,
+  mdiDiceMultipleOutline,
   mdiEarth,
-  mdiGiftOutline,
   mdiGlassCocktail,
   mdiGlassCocktailOff,
   mdiMagnify,
@@ -16,9 +16,9 @@ type IconString =
   | 'closeCircle'
   | 'cocktail'
   | 'cocktailOff'
+  | 'dice'
   | 'down'
   | 'earth'
-  | 'gift'
   | 'magnify'
   | 'plus'
   | 'printer'
@@ -32,9 +32,9 @@ const icons = {
   closeCircle: mdiCloseCircleOutline,
   cocktail: mdiGlassCocktail,
   cocktailOff: mdiGlassCocktailOff,
+  dice: mdiDiceMultipleOutline,
   down: mdiChevronDoubleDown,
   earth: mdiEarth,
-  gift: mdiGiftOutline,
   magnify: mdiMagnify,
   printer: mdiPrinterOutline,
   plus: mdiPlus,

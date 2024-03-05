@@ -60,7 +60,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
       </li>
       <li>
         <button @click="showRandomCocktail" data-test-id="search-field__random-button">
-          <IconComponent icon="gift" />
+          <IconComponent icon="dice" />
           <span>{{ $t('searchField.random') }}</span>
         </button>
       </li>
