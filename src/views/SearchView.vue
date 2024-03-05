@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {watch} from 'vue';
+import {watch, ref} from 'vue';
 import {storeToRefs} from 'pinia';
 import {useCocktailStore} from '@/stores/cocktail';
 import type {SearchStringProps} from '@/utils/types';
@@ -17,6 +17,8 @@ const {searchResults, preventFetch, currentSearch} = storeToRefs(cocktailStore);
 
 const {isSmallScreen} = useScreen();
 
+const searchString = ref('');
+
 watch(
   props,
   (newProps) => {
@@ -27,7 +29,8 @@ watch(
       } else if (newProps.tag) {
         searchWithTag(newProps.tag);
       } else if (newProps.searchString) {
-        search(newProps.searchString.slice(0, 20));
+        searchString.value = newProps.searchString.slice(0, 20);
+        search(searchString.value);
       } else {
         searchResults.value = [];
       }
@@ -42,7 +45,7 @@ watch(
   <SelectedCocktailsMobile v-if="isSmallScreen" />
   <SelectedCocktails v-else />
   <main class="flex-1">
-    <SearchField />
+    <SearchField :initial-value="searchString" />
     <h1>{{ $t('searchResults.title', [searchResults.length]) }}</h1>
     <SearchResults :cocktails="searchResults" />
   </main>

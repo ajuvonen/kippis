@@ -56,4 +56,13 @@ describe('SearchField.vue', () => {
     await wrapper.findByTestId('search-field__random-button').trigger('click');
     expect(cocktailStore.showRandomCocktail).toHaveBeenCalled();
   });
+
+  it('displays initial value', () => {
+    const wrapper = mount(SearchField, {
+      props: {
+        initialValue: 'Mojito',
+      },
+    });
+    expect(wrapper.find('input').element.value).toBe('Mojito');
+  });
 });

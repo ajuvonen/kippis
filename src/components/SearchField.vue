@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import {onMounted, ref} from 'vue';
-import {useRoute, useRouter} from 'vue-router';
+import {ref} from 'vue';
+import {useRouter} from 'vue-router';
 import {useCocktailStore} from '@/stores/cocktail';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
 import IconComponent from '@/components/IconComponent.vue';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     omitTitle?: boolean;
+    initialValue?: string;
   }>(),
   {
     omitTitle: false,
+    initialValue: '',
   },
 );
 
@@ -19,13 +21,8 @@ const cocktailStore = useCocktailStore();
 const {showRandomCocktail} = cocktailStore;
 
 const router = useRouter();
-const route = useRoute();
 
-const searchString = ref('');
-
-onMounted(() => {
-  searchString.value = (route.query.searchString || '').toString().slice(0, 20);
-});
+const searchString = ref(props.initialValue);
 
 const search = () => router.push({name: 'search', query: {searchString: searchString.value}});
 </script>
@@ -35,7 +32,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
     <label
       for="search-input"
       class="search-field__label"
-      :class="omitTitle ? 'search-field__label--sr-only' : ''"
+      :class="{'sr-only': omitTitle}"
       >{{ $t('searchField.label') }}</label
     >
     <div class="search-field__wrapper">
@@ -70,10 +67,6 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 <style lang="scss" scoped>
 .search-field__label {
   @apply block text-center text-3xl my-4;
-
-  &--sr-only {
-    @apply sr-only;
-  }
 }
 
 .search-field__wrapper {
