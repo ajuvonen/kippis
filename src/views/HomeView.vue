@@ -20,7 +20,7 @@ onMounted(() => {
     >
       <h1>{{ $t('homeView.title') }}</h1>
       <p>{{ $t('homeView.ingress') }}</p>
-      <div class="absolute bottom-4">
+      <div class="absolute bottom-5">
         <a :href="mainPhoto?.link" target="_blank" class="text-xs" noreferrer noopener>{{
           $t('homeView.credit', [mainPhoto?.acknowledgement])
         }}</a>
@@ -41,6 +41,10 @@ onMounted(() => {
 }
 
 .home__main {
-  @apply flex flex-col justify-center h-2/5 sm:h-full sm:w-1/2;
+  @apply bg-slate-800 sm:bg-gradient-to-b sm:from-rose-100 sm:to-rose-200 to-80% flex-col justify-center h-2/5 sm:h-full sm:w-1/2;
+
+  :deep(label) {
+    @apply text-slate-200 sm:text-slate-800;
+  }
 }
 </style>

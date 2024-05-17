@@ -37,7 +37,10 @@ input {
 }
 
 main {
-  @apply p-4 pb-12 overflow-y-auto bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+  @apply p-4 pb-12 overflow-y-auto;
+  &:not(.home__main) {
+    @apply bg-gradient-to-b from-rose-100 to-rose-200 to-80%
+  }
 }
 
 aside {

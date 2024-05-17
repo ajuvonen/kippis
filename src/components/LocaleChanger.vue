@@ -17,7 +17,7 @@ watch(locale, (newValue) => {
   <a
     href="#"
     role="button"
-    class="navigation-menu__link navigation-menu__locale-changer gap-1 max-w-16"
+    class="navigation-menu__link navigation-menu__locale-changer gap-1"
     ref="changer"
     :aria-label="$t('localeChanger.changeLocale', [nextLocale])"
     @click="locale = nextLocale"
