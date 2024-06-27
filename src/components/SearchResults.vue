@@ -19,7 +19,7 @@ withDefaults(defineProps<{
 </template>
 <style lang="scss" scoped>
 .search-results {
-  @apply flex flex-auto flex-wrap gap-2 content-start justify-center overflow-hidden overflow-y-auto;
+  @apply flex flex-auto flex-wrap gap-2 pb-4 content-start justify-center overflow-hidden overflow-y-visible;
 }
 
 @media print {

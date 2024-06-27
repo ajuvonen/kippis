@@ -12,7 +12,7 @@ const {selection} = storeToRefs(cocktailStore);
 </script>
 <template>
   <h2 class="text-3xl text-center">{{ $t('selectedCocktails.title') }}</h2>
-  <SearchResults class="pt-2 mb-4 pb-2 overflow-y-scroll" :cocktails="selection" :preview="false" />
+  <SearchResults class="pt-2 overflow-y-scroll" :cocktails="selection" :preview="false" />
   <LinkButton
     v-if="route.name === 'search'"
     to="/instructions"
