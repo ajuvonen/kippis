@@ -6,7 +6,7 @@ import type {
   SearchResultCocktail,
 } from '@/utils/types';
 import {BLACKLIST, REPLACED_INGREDIENTS, UNIT_CONVERSIONS} from '@/utils/constants';
-import {pipe, filter, map, prop, sortBy, uniqBy, flatten, uniq, difference, sort} from 'remeda';
+import {pipe, filter, map, prop, sortBy, uniqueBy, flat, unique, difference, sort} from 'remeda';
 
 /**
  * Transforms search results from the API into a standardized format.
@@ -18,7 +18,7 @@ export const transformSearchResults = (
 ): SearchResultCocktail[] =>
   pipe(
     cocktails || [],
-    uniqBy(prop('idDrink')),
+    uniqueBy(prop('idDrink')),
     filter(({idDrink}) => !BLACKLIST.includes(+idDrink)),
     map(({idDrink, strDrink, strDrinkThumb}) => ({
       id: +idDrink,
@@ -38,7 +38,7 @@ export const transformFullDetails = (
 ): FullDetailsCocktail[] =>
   pipe(
     cocktails || [],
-    uniqBy(prop('idDrink')),
+    uniqueBy(prop('idDrink')),
     filter(({idDrink}) => !BLACKLIST.includes(+idDrink)),
     map((cocktail: FullDetailsAPICocktail) => {
       // Ingredients are stored in 15 pairs of variables, which we want to go over and in some cases replace
@@ -81,8 +81,8 @@ export const listUniqueIngredients = (cocktails: FullDetailsCocktail[]): string[
         ingredient.replace(/^whipped | peel$| spiral$| white$| yolk$| brine$/, ''),
       ),
     ),
-    flatten(),
-    uniq(),
+    flat(),
+    unique(),
     difference(['water', 'ice']),
     sort((a, b) => a.localeCompare(b)),
   );
