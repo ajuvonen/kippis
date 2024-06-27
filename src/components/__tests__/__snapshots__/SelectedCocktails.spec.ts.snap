@@ -4,7 +4,7 @@ exports[`SelectedCocktails > mounts 1`] = `
 "<transition-stub data-v-418939cb="" enterfromclass="ml-[-400px]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-400px]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <aside data-v-418939cb="" class="selected-cocktails">
     <h2 class="text-3xl text-center">Your Cocktails</h2>
-    <ul data-v-a73318e6="" class="search-results pt-2 mb-4 pb-2 overflow-y-scroll">
+    <ul data-v-a73318e6="" class="search-results pt-2 overflow-y-scroll">
       <li data-v-a73318e6="">
         <div data-v-cd13f5f7="" data-v-a73318e6="" class="search-result">
           <div data-v-cd13f5f7="" aria-label="View info about &quot;Margarita&quot;" class="search-result__image-wrapper" role="button" tabindex="0">
@@ -28,7 +28,7 @@ exports[`SelectedCocktails > prints selection data 1`] = `
 "<transition-stub data-v-418939cb="" enterfromclass="ml-[-400px]" entertoclass="ml-0" leavefromclass="ml-0" leavetoclass="ml-[-400px]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <aside data-v-418939cb="" class="selected-cocktails">
     <h2 class="text-3xl text-center">Your Cocktails</h2>
-    <ul data-v-a73318e6="" class="search-results pt-2 mb-4 pb-2 overflow-y-scroll">
+    <ul data-v-a73318e6="" class="search-results pt-2 overflow-y-scroll">
       <li data-v-a73318e6="">
         <div data-v-cd13f5f7="" data-v-a73318e6="" class="search-result">
           <div data-v-cd13f5f7="" aria-label="View info about &quot;Margarita&quot;" class="search-result__image-wrapper" role="button" tabindex="0">
@@ -78,7 +78,7 @@ exports[`SelectedCocktailsMobile > prints selection data 1`] = `
 <transition-stub data-v-dfc0a3f9="" enterfromclass="top-[100%]" entertoclass="top-0" leavefromclass="top-0" leavetoclass="top-[100%]" enteractiveclass="transition-all" leaveactiveclass="transition-all" appear="false" persisted="false" css="true">
   <aside data-v-dfc0a3f9="" class="selected-cocktails pt-10">
     <h2 class="text-3xl text-center">Your Cocktails</h2>
-    <ul data-v-a73318e6="" class="search-results pt-2 mb-4 pb-2 overflow-y-scroll">
+    <ul data-v-a73318e6="" class="search-results pt-2 overflow-y-scroll">
       <li data-v-a73318e6="">
         <div data-v-cd13f5f7="" data-v-a73318e6="" class="search-result">
           <div data-v-cd13f5f7="" aria-label="View info about &quot;Margarita&quot;" class="search-result__image-wrapper" role="button" tabindex="0">
