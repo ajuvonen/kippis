@@ -424,6 +424,7 @@ export const MAIN_PHOTOS = [
 // Convert and replace units. Use regex match just in the beginning because the data might be for example "3 OZ frozen"
 // Shot and jigger are interpreted as 1 OZ
 // Quarts and gallons are rounded up to the next full deciliter and converted to liters
+// Pounds are rounded down to the accuracy of five grams
 export const UNIT_CONVERSIONS = [
   {
     regex: /^(oz|ounce|shot|jigger)s?/i,
@@ -451,8 +452,13 @@ export const UNIT_CONVERSIONS = [
     unit: 'L',
   },
   {
-    regex: /mls?/i,
+    regex: /^mls?/i,
     converter: (amount: number) => Math.round(amount / 10),
     unit: 'CL',
+  },
+  {
+    regex: /^(pound|lb)s?/i,
+    converter: (amount: number) => Math.floor((amount * 453.59237) / 5) * 5,
+    unit: 'GR',
   },
 ];
