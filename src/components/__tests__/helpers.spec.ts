@@ -319,6 +319,12 @@ describe('convertMeasure', () => {
     expect(convertMeasure('20 ML')).toBe('2 CL');
     expect(convertMeasure('355 mls')).toBe('36 CL');
   });
+  
+  it('converts lbs to GR', () => {
+    expect(convertMeasure('1 LB')).toBe('450 GR');
+    expect(convertMeasure('0.5 pounds')).toBe('225 GR');
+    expect(convertMeasure('2/3 lbs')).toBe('300 GR');
+  });
 
   it('does not convert units that are not oz, qt or cups', () => {
     [
