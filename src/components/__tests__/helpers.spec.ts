@@ -326,13 +326,13 @@ describe('convertMeasure', () => {
     expect(convertMeasure('2/3 lbs')).toBe('300 GR');
   });
 
-  it('does not convert units that are not oz, qt or cups', () => {
+  it('does not convert unconvertable units', () => {
     [
       ['', ''],
       ['1 tsp', '1 tsp'],
-      ['1/2 tsp', '1/2 tsp'],
+      ['1/2 tsps', '1/2 tsps'],
       ['1 tbsp', '1 tbsp'],
-      ['1 3/4 tblsp', '1.75 tblsp'],
+      ['1 3/4 tblsp', '1 3/4 tblsp'],
       ['dash', 'dash'],
       ['0.5 kg frozen', '0.5 kg frozen'],
     ].forEach(([input, output]) => {
@@ -340,9 +340,9 @@ describe('convertMeasure', () => {
     });
   });
 
-  it('does not convert too small fractions', () => {
-    expect(convertMeasure('1/8')).toBe('1/8');
-    expect(convertMeasure('1/6')).toBe('1/6');
-    expect(convertMeasure('1/5')).toBe('1/5');
+  it('converts small fractions to 0.5 CL', () => {
+    expect(convertMeasure('1/8 shot')).toBe('0.5 CL');
+    expect(convertMeasure('2 ML')).toBe('0.5 CL');
+    expect(convertMeasure('1/64 cup')).toBe('0.5 CL');
   });
 });
