@@ -1,5 +1,5 @@
 import {afterAll, afterEach, beforeAll} from 'vitest';
-import {VueWrapper, config} from '@vue/test-utils';
+import {config, mount} from '@vue/test-utils';
 import {createTestingPinia} from '@pinia/testing';
 import i18n from './src/i18n';
 import router from './src/router';
@@ -7,7 +7,7 @@ import {server} from './src/components/__tests__/mswHandlers';
 
 config.global.plugins = [createTestingPinia(), i18n, router];
 
-const dataTestIdPlugin = (wrapper: VueWrapper) => ({
+const dataTestIdPlugin = (wrapper: ReturnType<typeof mount>) => ({
   findByTestId: (testId: string) => wrapper.find(`[data-test-id='${testId}']`),
 });
 
