@@ -335,11 +335,13 @@ export const BLACKLIST = [
   12784, // Thai Iced Coffee
   12786, // Thai Iced Tea
   12790, // Absinthe #2
+  12796, // Caribbean Orange Liqueur
   12876, // Berry deadly
   12954, // Holloween Punch
   13086, // Atomic lokade
   13192, // National aquarium
   13899, // 3 Wise Men
+  14584, // Arizona Stingers
   14610, // Acid
   15224, // Malibu twister
   15254, // Zenmeister
@@ -428,7 +430,7 @@ export const MAIN_PHOTOS = [
 export const UNIT_CONVERSIONS = [
   {
     regex: /^(oz|ounce|shot|jigger)s?/i,
-    converter: (amount: number) => Math.round(amount * 2.95735),
+    converter: (amount: number) => Math.round(amount * 2.95735) || 0.5,
     unit: 'CL',
   },
   {
@@ -438,7 +440,7 @@ export const UNIT_CONVERSIONS = [
   },
   {
     regex: /^cups?/i,
-    converter: (amount: number) => Math.round(amount * 23.6588236),
+    converter: (amount: number) => Math.round(amount * 23.6588236) || 0.5,
     unit: 'CL',
   },
   {
@@ -453,7 +455,7 @@ export const UNIT_CONVERSIONS = [
   },
   {
     regex: /^mls?/i,
-    converter: (amount: number) => Math.round(amount / 10),
+    converter: (amount: number) => Math.round(amount / 10) || 0.5,
     unit: 'CL',
   },
   {
