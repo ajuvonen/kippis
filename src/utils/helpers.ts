@@ -109,6 +109,10 @@ export const randomDegree = (): number => Math.floor(Math.random() * 9) - 4;
  * @returns The converted measure.
  */
 export const convertMeasure = (measure: string): string => {
+  // Don't convert teaspoons or tablespoons
+  if (/ tsps?| tbl?sps?/i.test(measure)) {
+    return measure;
+  }
   const parsedMeasure = measure.trim().match(/^((\d+(\.\d+)?)\s+)?(\d+\/\d+)?\s*(.*)$/);
   if (!parsedMeasure) {
     return '';
@@ -119,8 +123,7 @@ export const convertMeasure = (measure: string): string => {
   let unit = parsedMeasure[5] || '';
   const conversion = UNIT_CONVERSIONS.find(({regex}) => regex.test(unit));
 
-  // TODO: this will break if there's a unit conversion with a fraction not included in the list
-  if ((numericAmount || conversion) && ['1/4', '1/3', '1/2', '2/3', '3/4'].includes(fraction)) {
+  if ((numericAmount || conversion) && /\d\/\d+/.test(fraction)) {
     const [enumerator, divider] = fraction.split('/');
     numericAmount = numericAmount + +enumerator / +divider;
   }
@@ -131,5 +134,5 @@ export const convertMeasure = (measure: string): string => {
   }
 
   // There might not be a unit, in case the ingredient is like "1 banana", hence the filter
-  return numericAmount ? [numericAmount, unit].filter(Boolean).join(' ') : `${parsedMeasure[0]}`;
+  return numericAmount ? [numericAmount, unit].filter(Boolean).join(' ') : parsedMeasure[0];
 };
