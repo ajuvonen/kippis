@@ -8,7 +8,6 @@ export default createI18n<[MessageSchema], 'en' | 'fi'>({
   locale: 'en',
   fallbackLocale: 'en',
   legacy: false,
-  allowComposition: true,
   messages: {
     en,
     fi,
