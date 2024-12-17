@@ -37,6 +37,7 @@ describe('Cocktail store', () => {
   it('does not add to selection if fetch fails', async () => {
     try {
       await cocktailStore.addToSelection(-1);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       expect(error.message).toBe('Request failed with status code 404');
     }
@@ -63,6 +64,7 @@ describe('Cocktail store', () => {
   it('does not open modal if fetch fails', async () => {
     try {
       await cocktailStore.openCocktailModal(-1);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       expect(error.message).toBe('Request failed with status code 404');
     }
