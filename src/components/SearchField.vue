@@ -29,12 +29,9 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 
 <template>
   <div>
-    <label
-      for="search-input"
-      class="search-field__label"
-      :class="{'sr-only': omitTitle}"
-      >{{ $t('searchField.label') }}</label
-    >
+    <label for="search-input" class="search-field__label" :class="{'sr-only': omitTitle}">{{
+      $t('searchField.label')
+    }}</label>
     <div class="search-field__wrapper">
       <input
         id="search-input"

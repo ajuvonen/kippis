@@ -14,7 +14,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
                 </svg></div>
             </div>
             <div data-v-cd13f5f7="" class="search-result__shadow">Margarita</div>
-          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Margarita&quot; from selection" class="remove-cocktail-0 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Margarita&quot; from selection" title="Remove &quot;Margarita&quot; from selection" class="remove-cocktail-0 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
               <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" class="transition-all"></path>
             </svg></button>
         </div>
@@ -28,7 +28,7 @@ exports[`InstructionsView > displays the instructions 1`] = `
                 </svg></div>
             </div>
             <div data-v-cd13f5f7="" class="search-result__shadow">Mojito</div>
-          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Mojito&quot; from selection" class="remove-cocktail-1 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+          </div><button data-v-634d56d3="" data-v-cd13f5f7="" aria-label="Remove &quot;Mojito&quot; from selection" title="Remove &quot;Mojito&quot; from selection" class="remove-cocktail-1 action-button bg-rose-400 border-slate-800"><svg data-v-634d56d3="" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
               <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" class="transition-all"></path>
             </svg></button>
         </div>
