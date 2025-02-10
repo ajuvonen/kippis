@@ -45,7 +45,7 @@ const print = () => window.print();
     </template>
   </ModalComponent>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .cocktail-modal__ingredients {
   @apply md:w-1/2 md:pr-4 order-2 md:order-1;
 }

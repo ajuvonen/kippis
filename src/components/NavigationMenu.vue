@@ -29,7 +29,7 @@ const {selection} = storeToRefs(useCocktailStore());
     </ul>
   </nav>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .navigation-menu {
   @apply h-14 bg-white shadow-sm;
 }
@@ -43,13 +43,10 @@ const {selection} = storeToRefs(useCocktailStore());
 }
 
 .navigation-menu__link {
-  @apply w-full sm:w-32 flex items-center justify-center m-1 rounded-md uppercase text-sm tracking-wide transition-all;
+  @apply w-full sm:w-32 flex items-center justify-center m-1 rounded-md uppercase text-sm tracking-wide transition-all hover:bg-slate-800 hover:text-white;
 
-  &:hover {
-    @apply bg-slate-800 text-white;
-    :deep(svg path) {
-      @apply fill-white;
-    }
+  &:hover :deep(svg path) {
+    @apply fill-white;
   }
 }
 

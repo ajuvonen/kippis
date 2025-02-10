@@ -24,9 +24,7 @@ type IconString =
   | 'printer'
   | 'trashCan';
 
-defineProps<{
-  icon: IconString;
-}>();
+defineProps<{icon: IconString}>();
 
 const icons = {
   closeCircle: mdiCloseCircleOutline,
@@ -39,7 +37,7 @@ const icons = {
   printer: mdiPrinterOutline,
   plus: mdiPlus,
   trashCan: mdiTrashCan,
-};
+} as const;
 </script>
 <template>
   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">

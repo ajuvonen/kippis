@@ -5,7 +5,7 @@ import router from '@/router';
 import i18n from '@/i18n';
 
 import '@fontsource/ephesis';
-import '@/assets/main.scss';
+import '@/assets/main.css';
 
 const app = createApp(App);
 app.use(createPinia());

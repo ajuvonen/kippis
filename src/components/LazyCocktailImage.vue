@@ -40,7 +40,7 @@ watchOnce(isVisible, () => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .lazy-image__fallback,
 .lazy-image__error {
   @apply bg-slate-800 pt-[100%] fill-slate-100;
