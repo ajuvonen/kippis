@@ -22,7 +22,10 @@ const {openCocktailModal} = cocktailStore;
       @click="openCocktailModal(cocktail.id)"
       @keypress.enter="openCocktailModal(cocktail.id)"
     >
-      <LazyCocktailImage :src="preview ? `${cocktail.thumb}/preview` : cocktail.thumb" class="search-result__image" />
+      <LazyCocktailImage
+        :src="preview ? `${cocktail.thumb}/preview` : cocktail.thumb"
+        class="search-result__image"
+      />
       <div class="search-result__shadow">
         {{ cocktail.name }}
       </div>
@@ -30,7 +33,7 @@ const {openCocktailModal} = cocktailStore;
     <ActionButtons :cocktail="cocktail" />
   </div>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .search-result {
   @apply m-2 relative shadow-md rounded-md hover:cursor-pointer hover:shadow-lg transition-all;
 }

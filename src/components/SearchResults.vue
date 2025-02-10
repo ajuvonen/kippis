@@ -2,13 +2,15 @@
 import type {SearchResultCocktail} from '@/utils/types';
 import SearchResultCard from '@/components/SearchResultCard.vue';
 
-withDefaults(defineProps<{
-  cocktails: SearchResultCocktail[];
-  preview?: boolean;
-}>(), {
-  preview: true,
-});
-
+withDefaults(
+  defineProps<{
+    cocktails: SearchResultCocktail[];
+    preview?: boolean;
+  }>(),
+  {
+    preview: true,
+  },
+);
 </script>
 <template>
   <ul class="search-results">
@@ -17,7 +19,7 @@ withDefaults(defineProps<{
     </li>
   </ul>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .search-results {
   @apply flex flex-auto flex-wrap gap-2 pb-4 content-start justify-center overflow-hidden overflow-y-visible;
 }

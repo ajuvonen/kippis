@@ -26,5 +26,3 @@ watch(locale, (newValue) => {
     {{ locale }}
   </a>
 </template>
-<style lang="scss" scoped>
-</style>

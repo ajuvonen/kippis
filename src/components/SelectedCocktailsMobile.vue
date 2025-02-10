@@ -58,7 +58,7 @@ watch(selection, () => {
     </aside>
   </Transition>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .selected-cocktails__mobile-button {
   @apply absolute z-20 left-0 w-full mb-0 py-2 rounded-none border-l-0 border-r-0;
 }

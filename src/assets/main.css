@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-center text-3xl my-4;
+  }
+
+  h2 {
+    @apply text-left text-2xl my-4;
+  }
+
+  h3 {
+    @apply text-xl mt-4 mb-2;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  aside {
+    @apply p-4;
+
+    :not(.button, a.link-button) {
+      @apply text-slate-100;
+    }
+  }
+}
+
+@layer components {
+  button,
+  a.link-button {
+    @apply flex gap-1 justify-center items-center mb-1 text-sm uppercase tracking-wide transition-all bg-white hover:bg-slate-800 hover:text-white hover:cursor-pointer;
+
+    &:hover svg path {
+      @apply fill-white;
+    }
+  }
+
+  button,
+  a.link-button,
+  input {
+    @apply px-4 rounded-3xl border-2 border-slate-200 h-10;
+  }
+}
+
+main {
+  @apply p-4 pb-12 overflow-y-auto;
+  &:not(.home__main) {
+    @apply bg-gradient-to-b from-rose-100 to-rose-200 to-80%;
+  }
+}
+
+*:focus {
+  @apply outline outline-2 outline-slate-800;
+
+  aside > & {
+    @apply outline-slate-100;
+  }
+}
+
+@media print {
+  button {
+    display: none !important;
+  }
+}

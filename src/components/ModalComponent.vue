@@ -50,7 +50,7 @@ onKeyStroke('Escape', () => emit('close'));
     </Transition>
   </Teleport>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .modal-component__backdrop {
   @apply fixed z-20 inset-0 overflow-hidden bg-black bg-opacity-50;
 }

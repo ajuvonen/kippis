@@ -51,7 +51,7 @@ const remove = async (id: number) => {
     <IconComponent icon="trashCan" />
   </button>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .action-button {
   @apply absolute bottom-2 right-2 p-0 m-0 rounded-md w-10;
 }

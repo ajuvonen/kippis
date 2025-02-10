@@ -11,13 +11,8 @@ onMounted(() => {
 });
 </script>
 <template>
-  <aside
-    :style="{'background-image': `url('/${mainPhoto?.file}')`}"
-    class="home__side-panel"
-  >
-    <div
-      class="home__side-panel-content-wrapper"
-    >
+  <aside :style="{'background-image': `url('/${mainPhoto?.file}')`}" class="home__side-panel">
+    <div class="home__side-panel-content-wrapper">
       <h1>{{ $t('homeView.title') }}</h1>
       <p>{{ $t('homeView.ingress') }}</p>
       <div class="absolute bottom-5">
@@ -31,13 +26,13 @@ onMounted(() => {
     <SearchField />
   </main>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .home__side-panel {
   @apply p-0 relative h-3/5 sm:h-full sm:w-1/2 text-center bg-cover bg-center;
 }
 
 .home__side-panel-content-wrapper {
-  @apply p-6 flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800 to-80%;
+  @apply p-6 flex flex-col justify-center items-center h-full bg-gradient-to-b from-transparent to-slate-800;
 }
 
 .home__main {

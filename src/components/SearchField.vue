@@ -6,16 +6,10 @@ import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 import LinkButton from '@/components/LinkButton.vue';
 import IconComponent from '@/components/IconComponent.vue';
 
-const props = withDefaults(
-  defineProps<{
-    omitTitle?: boolean;
-    initialValue?: string;
-  }>(),
-  {
-    omitTitle: false,
-    initialValue: '',
-  },
-);
+const props = withDefaults(defineProps<{omitTitle?: boolean; initialValue?: string}>(), {
+  omitTitle: false,
+  initialValue: '',
+});
 
 const cocktailStore = useCocktailStore();
 const {showRandomCocktail} = cocktailStore;
@@ -61,7 +55,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
     </ul>
   </div>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .search-field__label {
   @apply block text-center text-3xl my-4;
 }
@@ -71,11 +65,7 @@ const search = () => router.push({name: 'search', query: {searchString: searchSt
 }
 
 .search-field__input {
-  @apply rounded-tr-none rounded-br-none pb-1 min-w-0;
-
-  &:focus {
-    @apply z-10;
-  }
+  @apply rounded-tr-none rounded-br-none pb-1 min-w-0 focus:z-10;
 }
 
 .search-field__search-button {

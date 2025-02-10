@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import {RouterLink} from 'vue-router';
 
-defineProps<{
-  to: string;
-}>();
+defineProps<{to: string}>();
 </script>
 <template>
-  <RouterLink class="link-button" :to="to">
+  <RouterLink class="link-button flex items-center" :to="to">
     <slot />
   </RouterLink>
 </template>
-<style lang="scss" scoped>
-.link-button {
-  @apply flex items-center;
-}
-</style>
