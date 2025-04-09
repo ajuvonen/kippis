@@ -4,7 +4,7 @@ import App from '@/App.vue';
 import router from '@/router';
 import i18n from '@/i18n';
 
-import '@fontsource/ephesis';
+import '@fontsource/ephesis/latin-400.css';
 import '@/assets/main.css';
 
 const app = createApp(App);
