@@ -52,7 +52,7 @@ main {
   }
 }
 
-*:focus {
+*:focus-visible {
   @apply outline outline-2 outline-slate-800;
 
   aside > & {
