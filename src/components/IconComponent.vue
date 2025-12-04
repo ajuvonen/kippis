@@ -12,18 +12,6 @@ import {
   mdiTrashCan,
 } from '@mdi/js';
 
-type IconString =
-  | 'closeCircle'
-  | 'cocktail'
-  | 'cocktailOff'
-  | 'dice'
-  | 'down'
-  | 'earth'
-  | 'magnify'
-  | 'plus'
-  | 'printer'
-  | 'trashCan';
-
 defineProps<{icon: IconString}>();
 
 const icons = {
@@ -38,6 +26,8 @@ const icons = {
   plus: mdiPlus,
   trashCan: mdiTrashCan,
 } as const;
+
+type IconString = keyof typeof icons;
 </script>
 <template>
   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
