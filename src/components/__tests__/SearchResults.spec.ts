@@ -7,7 +7,7 @@ import {testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('SearchResults.vue', () => {
   it('renders a list of SearchResultCard components', () => {
-    const cocktails: SearchResultCocktail[] = [testSearchResults[0][1], testSearchResults[1][1]];
+    const cocktails: SearchResultCocktail[] = [testSearchResults[0]![1], testSearchResults[1]![1]];
 
     const wrapper = mount(SearchResults, {
       props: {

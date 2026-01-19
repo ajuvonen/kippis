@@ -32,13 +32,13 @@ describe('InstructionsView', () => {
   });
 
   it('displays the side bar', () => {
-    cocktailStore.selection.push(testCocktails[0][1]);
+    cocktailStore.selection.push(testCocktails[0]![1]);
     const wrapper = mount(InstructionsView);
     expect(wrapper.find('.selected-cocktails').exists()).toBe(true);
   });
 
   it('displays the instructions', () => {
-    cocktailStore.selection.push(testCocktails[0][1], testCocktails[1][1]);
+    cocktailStore.selection.push(testCocktails[0]![1], testCocktails[1]![1]);
     const wrapper = mount(InstructionsView);
     expect(wrapper.html()).toMatchSnapshot();
   });

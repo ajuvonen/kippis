@@ -5,7 +5,7 @@ import {useCocktailStore} from '@/stores/cocktail';
 import {testCocktails, server, testSearchResults} from '@/components/__tests__/mswHandlers';
 import {SEARCHABLE_ALCOHOLS} from '@/utils/constants';
 
-const testCocktail = testCocktails[0][1];
+const testCocktail = testCocktails[0]![1];
 
 describe('Cocktail store', () => {
   let cocktailStore: ReturnType<typeof useCocktailStore>;
@@ -39,6 +39,7 @@ describe('Cocktail store', () => {
       await cocktailStore.addToSelection(-1);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      // eslint-disable-next-line vitest/no-conditional-expect
       expect(error.message).toBe('Request failed with status code 404');
     }
     expect(cocktailStore.selection).toEqual([]);
@@ -66,6 +67,7 @@ describe('Cocktail store', () => {
       await cocktailStore.openCocktailModal(-1);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      // eslint-disable-next-line vitest/no-conditional-expect
       expect(error.message).toBe('Request failed with status code 404');
     }
     expect(cocktailStore.highlightedCocktail).toEqual(null);
@@ -77,13 +79,13 @@ describe('Cocktail store', () => {
         const url = new URL(request.url);
         const searchParam = url.searchParams.get('f');
         if (searchParam === 'a') {
-          return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+          return HttpResponse.json({drinks: [testSearchResults[0]![0]]});
         }
         return new HttpResponse(null, {status: 404});
       }),
     );
     await cocktailStore.search('a');
-    expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1]]);
+    expect(cocktailStore.searchResults).toEqual([testSearchResults[0]![1]]);
   });
 
   it('searches with search string', async () => {
@@ -92,7 +94,7 @@ describe('Cocktail store', () => {
         const url = new URL(request.url);
         const searchParam = url.searchParams.get('s');
         if (searchParam === 'abc') {
-          return HttpResponse.json({drinks: [testSearchResults[0][0]]});
+          return HttpResponse.json({drinks: [testSearchResults[0]![0]]});
         }
         return new HttpResponse(null, {status: 404});
       }),
@@ -100,13 +102,16 @@ describe('Cocktail store', () => {
         const url = new URL(request.url);
         const ingredient = url.searchParams.get('i') || '';
         if (ingredient === 'abc') {
-          return HttpResponse.json({drinks: [testSearchResults[1][0]]});
+          return HttpResponse.json({drinks: [testSearchResults[1]![0]]});
         }
         return new HttpResponse(null, {status: 404});
       }),
     );
     await cocktailStore.search('abc');
-    expect(cocktailStore.searchResults).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
+    expect(cocktailStore.searchResults).toEqual([
+      testSearchResults[0]![1],
+      testSearchResults[1]![1],
+    ]);
   });
 
   it('does not search without searchString', async () => {
@@ -154,13 +159,13 @@ describe('Cocktail store', () => {
     server.use(
       http.get('https://www.thecocktaildb.com/api/json/v1/1/random.php', () => {
         if (requestCount === 3) {
-          return HttpResponse.json({drinks: [testCocktails[0][0]]});
+          return HttpResponse.json({drinks: [testCocktails[0]![0]]});
         }
         requestCount = requestCount + 1;
         return HttpResponse.json({drinks: []});
       }),
     );
     await cocktailStore.showRandomCocktail();
-    expect(cocktailStore.highlightedCocktail).toEqual(testCocktails[0][1]);
+    expect(cocktailStore.highlightedCocktail).toEqual(testCocktails[0]![1]);
   });
 });

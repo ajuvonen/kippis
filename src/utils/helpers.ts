@@ -124,7 +124,7 @@ export const convertMeasure = (measure: string): string => {
   const conversion = UNIT_CONVERSIONS.find(({regex}) => regex.test(unit));
 
   if ((numericAmount || conversion) && /\d\/\d+/.test(fraction)) {
-    const [enumerator, divider] = fraction.split('/');
+    const [enumerator, divider] = fraction.split('/') as [string, string];
     numericAmount = numericAmount + +enumerator / +divider;
   }
 

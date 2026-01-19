@@ -12,34 +12,34 @@ import {testCocktails, testSearchResults} from '@/components/__tests__/mswHandle
 
 describe('transformSearchResults', () => {
   it('transforms API cocktails to SearchResultCocktail objects', () => {
-    const result = transformSearchResults([testSearchResults[0][0], testSearchResults[1][0]]);
-    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
+    const result = transformSearchResults([testSearchResults[0]![0], testSearchResults[1]![0]]);
+    expect(result).toEqual([testSearchResults[0]![1], testSearchResults[1]![1]]);
   });
 
   it('filters out cocktails in the blacklist', () => {
     const cocktails = [
       {idDrink: '12572', strDrink: 'Test Cocktail 1', strDrinkThumb: 'thumb1'},
       {idDrink: '12784', strDrink: 'Test Cocktail 2', strDrinkThumb: 'thumb2'},
-      testSearchResults[0][0],
+      testSearchResults[0]![0],
     ];
 
     const result = transformSearchResults(cocktails);
-    expect(result).toEqual([testSearchResults[0][1]]);
+    expect(result).toEqual([testSearchResults[0]![1]]);
   });
 
   it('sorts the search results by name', () => {
-    const result = transformSearchResults([testSearchResults[1][0], testSearchResults[0][0]]);
-    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
+    const result = transformSearchResults([testSearchResults[1]![0], testSearchResults[0]![0]]);
+    expect(result).toEqual([testSearchResults[0]![1], testSearchResults[1]![1]]);
   });
 
   it('returns unique search results', () => {
     const result = transformSearchResults([
-      testSearchResults[0][0],
-      testSearchResults[0][0],
-      testSearchResults[1][0],
+      testSearchResults[0]![0],
+      testSearchResults[0]![0],
+      testSearchResults[1]![0],
     ]);
 
-    expect(result).toEqual([testSearchResults[0][1], testSearchResults[1][1]]);
+    expect(result).toEqual([testSearchResults[0]![1], testSearchResults[1]![1]]);
   });
 
   it('returns an empty array when cocktails is empty, null or undefined', () => {
@@ -51,8 +51,8 @@ describe('transformSearchResults', () => {
 
 describe('transformFullDetails', () => {
   it('transforms API cocktail details to FullDetailsCocktail object', () => {
-    const result = transformFullDetails([testCocktails[0][0]]);
-    expect(result).toEqual([testCocktails[0][1]]);
+    const result = transformFullDetails([testCocktails[0]![0]]);
+    expect(result).toEqual([testCocktails[0]![1]]);
   });
 
   it('replaces ingredients correctly', () => {
@@ -72,7 +72,7 @@ describe('transformFullDetails', () => {
 
     const result = transformFullDetails(cocktailDetails);
 
-    expect(result[0].ingredients).toEqual([
+    expect(result[0]!.ingredients).toEqual([
       {ingredient: 'scotch', measure: '3 CL'},
       {ingredient: 'bourbon', measure: '6 CL'},
     ]);
@@ -93,16 +93,16 @@ describe('transformFullDetails', () => {
 
     const result = transformFullDetails(cocktailDetails);
 
-    expect(result[0].ingredients).toEqual([
+    expect(result[0]!.ingredients).toEqual([
       {ingredient: 'ingredient with extra spaces', measure: '3 CL'},
     ]);
   });
 
   it('transforms the alcoholic property correctly', () => {
-    const result = transformFullDetails([testCocktails[0][0], testCocktails[1][0]]);
+    const result = transformFullDetails([testCocktails[0]![0], testCocktails[1]![0]]);
 
-    expect(result[0].alcoholic).toBe(true);
-    expect(result[1].alcoholic).toBe(false);
+    expect(result[0]!.alcoholic).toBe(true);
+    expect(result[1]!.alcoholic).toBe(false);
   });
 
   it('excludes empty and null ingredients', () => {
@@ -122,7 +122,7 @@ describe('transformFullDetails', () => {
 
     const result = transformFullDetails(cocktailDetails);
 
-    expect(result[0].ingredients).toEqual([]);
+    expect(result[0]!.ingredients).toEqual([]);
   });
 
   it('returns an empty array when cocktailDetails is empty, null or undefined', () => {
@@ -134,7 +134,7 @@ describe('transformFullDetails', () => {
 
 describe('listUniqueIngredients', () => {
   it('returns alphabetic ingredients from the given cocktails', () => {
-    const result = listUniqueIngredients([testCocktails[0][1], testCocktails[1][1]]);
+    const result = listUniqueIngredients([testCocktails[0]![1], testCocktails[1]![1]]);
     expect(result).toEqual([
       'lime',
       'lime juice',
@@ -148,7 +148,7 @@ describe('listUniqueIngredients', () => {
   });
 
   it('removes duplicates', () => {
-    const result = listUniqueIngredients([testCocktails[0][1], testCocktails[0][1]]);
+    const result = listUniqueIngredients([testCocktails[0]![1], testCocktails[0]![1]]);
     expect(result).toEqual(['lime juice', 'salt', 'tequila', 'triple sec']);
   });
 
@@ -267,15 +267,15 @@ describe('convertMeasure', () => {
     // Fractions without unit conversion are not converted to decimals
     expect(convertMeasure('1/4')).toBe('1/4');
     expect(convertMeasure('2/3')).toBe('2/3');
-  
+
     // Fractions with unit conversion are converted to decimals
     expect(convertMeasure('1/4 cup')).toBe('6 CL');
 
     // Fractions with whole numbers are converted to decimals
     expect(convertMeasure('1 1/2')).toBe('1.5');
     expect(convertMeasure('1 1/4')).toBe('1.25');
-    expect(convertMeasure('5 1/3')).toBe((5 + 1/3).toString());
-    expect(convertMeasure('10 2/3')).toBe((10 + 2/3).toString());
+    expect(convertMeasure('5 1/3')).toBe((5 + 1 / 3).toString());
+    expect(convertMeasure('10 2/3')).toBe((10 + 2 / 3).toString());
     expect(convertMeasure('3 3/4')).toBe('3.75');
 
     // Whole numbers remain as they are
@@ -319,7 +319,7 @@ describe('convertMeasure', () => {
     expect(convertMeasure('20 ML')).toBe('2 CL');
     expect(convertMeasure('355 mls')).toBe('36 CL');
   });
-  
+
   it('converts lbs to GR', () => {
     expect(convertMeasure('1 LB')).toBe('450 GR');
     expect(convertMeasure('0.5 pounds')).toBe('225 GR');
@@ -327,15 +327,17 @@ describe('convertMeasure', () => {
   });
 
   it('does not convert unconvertable units', () => {
-    [
-      ['', ''],
-      ['1 tsp', '1 tsp'],
-      ['1/2 tsps', '1/2 tsps'],
-      ['1 tbsp', '1 tbsp'],
-      ['1 3/4 tblsp', '1 3/4 tblsp'],
-      ['dash', 'dash'],
-      ['0.5 kg frozen', '0.5 kg frozen'],
-    ].forEach(([input, output]) => {
+    (
+      [
+        ['', ''],
+        ['1 tsp', '1 tsp'],
+        ['1/2 tsps', '1/2 tsps'],
+        ['1 tbsp', '1 tbsp'],
+        ['1 3/4 tblsp', '1 3/4 tblsp'],
+        ['dash', 'dash'],
+        ['0.5 kg frozen', '0.5 kg frozen'],
+      ] as [string, string][]
+    ).forEach(([input, output]) => {
       expect(convertMeasure(input)).toBe(output);
     });
   });

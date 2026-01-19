@@ -92,7 +92,7 @@ describe('SearchView', () => {
 
   it('displays result count', () => {
     cocktailStore.preventFetch = true;
-    cocktailStore.searchResults = [testSearchResults[0][1], testSearchResults[1][1]];
+    cocktailStore.searchResults = [testSearchResults[0]![1], testSearchResults[1]![1]];
     const wrapper = mount(SearchView, {
       props: {
         searchString: 'test',
