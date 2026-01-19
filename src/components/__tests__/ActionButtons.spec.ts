@@ -14,7 +14,7 @@ describe('ActionButtons', () => {
   it('mounts', () => {
     const wrapper = mount(ActionButtons, {
       props: {
-        cocktail: testSearchResults[0][1],
+        cocktail: testSearchResults[0]![1],
       },
     });
     expect(wrapper.html()).toMatchSnapshot();
@@ -23,7 +23,7 @@ describe('ActionButtons', () => {
   it('add button works', async () => {
     const wrapper = mount(ActionButtons, {
       props: {
-        cocktail: testSearchResults[1][1],
+        cocktail: testSearchResults[1]![1],
       },
     });
     await wrapper.find('.add-cocktail-1').trigger('click');
@@ -31,10 +31,10 @@ describe('ActionButtons', () => {
   });
 
   it('remove button works', async () => {
-    cocktailStore.selection.push(testCocktails[0][1]);
+    cocktailStore.selection.push(testCocktails[0]![1]);
     const wrapper = mount(ActionButtons, {
       props: {
-        cocktail: testSearchResults[0][1],
+        cocktail: testSearchResults[0]![1],
       },
     });
     await wrapper.find('.remove-cocktail-0').trigger('click');

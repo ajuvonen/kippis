@@ -43,12 +43,11 @@ describe('SearchField.vue', () => {
     const wrapper = mount(SearchField);
     const linkButtons = wrapper.findAllComponents({name: 'LinkButton'});
 
-    for (let i = 0; i < linkButtons.length; i++) {
-      const linkButton = linkButtons[i];
+    linkButtons.forEach(async (linkButton) => {
       const tag = linkButton.props('to').split('=')[1];
       await linkButton.trigger('click');
       expect(pushSpy).toHaveBeenCalledWith(`/search?tag=${tag}`);
-    }
+    });
   });
 
   it('triggers random cocktail search', async () => {

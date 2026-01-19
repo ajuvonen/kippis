@@ -4,7 +4,7 @@ import SearchResultCard from '@/components/SearchResultCard.vue';
 import {testSearchResults} from '@/components/__tests__/mswHandlers';
 
 describe('SearchResultCard.vue', () => {
-  const cocktail = testSearchResults[0][1];
+  const cocktail = testSearchResults[0]![1];
 
   it('mounts', () => {
     const wrapper = mount(SearchResultCard, {

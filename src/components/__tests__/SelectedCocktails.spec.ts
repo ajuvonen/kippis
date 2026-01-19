@@ -15,19 +15,19 @@ describe('SelectedCocktails', () => {
   });
 
   it('mounts', () => {
-    cocktailStore.selection.push(testCocktails[0][1]);
+    cocktailStore.selection.push(testCocktails[0]![1]);
     const wrapper = mount(SelectedCocktails);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('prints selection data', () => {
-    cocktailStore.selection = [testCocktails[0][1], testCocktails[1][1]];
+    cocktailStore.selection = [testCocktails[0]![1], testCocktails[1]![1]];
     const wrapper = mount(SelectedCocktails);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('changes button text depending of page', async () => {
-    cocktailStore.selection.push(testCocktails[1][1]);
+    cocktailStore.selection.push(testCocktails[1]![1]);
     const wrapper = mount(SelectedCocktails);
     expect(wrapper.findByTestId('selected-cocktails__action-button').text()).toBe(
       'Ready? Proceed to instructions.',
@@ -48,13 +48,13 @@ describe('SelectedCocktailsMobile', () => {
   });
 
   it('mounts', () => {
-    cocktailStore.selection.push(testCocktails[0][1]);
+    cocktailStore.selection.push(testCocktails[0]![1]);
     const wrapper = mount(SelectedCocktailsMobile);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('prints selection data', async () => {
-    cocktailStore.selection = [testCocktails[0][1], testCocktails[1][1]];
+    cocktailStore.selection = [testCocktails[0]![1], testCocktails[1]![1]];
     const wrapper = mount(SelectedCocktailsMobile);
     await wrapper.find('.selected-cocktails__mobile-button').trigger('click');
     expect(wrapper.html()).toMatchSnapshot();
