@@ -1,21 +1,19 @@
-import {describe, it, expect, beforeEach, vi, afterAll, beforeAll} from 'vitest';
+import {describe, it, expect, beforeEach, vi, afterAll} from 'vitest';
 import {mount} from '@vue/test-utils';
 import {useCocktailStore} from '@/stores/cocktail';
 import InstructionsView from '@/views/InstructionsView.vue';
 import {testCocktails} from '@/components/__tests__/mswHandlers';
 
+vi.mock('@/utils/helpers', async (importOriginal) => {
+  const helpers = await importOriginal<typeof import('@/utils/helpers')>();
+  return {
+    ...helpers,
+    randomDegree: () => 0,
+  };
+});
+
 describe('InstructionsView', () => {
   let cocktailStore: ReturnType<typeof useCocktailStore>;
-
-  beforeAll(() => {
-    vi.mock('@/utils/helpers', async (importOriginal) => {
-      const helpers = await importOriginal<typeof import('@/utils/helpers')>();
-      return {
-        ...helpers,
-        randomDegree: () => 0,
-      };
-    });
-  });
 
   beforeEach(() => {
     cocktailStore = useCocktailStore();
