@@ -18,7 +18,7 @@ exports[`NavigationMenu > mounts 1`] = `
 exports[`NavigationMenu > shows selection size 1`] = `
 "<nav data-v-fe35c617="" class="navigation-menu">
   <ul data-v-fe35c617="" class="navigation-menu__link-container">
-    <li data-v-fe35c617=""><a data-v-fe35c617="" href="/" class="navigation-menu__link">Home</a></li>
+    <li data-v-fe35c617=""><a data-v-fe35c617="" aria-current="page" href="/" class="router-link-active router-link-exact-active navigation-menu__link">Home</a></li>
     <li data-v-fe35c617=""><a data-v-fe35c617="" href="/search" class="navigation-menu__link">Search</a></li>
     <li data-v-fe35c617=""><a data-v-fe35c617="" href="/instructions" class="navigation-menu__link relative">Guide <div data-v-fe35c617="" class="navigation-menu__selection-size">1</div></a></li>
     <li data-v-fe35c617=""><a data-v-fe35c617="" href="#" role="button" class="navigation-menu__link navigation-menu__locale-changer gap-1" aria-label="Change language to fi"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
